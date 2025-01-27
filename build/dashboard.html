@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard - Research Center">
+  <title>Dashboard - Research Center</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'Arial', 'sans-serif'],
+          },
+          colors: {
+            primary: '#2563eb',
+            light: '#e0f2fe',
+            dark: '#1e3a8a',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+  <!-- Dashboard Container -->
+  <div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-blue-600 text-white">
+      <div class="p-6 text-center">
+        <h1 class="text-2xl font-bold">Research Center</h1>
+        <p class="mt-1 text-sm">Admin Dashboard</p>
+      </div>
+      <nav class="mt-6">
+        <ul class="space-y-2">
+          <li>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-500">
+              <span class="material-icons-outlined mr-3">dashboard</span>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-500">
+              <span class="material-icons-outlined mr-3">science</span>
+              Research Projects
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-500">
+              <span class="material-icons-outlined mr-3">group</span>
+              Team Members
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-500">
+              <span class="material-icons-outlined mr-3">settings</span>
+              Settings
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-500">
+              <span class="material-icons-outlined mr-3">logout</span>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <!-- Header -->
+      <header class="flex justify-between items-center pb-4 border-b">
+        <h2 class="text-2xl font-bold">Dashboard</h2>
+        <div>
+          <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Add New</button>
+        </div>
+      </header>
+
+      <!-- Grid Layout -->
+      <section class="mt-6">
+        <h3 class="text-xl font-bold mb-4">Research Highlights</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Card 1 -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h4 class="text-lg font-bold mb-2">AI & Robotics</h4>
+            <p class="text-gray-600">Exploring advancements in AI and robotics for real-world applications.</p>
+            <a href="#" class="text-blue-600 mt-4 inline-block hover:underline">Read more</a>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h4 class="text-lg font-bold mb-2">Climate Change</h4>
+            <p class="text-gray-600">Tackling climate change through innovative sustainability solutions.</p>
+            <a href="#" class="text-blue-600 mt-4 inline-block hover:underline">Read more</a>
+          </div>
+          
+          <!-- Card 3 -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h4 class="text-lg font-bold mb-2">Biomedical Research</h4>
+            <p class="text-gray-600">Breakthroughs in biomedical science for global health improvement.</p>
+            <a href="#" class="text-blue-600 mt-4 inline-block hover:underline">Read more</a>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h4 class="text-lg font-bold mb-2">Quantum Computing</h4>
+            <p class="text-gray-600">Harnessing quantum technology to revolutionize computing power.</p>
+            <a href="#" class="text-blue-600 mt-4 inline-block hover:underline">Read more</a>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h4 class="text-lg font-bold mb-2">Space Exploration</h4>
+            <p class="text-gray-600">Innovative research driving the future of space exploration.</p>
+            <a href="#" class="text-blue-600 mt-4 inline-block hover:underline">Read more</a>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h4 class="text-lg font-bold mb-2">Nanotechnology</h4>
+            <p class="text-gray-600">Advancing nanotechnology to solve complex challenges.</p>
+            <a href="#" class="text-blue-600 mt-4 inline-block hover:underline">Read more</a>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>
