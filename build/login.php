@@ -1,3 +1,32 @@
+<?php
+include_once '../includes/db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if (empty($username) || empty($password)) {
+        echo "Both fields are required!";
+    } else {
+        // Check if the user exists
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            // Successful login
+            session_start();
+            $_SESSION['username'] = $user['username'];
+            header("Location: dashboard.html"); // Redirect to the dashboard or home page
+            exit();
+        } else {
+            // Invalid credentials
+            echo "Invalid username or password!";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,19 +72,19 @@
           <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
           <input type="email" id="email" name="email" 
                  class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-                 placeholder="you@example.com">
+                 placeholder="email@example.com">
         </div>
 
         <!-- Password -->
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                 class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-                 placeholder="Enter your password">
+          <input type="password" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
+          placeholder="Enter your password">
         </div>
 
         <!-- Remember Me -->
         <div class="flex items-center">
-                 class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+          <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
           <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
         </div>
 
