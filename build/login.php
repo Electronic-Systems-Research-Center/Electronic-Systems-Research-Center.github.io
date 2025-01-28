@@ -1,3 +1,32 @@
+<?php
+include_once '../includes/db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if (empty($username) || empty($password)) {
+        echo "Both fields are required!";
+    } else {
+        // Check if the user exists
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            // Successful login
+            session_start();
+            $_SESSION['username'] = $user['username'];
+            header("Location: dashboard.html"); // Redirect to the dashboard or home page
+            exit();
+        } else {
+            // Invalid credentials
+            echo "Invalid username or password!";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
