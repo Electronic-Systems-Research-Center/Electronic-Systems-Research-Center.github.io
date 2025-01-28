@@ -1,3 +1,7 @@
+.book-button {
+  margin-top: 10px;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -146,8 +150,6 @@
 html,
 :host {
   line-height: 1.5;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
   /* 2 */
   -moz-tab-size: 4;
   /* 3 */
