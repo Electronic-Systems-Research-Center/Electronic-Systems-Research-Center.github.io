@@ -50,10 +50,10 @@
       <!-- Sidebar -->
       <aside 
         id="sidebar" 
-        class="w-64 bg-blue-600 text-white hidden md:block"
+        class="w-64 bg-blue-600 text-white hidden md:block sticky h-full top-0"
       >
         <div class="p-6 text-center">
-          <img src="../build/img/esrc logo 3.png" alt="logo" class="px-11">
+          <img src="../build/img/esrc logo 3.png" alt="logo" class="px-10">
           <h1 class="text-2xl font-bold">Research Center</h1>
           <p class="mt-1 text-sm">Resource Materials</p>
         </div>
@@ -88,70 +88,82 @@
         <h3 class="text-xl font-bold mb-4">Lesson Modules</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          <!-- Card 1 -->
-          <div class="bg-white rounded-lg shadow p-6 ">
-            <h4 class="text-lg font-bold mb-2">Lesson 1</h4>
-            <p class="text-gray-600">Introduction to Logic Circuits</p>
-            <button type="button" onclick="location.href = '../build/flipbook/lesson-1.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2" style="margin-top: 10px;">Open Book</button>
-          </div>
+        <!-- Card 1 -->
+        <div class="bg-white rounded-lg shadow p-6 ">
+          <h4 class="text-lg font-bold mb-2">Lesson 1</h4>
+          <p class="text-gray-600">Introduction to Logic Circuits</p>
+          <button type="button" onclick="location.href = '../build/flipbook/lesson-1.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2  [margin-top:10px]">Open Book</button>
+        </div>
 
-          <!-- Card 2 -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h4 class="text-lg font-bold mb-2">Lesson 2</h4>
-            <p class="text-gray-600">Arithmetic</p>
-            <button type="button" onclick="location.href = '../build/flipbook/lesson-2.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" style="margin-top: 10px;">Open Book</button>
-          </div>
+        <!-- Card 2 -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h4 class="text-lg font-bold mb-2">Lesson 2</h4>
+          <p class="text-gray-600">Arithmetic</p>
+          <button type="button" onclick="location.href = '../build/flipbook/lesson-2.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 [margin-top:10px]">Open Book</button>
+        </div>
 
-          <!-- Card 3 -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h4 class="text-lg font-bold mb-2">Lesson 3</h4>
-            <p class="text-gray-600">Boolean Algebra</p>
-            <button type="button" onclick="location.href = '../build/flipbook/lesson-3.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" style="margin-top: 10px;">Open Book</button>
-          </div>
+        <!-- Card 3 -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h4 class="text-lg font-bold mb-2">Lesson 3</h4>
+          <p class="text-gray-600">Boolean Algebra</p>
+          <button type="button" onclick="location.href = '../build/flipbook/lesson-3.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 [margin-top:10px]">Open Book</button>
+        </div>
 
-          <!-- Card 4 -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h4 class="text-lg font-bold mb-2">Lesson 4</h4>
-            <p class="text-gray-600">Logic Gates and Related Devices</p>
-            <button type="button" onclick="location.href = '../build/flipbook/lesson-4.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" style="margin-top: 10px;">Open Book</button>
-          </div>
+        <!-- Card 4 -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h4 class="text-lg font-bold mb-2">Lesson 4</h4>
+          <p class="text-gray-600">Logic Gates and Related Devices</p>
+          <button type="button" onclick="location.href = '../build/flipbook/lesson-4.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 [margin-top:10px]">Open Book</button>
+        </div>
 
-          <!-- Card 5 -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h4 class="text-lg font-bold mb-2">Lesson 5</h4>
-            <p class="text-gray-600">Combinational Circuits</p>
-            <button type="button" onclick="location.href = '../build/flipbook/lesson-5.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" style="margin-top: 10px;">Open Book</button>
-          </div>
+        <!-- Card 5 -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h4 class="text-lg font-bold mb-2">Lesson 5</h4>
+          <p class="text-gray-600">Combinational Circuits</p>
+          <button type="button" onclick="location.href = '../build/flipbook/lesson-5.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 [margin-top:10px]">Open Book</button>
+        </div>
 
-          <!-- Card 6 -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h4 class="text-lg font-bold mb-2">Lesson 6</h4>
-            <p class="text-gray-600">Clocks, Latches and Flip-flops</p>
-            <button type="button" onclick="location.href = '../build/flipbook/lesson-6.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" style="margin-top: 10px;">Open Book</button>
-          </div>
+        <!-- Card 6 -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h4 class="text-lg font-bold mb-2">Lesson 6</h4>
+          <p class="text-gray-600">Clocks, Latches and Flip-flops</p>
+          <button type="button" onclick="location.href = '../build/flipbook/lesson-6.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700  [margin-top:10px]">Open Book</button>
+        </div>
 
         </div>
       </section>
 
-      <!-- Grid Layout -->
+      <!-- Exercises and Activities -->
       <section class="mt-6">
         <h3 class="text-xl font-bold mb-4">Exercises and Activities</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          <!-- Card 1 -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h4 class="text-lg font-bold mb-2">Exercises</h4>
-            <p class="text-gray-600">Introduction to Logic Circuits</p>
-            <button type="button" onclick="location.href = '../build/flipbook/exercises-1.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" style="margin-top: 10px;">Open Book</button>
-          </div>
+        <!-- Card 1 -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h4 class="text-lg font-bold mb-2">Exercises</h4>
+          <p class="text-gray-600">Introduction to Logic Circuits</p>
+          <button type="button" onclick="location.href = '../build/flipbook/exercises-1.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700  [margin-top:10px]">Open Book</button>
+        </div>
 
-          <!-- Card 2 -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h4 class="text-lg font-bold mb-2">Laboratory</h4>
-            <p class="text-gray-600">Arithmetic</p>
-            <button type="button" onclick="location.href = '../build/flipbook/lab.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" style="margin-top: 10px;">Open Book</button>
-          </div>
+        <!-- Card 2 -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h4 class="text-lg font-bold mb-2">Laboratory</h4>
+          <p class="text-gray-600">Arithmetic</p>
+          <button type="button" onclick="location.href = '../build/flipbook/lab-1.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700  [margin-top:10px]">Open Book</button>
+        </div>
+      </div>
 
+      <!-- Exercises and Activities -->
+      <section class="mt-6">
+        <h3 class="text-xl font-bold mb-4">References</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+        <!-- Card 1 -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h4 class="text-lg font-bold mb-2">References</h4>
+          <p class="text-gray-600">Digital Principles and Logic Design References</p>
+          <button type="button" onclick="location.href = '../build/flipbook/references.html'" class="open-book-button px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 [margin-top:10px]">Open Book</button>
+        </div>
         </div>
       </section>
     </main>
