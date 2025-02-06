@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Carousel</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <style>
+        .swiper-slide {
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+        }
+
+        .swiper-slide-active {
+            transform: scale(1.1);
+        }
+
+        .team-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .team-info {
+            padding: 12px;
+            text-align: center;
+        }
+
+        /* Custom Navigation Button Styling */
+        .swiper-button {
+            @apply absolute top-1/2 -translate-y-1/2 bg-gray-800 text-white p-4 rounded-full transition-all duration-300;
+        }
+
+        .swiper-button:hover {
+            @apply bg-gray-900;
+        }
+
+        .swiper-button-prev {
+            @apply left-0 md:-left-10;
+        }
+
+        .swiper-button-next {
+            @apply right-0 md:-right-10;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-10">
+
+    <div class="max-w-6xl mx-auto relative">
+        <!-- Swiper Container -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Team Members -->
+                <div class="swiper-slide">
+                    <img src="../build/img/1.png" class="team-image" alt="Patrick James G. Verroya">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Patrick James G. Verroya</h3>
+                        <p class="text-gray-500 text-sm">21-05720@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/2.png" class="team-image" alt="Brent Angelo M. Landicho">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Brent Angelo M. Landicho</h3>
+                        <p class="text-gray-500 text-sm">21-00074@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/3.png" class="team-image" alt="Bryan E. Regana">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Bryan E. Regana</h3>
+                        <p class="text-gray-500 text-sm">21-08516@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/4.png" class="team-image" alt="Billy M. Abante">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Billy M. Abante</h3>
+                        <p class="text-gray-500 text-sm">21-00453@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/5.png" class="team-image" alt="Jareck M. Mirano">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Jareck M. Mirano</h3>
+                        <p class="text-gray-500 text-sm">21-05304@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/6.png" class="team-image" alt="Gian Carl C. Tolentino">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Gian Carl C. Tolentino</h3>
+                        <p class="text-gray-500 text-sm">21-01139@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/7.png" class="team-image" alt="Emmanuel B. Gumapac">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Emmanuel B. Gumapac</h3>
+                        <p class="text-gray-500 text-sm">21-04067@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/8.png" class="team-image" alt="Dannielle Louis F. Abeleda">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Dannielle Louis F. Abeleda</h3>
+                        <p class="text-gray-500 text-sm">21-04065@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/9.png" class="team-image" alt="Oliver M. Andal">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Oliver M. Andal</h3>
+                        <p class="text-gray-500 text-sm">21-08145@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/10.png" class="team-image" alt="Lester John M. Umali">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Lester John M. Umali</h3>
+                        <p class="text-gray-500 text-sm">21-05629@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/11.png" class="team-image" alt="Floriane A. Muñoz">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Floriane A. Muñoz</h3>
+                        <p class="text-gray-500 text-sm">21-06029@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/12.png" class="team-image" alt="Ashera Kathryn R. Aguilar">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Ashera Kathryn R. Aguilar</h3>
+                        <p class="text-gray-500 text-sm">21-32463@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="../build/img/13.png" class="team-image" alt="Jhon Kyle P. Ilao">
+                    <div class="team-info">
+                        <h3 class="text-lg font-semibold">Jhon Kyle P. Ilao</h3>
+                        <p class="text-gray-500 text-sm"> 21-36339@g.batstate-u.edu.ph</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Left and Right Navigation Buttons -->
+        <div class="swiper-button swiper-button-prev flex items-center justify-center text-lg w-10 h-10 md:w-12 md:h-12">&lt;</div>
+        <div class="swiper-button swiper-button-next flex items-center justify-center text-lg w-10 h-10 md:w-12 md:h-12">&gt;</div>
+    </div>
+
+    <!-- Swiper.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: "auto",
+            spaceBetween: 20,
+            centeredSlides: true,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
+            },
+        });
+    </script>
+
+</body>
+</html>
