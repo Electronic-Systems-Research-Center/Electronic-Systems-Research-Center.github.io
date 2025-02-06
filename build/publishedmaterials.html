@@ -14,21 +14,21 @@
   <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
     <div class="container mx-auto px-6 flex items-center justify-between">
     
-      <div class="text-2xl font-bold text-blue-600">Electronic Systems Research Center</div>
+      <a href="../index.html"><div class="text-2xl font-bold text-blue-600">Electronic Systems Research Center</div></a>
   
       <!-- Navigation Menu (Desktop & Mobile) -->
       <nav class="hidden md:flex space-x-6 text-gray-700">
         <ul class="flex space-x-6">
-          <li><a href="../index.html" class="hover:text-blue-600">About</a></li>
-          <li><a href="../index.html" class="hover:text-blue-600">Research</a></li>
-          <li><a href="../index.html" class="hover:text-blue-600">Team</a></li>
-          <li><a href="../index.html" class="hover:text-blue-600">Contact</a></li>
+          <li><a href="../index.html#about" class="hover:text-blue-600">About</a></li>
+          <li><a href="../index.html#research" class="hover:text-blue-600">Research</a></li>
+          <li><a href="../index.html#team" class="hover:text-blue-600">Team</a></li>
+          <li><a href="../index.html#contact" class="hover:text-blue-600">Contact</a></li>
           <li><a href="../build/publishedmaterials.html" class="hover:text-blue-600">Published Papers</a></li>
         </ul>
       </nav>
   
       <!-- Mobile Toggle Button -->
-      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">
+      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">‎
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
@@ -38,10 +38,11 @@
     <!-- Mobile Navigation Menu -->
     <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4">
       <ul class="flex flex-col space-y-2">
-        <li><a href="#about" class="block px-4 py-2 hover:text-blue-600">About</a></li>
-        <li><a href="#research" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
-        <li><a href="#team" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
-        <li><a href="#contact" class="block px-4 py-2 hover:text-blue-600">Contact</a></li>
+        <li><a href="../index.html#about" class="block px-4 py-2 hover:text-blue-600">About</a></li>
+        <li><a href="../index.html#research" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
+        <li><a href="../index.html#team" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
+        <li><a href="../index.html#contact" class="block px-4 py-2 hover:text-blue-600">Contact</a></li>
+        <li><a href="../build/publishedmaterials.html" class="block px-4 py-2 hover:text-blue-600">Published Papers</a></li>
       </ul>
     </nav>
   </header>

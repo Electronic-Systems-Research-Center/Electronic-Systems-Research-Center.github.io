@@ -40,8 +40,7 @@
   <!-- Header -->
   <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
     <div class="container mx-auto px-6 flex items-center justify-between">
-    
-      <div class="text-2xl font-bold text-blue-600">Electronic Systems Research Center</div>
+      <a href="index.html"><div class="text-2xl font-bold text-blue-600">Electronic Systems Research Center</div></a>
   
       <!-- Navigation Menu (Desktop & Mobile) -->
       <nav class="hidden md:flex space-x-6 text-gray-700">
@@ -55,7 +54,7 @@
       </nav>
   
       <!-- Mobile Toggle Button -->
-      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">
+      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">‎ 
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
@@ -69,6 +68,7 @@
         <li><a href="#research" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
         <li><a href="#team" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
         <li><a href="#contact" class="block px-4 py-2 hover:text-blue-600">Contact</a></li>
+        <li><a href="../build/publishedmaterials.html" class="block px-4 py-2 hover:text-blue-600">Published Papers</a></li>
       </ul>
     </nav>
   </header>
@@ -93,30 +93,32 @@
       <p class="text-gray-600 mb-8">
         The Electronic Systems Research Center (ESRC) is committed in providing technical support and working space for R&D activities related to the field of electronics engineering.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         <div class="p-6 bg-white rounded-lg shadow">
-          <h3 class="font-bold text-xl mb-2">University Mission</h3>
-          <p class="text-gray-600">A university committed to producing leaders by providing a 21st century learning environment through innovations in education, multidisciplinary research, and community and industry partnerships in order to nurture the spirit of nationhood, propel the national economy, and engage the world for sustainable development. </p>
+          <h3 class="font-bold text-xl mb-2">Center Mandate</h3>
+          <p class="text-gray-600">The Electronic Systems Research Center (ESRC) is committed to providing technical support and working space for R&D activities related to the field of electronics engineering. The ESRC conducts research, provides custom experimental setups, and develops prototypes for various fields of research that involve electronic systems.</p>
         </div>
         <div class="p-6 bg-white rounded-lg shadow">
-          <h3 class="font-bold text-xl mb-2">University Vision</h3>
-          <p class="text-gray-600">A premier national university that develops leaders in the global knowledge economy.</p>
+          <h3 class="font-bold text-xl mb-2">Equipment Available</h3>
+          <p class="text-gray-600">Spectral Camera and Weather Station</p>
+          <p class="text-gray-600">Test and Measurement Instrument</p>
+          <p class="text-gray-600">Data Loggers and Dremel Tools</p>
+          <p class="text-gray-600">3D Printers and Solder Workstation</p>
+          <p class="text-gray-600">Function Generators</p>
+          <p class="text-gray-600">Bench Power Supply</p>
         </div>
-        <div class="p-6 bg-white rounded-lg shadow">
-          <h3 class="font-bold text-xl mb-2">Values</h3>
-          <p class="text-gray-600">Patriotism, Service, Integrity, Resilience, Excellence and Faith</p>
-        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Research Highlights Section -->
-  <section id="research" class="bg-gray-100 py-16">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4">Research Highlights</h2>
-      <p class="text-gray-600 mb-8">Explore some of our groundbreaking projects and achievements.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
+    <!-- Project Highlights -->
+    <section id="research" class="bg-gray-100 py-16">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
+        <p class="text-gray-600 mb-8">Marvel at the innovative projects made by the ESRC for social and technological innovation.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
         <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden">
           <img src="../build/img/BARAKO.jpg" alt="Research 1" class="w-full h-48 object-cover">
           <div class="p-6">
@@ -130,11 +132,55 @@
           <img src="../build/img/SIGAW.webp" alt="Research 1" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="font-bold text-xl mb-2">Project SIGAW</h3>
-            <p class="text-gray-600">A cost-efficient tsunami early warning system developed by a team of innovators from 
-              BatStateU-The NEU, to serve as an early warning to high-risk coastal areas. Several SIGAW units have been installed 
+            <p class="text-gray-600">A cost-efficient tsunami early warning system to serve as an early warning to high-risk coastal areas. Several SIGAW units have been installed 
               in the provinces of Batangas and Quezon with additional units being developed.</p>
           </div>
         </div>
+          <!-- Card 5 -->
+          <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="../build/img/pic3.jpg" alt="Research 3" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">PPDO at BatStateU TNEU</h3>
+              <p class="text-gray-600">The Batangas Provincial Planning and Development (PPDO) explored the advanced research, including the Collapsible Solar Power Station Project of ESRC and DTC.</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="../build/img/pic4.jpg" alt="Research 3" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Building Circuit from Scratch</h3>
+              <p class="text-gray-600">Workshop event headed by Engr. Carlos Jhay A. Arroyo about mastering PCB Fundamentals and creating circuit boards.</p>
+            </div>
+          </div>
+  
+          <!-- Card 7 -->
+          <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="../build/img/𝐓𝐞𝐜𝐡 𝐁𝐈𝐓𝐒 𝐁𝐞𝐜𝐨𝐦𝐞 𝐈𝐧𝐧𝐨𝐯𝐚𝐭𝐢𝐯𝐞 𝐭𝐡𝐫𝐨𝐮𝐠𝐡 𝐒𝐨𝐟𝐭𝐰𝐚𝐫𝐞 𝐓𝐫𝐚𝐢𝐧𝐢𝐧𝐠.jpg" alt="Research 3" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Tech Bits: Become Innovative through Software Training</h3>
+              <p class="text-gray-600">A collaborative event spearheaded by the Electronic Systems Research Center (ESRC), Digital Transformation Center (DTC) & Manufacturing Research Center to provide basic understanding of MATLAB and EasyEDA.
+              </p>
+            </div>
+        </div>
+  
+        <!-- Card 8 -->
+        <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../build/img/7th International Conference on Signal Processing and Information Communications.jpg" alt="Research 3" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">7th International Conference on Signal Processing and Information Communications</h3>
+            <p class="text-gray-600">An afternoon filled with insightful studies from brilliant minds, culminating in a successful conference.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Research Highlights Section -->
+  <section id="research" class="bg-gray-100 py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">Center Highlights</h2>
+      <p class="text-gray-600 mb-8">Explore some of our groundbreaking events and achievements.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Card 3 -->
         <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden">
           <img src="../build/img/pic1.jpg" alt="Research 1" class="w-full h-48 object-cover">
@@ -166,6 +212,25 @@
             <h3 class="font-bold text-xl mb-2">Building Circuit from Scratch</h3>
             <p class="text-gray-600">Workshop event headed by Engr. Carlos Jhay A. Arroyo about mastering PCB Fundamentals and creating circuit boards.</p>
           </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../build/img/𝐓𝐞𝐜𝐡 𝐁𝐈𝐓𝐒 𝐁𝐞𝐜𝐨𝐦𝐞 𝐈𝐧𝐧𝐨𝐯𝐚𝐭𝐢𝐯𝐞 𝐭𝐡𝐫𝐨𝐮𝐠𝐡 𝐒𝐨𝐟𝐭𝐰𝐚𝐫𝐞 𝐓𝐫𝐚𝐢𝐧𝐢𝐧𝐠.jpg" alt="Research 3" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Tech Bits: Become Innovative through Software Training</h3>
+            <p class="text-gray-600">A collaborative event spearheaded by the Electronic Systems Research Center (ESRC), Digital Transformation Center (DTC) & Manufacturing Research Center to provide basic understanding of MATLAB and EasyEDA.
+            </p>
+          </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="../build/img/7th International Conference on Signal Processing and Information Communications.jpg" alt="Research 3" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="font-bold text-xl mb-2">7th International Conference on Signal Processing and Information Communications</h3>
+          <p class="text-gray-600">An afternoon filled with insightful studies from brilliant minds, culminating in a successful conference.
+          </p>
         </div>
       </div>
     </div>
