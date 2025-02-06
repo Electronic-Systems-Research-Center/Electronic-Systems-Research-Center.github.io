@@ -3,64 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Carousel</title>
-
+    <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.png">
+    <title>Team-Electronic Systems Research Center</title>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <!-- Swiper.js CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
-    <style>
-        .swiper-slide {
-            transition: transform 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 16px;
-        }
-
-        .swiper-slide-active {
-            transform: scale(1.1);
-        }
-
-        .team-image {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .team-info {
-            padding: 12px;
-            text-align: center;
-        }
-
-        /* Custom Navigation Button Styling */
-        .swiper-button {
-            @apply absolute top-1/2 -translate-y-1/2 bg-gray-800 text-white p-4 rounded-full transition-all duration-300;
-        }
-
-        .swiper-button:hover {
-            @apply bg-gray-900;
-        }
-
-        .swiper-button-prev {
-            @apply left-0 md:-left-10;
-        }
-
-        .swiper-button-next {
-            @apply right-0 md:-right-10;
-        }
-    </style>
 </head>
-<body class="bg-gray-100 p-10">
 
-    <div class="max-w-6xl mx-auto relative">
-        <!-- Swiper Container -->
+<!-- Header -->
+<header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
+    <div class="container mx-auto px-6 flex items-center justify-between">
+      <a href="index.html"><div class="text-2xl font-bold text-blue-600">Electronic Systems Research Center</div></a>
+  
+      <!-- Navigation Menu (Desktop & Mobile) -->
+      <nav class="hidden md:flex space-x-6 text-gray-700">
+        <ul class="flex space-x-6">
+          <li><a href="../index.html#about" class="hover:text-blue-600">About</a></li>
+          <li><a href="../index.html#research" class="hover:text-blue-600">Research</a></li>
+          <li><a href="../build/teammembers.html" class="hover:text-blue-600">Team</a></li>
+          <li><a href="../index.html#contact" class="hover:text-blue-600">Contact</a></li>
+          <li><a href="../build/publishedmaterials.html" class="hover:text-blue-600">Published Papers</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Mobile Toggle Button -->
+      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">‎ 
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+  
+    <!-- Mobile Navigation Menu -->
+    <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4">
+      <ul class="flex flex-col space-y-2">
+        <li><a href="../index.html#about" class="block px-4 py-2 hover:text-blue-600">About</a></li>
+        <li><a href="../index.html#research" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
+        <li><a href="../index.html#team" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
+        <li><a href="../index.html#contact" class="block px-4 py-2 hover:text-blue-600">Contact</a></li>
+        <li><a href="../build/publishedmaterials.html" class="block px-4 py-2 hover:text-blue-600">Published Papers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<body class="bg-gray-100">
+
+    <!-- Title -->
+    <h1 class="text-center text-5xl font-bold text-gray-800 mt-20 mb-12">MEET OUR TEAM</h1>
+
+    <!-- Meet Our Team Section -->
+    <section class="max-w-6xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+            <!-- Image -->
+            <div>
+                <img src="../build/img/Dr.Sang.jpg" alt="Dr.Ralph" class="rounded-lg shadow-md">
+            </div>
+            
+            <!-- Text Content -->
+            <div>
+                <h2 class="text-4xl font-bold text-gray-800">Dr. Ralph Gerard B. Sangalang</h2>
+                <p class="mt-4 text-gray-600">
+                    Dr. Ralph us an Assistant Professor III at the Department of Electronics Engineering, College of Engineering,
+                    Batangas University - The National Engineering University, Alangilan, Batangas City. He also serves as the Center
+                    Head of the Electronic Research Center (ESRC), STEER Hub. With a wealth of experience, Dr. Sangalang has held 
+                    various leadership roles, including BS Biomedical Engineering Program Chair, BS Electronics Engineering Program Chair,
+                    and Chair od both College and Department Student Outcomes (SO) Committees. He has also contributed as a Department Book
+                    Committee Member and Senior Coach for ECE Quizzers.
+
+                    Dr. Sangalang's academic journey and professional contributions are marked by a dedication to research and Student
+                    success, making him a respected figure in his field. 
+                </p>
+                <div class="flex mt-6 space-x-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-blue-600">18</h3>
+                        <p class="text-gray-500 text-sm">Published Conference Papers</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-blue-600">4</h3>
+                        <p class="text-gray-500 text-sm">Published Journals</p>
+                    </div>
+                </div>
+                <a href="https://www.facebook.com/ESRC.BatStateU" class="mt-6 inline-block bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="max-w-full mx-auto px-8 py-12 mr-0 ml-0 items-center bg-blue-600">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 bg-center">
+            
+            <!-- Team Member 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <img src="../build/img/engrcj.png" alt="Engr. Carlos Jhay Arroyo" class="team-image">
+                <h2 class="mt-4 text-xl font-bold text-gray-800">Engr. Carlos Jhay Arroyo </h2>
+                <p class="mt-2 text-gray-600 text-sm">University Research Associate, ESRC</p>
+                <p class="mt-4 text-gray-600 text-sm">
+                    Engr. Arroyo is an esteemed researcher and educator, serving as the Center Head of ESRC. His leadership in academia has influenced numerous projects and student researchers.
+                </p>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <img src="../build/img/engraries.png" alt="Team Member 2" class="team-image">
+                <h2 class="mt-4 text-xl font-bold text-gray-800">Engr. Ariel Rosales</h2>
+                <p class="mt-2 text-gray-600 text-sm">UNIRA, Project Sinag</p>
+                <p class="mt-4 text-gray-600 text-sm">
+                    Engr. Rosales has contributed significantly to multiple research papers in electronics and AI. His expertise lies in embedded systems and signal processing.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swiper Carousel Section -->
+    <section class="max-w-5xl mx-auto px-5">
+        <h2 class="text-3xl font-bold text-gray-800">2024-2025 2nd Semester Interns</h2>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <!-- Team Members -->
@@ -156,22 +215,22 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-
-        <!-- Pagination -->
-        <div class="swiper-pagination"></div>
-
-        <!-- Left and Right Navigation Buttons -->
-        <div class="swiper-button swiper-button-prev flex items-center justify-center text-lg w-10 h-10 md:w-12 md:h-12">&lt;</div>
-        <div class="swiper-button swiper-button-next flex items-center justify-center text-lg w-10 h-10 md:w-12 md:h-12">&gt;</div>
-    </div>
+    </section>
 
     <!-- Swiper.js Script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
-            slidesPerView: "auto",
-            spaceBetween: 20,
+            slidesPerView: 1,
+            spaceBetween: 10,
             centeredSlides: true,
             loop: true,
             navigation: {
@@ -183,12 +242,41 @@
                 clickable: true,
             },
             breakpoints: {
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 3 },
-                1024: { slidesPerView: 4 },
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
             },
         });
     </script>
+
+    <style>
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            margin: 10px;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .team-info {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: #1E40AF;
+            font-size: 24px;
+        }
+    </style>
 
 </body>
 </html>
