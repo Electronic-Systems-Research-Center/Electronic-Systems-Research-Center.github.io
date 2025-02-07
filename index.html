@@ -50,7 +50,7 @@
         <ul class="flex space-x-6">
           <li><a href="#about" class="hover:text-blue-600">About</a></li>
           <li><a href="#research" class="hover:text-blue-600">Research</a></li>
-          <li><a href="../build/teammembers.html" class="hover:text-blue-600">Team</a></li>
+          <li><a href="/build/teammembers.html" class="hover:text-blue-600">Team</a></li>
           <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
           <li><a href="../build/publishedmaterials.html" class="hover:text-blue-600">Published Papers</a></li>
         </ul>
@@ -208,12 +208,8 @@
             return obj;
           });
   
-          // Use only the bottom 6 rows (if available) and reverse them so the lowest comes first
-          if (cardsData.length > 6) {
-            cardsData = cardsData.slice(-6).reverse();
-          } else {
-            cardsData = cardsData.reverse();
-          }
+          // Reverse order of cards so the last added information is in the first card.
+          cardsData = cardsData.reverse();
 
           // Create a card for every record to be shown
           const container = document.getElementById('cardsContainer');
