@@ -117,9 +117,7 @@
       <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
         <p class="text-gray-600 mb-8">Marvel at the innovative projects made by the ESRC for social and technological innovation.</p>
-          <!-- This container will be populated with cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projectCardContainer">
-          <!-- Cards will be injected here by JavaScript -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projectCardContainer"></div>
       </div>
     </section>
 
@@ -128,10 +126,7 @@
     <div class="container mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-4">Center Highlights</h2>
       <p class="text-gray-600 mb-8">Explore some of our groundbreaking events and achievements.</p>
-      <!-- This container will be populated with cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="cardsContainer">
-        <!-- Cards will be injected here by JavaScript -->
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="cardsContainer"></div>
     </div>
   </section>
 
@@ -142,22 +137,22 @@
     <p class="text-gray-600 mb-8">A team of dedicated researchers and professionals.</p>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
       <div class="text-center">
-        <img src="../build/img/Engr.Amante.png" alt="Team Member 1" class="mx-auto w-25 h-20 rounded-full shadow">
+        <img src="../build/img/Engr.Amante.png" alt="Assoc. Prof Albertson D. Amante" class="mx-auto w-25 h-20 rounded-full shadow">
         <h3 class="mt-4 font-bold">Assoc. Prof Albertson D. Amante</h3>
         <p class="text-gray-600">Director for STEERHUB, VPRDES BatStateU</p>
       </div>
       <div class="text-center">
-        <img src="../build/img/Dr.Ralph.jpg" alt="Team Member 2" class="mx-auto w-25 h-20 rounded-full shadow">
+        <img src="../build/img/Dr.Ralph.jpg" alt="Dr. Ralph Gerard B. Sangalang" class="mx-auto w-25 h-20 rounded-full shadow">
         <h3 class="mt-4 font-bold">Dr. Ralph Gerard B. Sangalang</h3>
         <p class="text-gray-600">Center Head, ESRC</p>
       </div>
       <div class="text-center">
-        <img src="../build/img/engrcj.png" alt="Team Member 3" class="mx-auto w-25 h-20 rounded-full shadow">
+        <img src="../build/img/engrcj.png" alt="Engr. Carlos Jhay A. Arroyo" class="mx-auto w-25 h-20 rounded-full shadow">
         <h3 class="mt-4 font-bold">Engr. Carlos Jhay A. Arroyo</h3>
         <p class="text-gray-600">University Research Associate, ESRC</p>
       </div>
       <div class="text-center">
-        <img src="../build/img/engraries.png" alt="Team Member 4" class="mx-auto w-25 h-20 rounded-full shadow">
+        <img src="../build/img/engraries.png" alt="Engr. Ariel Rosales" class="mx-auto w-25 h-20 rounded-full shadow">
         <h3 class="mt-4 font-bold">Engr. Ariel Rosales</h3>
         <p class="text-gray-600">UNIRA, Project Sinag</p>
       </div>
@@ -178,11 +173,11 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Path to your CSV file
+      // Path to CSV Source Files
       const highlightsCSV = 'src/research_center_highlights.csv';
       const projectsCSV = 'src/research_projects.csv'
   
-      // Fetch the CSV file
+      // Fetch CSV File for Research Center Highlights
       fetch(highlightsCSV)
         .then(response => {
           if (!response.ok) {
@@ -192,17 +187,15 @@
         })
         .then(csvText => {
           // Parse the CSV data
-          // (This simple parser assumes there are no commas in the fields.
-          // For more complex CSV data, consider using a library like PapaParse.)
           const rows = csvText
             .split('\n')
             .map(line => line.trim())
             .filter(line => line.length > 0);
           
-          // Assume the first row is the header
+          // Fetch headers from first row (img_path,alt,title,description)
           const headers = rows.shift().split(',').map(header => header.trim());
           
-          // Convert remaining rows into an array of objects
+          // Convert remaining items into an array
           let cardsData = rows.map(row => {
             const values = row.split(',').map(value => value.trim());
             const obj = {};
@@ -212,46 +205,41 @@
             return obj;
           });
   
-          // Always use only the 6 bottom cards, then reverse the order so the lowest is first
+          // Only show the last 6 records
           if (cardsData.length > 6) {
             cardsData = cardsData.slice(-6).reverse();
           }
-  
-          // Get the container to insert cards
+
+          // Create a card for every record to be shown
           const container = document.getElementById('cardsContainer');
-  
-          // Create a card element for each row in the CSV
           cardsData.forEach(card => {
             const cardDiv = document.createElement('div');
             cardDiv.className = "group relative bg-white rounded-lg shadow-lg overflow-hidden";
-  
-            // Create the image element
             const img = document.createElement('img');
+
+            // Image Element
             img.src = card.img_path;
-            // Use the CSV 'alt' field if provided; otherwise fall back to the title.
             img.alt = card.alt || card.title;
             img.className = "w-full h-48 object-cover";
             cardDiv.appendChild(img);
-  
-            // Create the content container
+
+            // Container Element
             const contentDiv = document.createElement('div');
             contentDiv.className = "p-6";
-  
-            // Create the title element
+
+            // Title Element
             const title = document.createElement('h3');
             title.className = "font-bold text-xl mb-2";
             title.textContent = card.title;
             contentDiv.appendChild(title);
   
-            // Create the description element
+            // Description Element
             const description = document.createElement('p');
             description.className = "text-gray-600";
             description.textContent = card.description;
             contentDiv.appendChild(description);
   
             cardDiv.appendChild(contentDiv);
-  
-            // Append the card to the container
             container.appendChild(cardDiv);
           });
         })
@@ -260,7 +248,7 @@
         });
 
 
-        // Fetch the CSV file
+      // Fetch CSV Source File for Projects
       fetch(projectsCSV)
         .then(response => {
           if (!response.ok) {
@@ -270,17 +258,15 @@
         })
         .then(csvText => {
           // Parse the CSV data
-          // (This simple parser assumes there are no commas in the fields.
-          // For more complex CSV data, consider using a library like PapaParse.)
           const rows = csvText
             .split('\n')
             .map(line => line.trim())
             .filter(line => line.length > 0);
           
-          // Assume the first row is the header
+          // Fetch headers from first row (img_path,alt,title,description)
           const headers = rows.shift().split(',').map(header => header.trim());
           
-          // Convert remaining rows into an array of objects
+          // Convert remaining items into an array
           let cardsData = rows.map(row => {
             const values = row.split(',').map(value => value.trim());
             const obj = {};
@@ -293,38 +279,35 @@
           // Get the container to insert cards
           const container = document.getElementById('projectCardContainer');
   
-          // Create a card element for each row in the CSV
+          // Create a card for every record to be shown
           cardsData.forEach(card => {
             const cardDiv = document.createElement('div');
             cardDiv.className = "group relative bg-white rounded-lg shadow-lg overflow-hidden";
   
-            // Create the image element
+            // Image Element
             const img = document.createElement('img');
             img.src = card.img_path;
-            // Use the CSV 'alt' field if provided; otherwise fall back to the title.
             img.alt = card.alt || card.title;
             img.className = "w-full h-48 object-cover";
             cardDiv.appendChild(img);
   
-            // Create the content container
+            // Container Element
             const contentDiv = document.createElement('div');
             contentDiv.className = "p-6";
   
-            // Create the title element
+            // Title Element
             const title = document.createElement('h3');
             title.className = "font-bold text-xl mb-2";
             title.textContent = card.title;
             contentDiv.appendChild(title);
   
-            // Create the description element
+            // Description Element
             const description = document.createElement('p');
             description.className = "text-gray-600";
             description.textContent = card.description;
             contentDiv.appendChild(description);
   
             cardDiv.appendChild(contentDiv);
-  
-            // Append the card to the container
             container.appendChild(cardDiv);
           });
         })
@@ -333,6 +316,5 @@
         });
     });
   </script>  
-  
 </body>
 </html>
