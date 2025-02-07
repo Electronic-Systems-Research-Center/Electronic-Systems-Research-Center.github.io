@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+    --color-ateneoblue: #0e3b68;
+}
