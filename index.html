@@ -276,6 +276,9 @@
             });
             return obj;
           });
+
+          // Reverse order of cards so the last added information is in the first card.
+          cardsData = cardsData.reverse();
   
           // Get the container to insert cards
           const container = document.getElementById('projectCardContainer');
