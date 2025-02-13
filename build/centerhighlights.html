@@ -1,147 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp">
-    <link rel="canonical" href="https://electronic-systems-research-center.github.io/">
-    <link rel="stylesheet" href="../build/css/teammembers.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp" />
+    <link rel="canonical" href="https://electronic-systems-research-center.github.io/" />
+    <link rel="stylesheet" href="../build/css/teammembers.css" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
-    <title>Center Highlights-Electronic Systems Research Center</title>
-    
+    <title>Center Highlights - Electronic Systems Research Center</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Swiper.js CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-</head>
-<body class="bg-gray-100">
 
-    <!-- Header -->
-<header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
-    <div class="container mx-auto px-6 flex items-center justify-between">
-      <a href="../index.html" hreflang="en-us"><div class="text-2xl font-bold text-blue-600">Electronic Systems Research Center</div></a>
-  
-      <!-- Navigation Menu (Desktop & Mobile) -->
-      <nav class="hidden md:flex space-x-6 text-gray-700">
-        <ul class="flex space-x-6">
-          <li><a href="../index.html#about" hreflang="en-us" class="hover:text-blue-600">About</a></li>
-          <li><a href="../index.html#research" hreflang="en-us" class="hover:text-blue-600">Research</a></li>
-          <li><a href="../build/teammembers.html" hreflang="en-us" class="hover:text-blue-600">Team</a></li>
-          <li><a href="../build/centerhighlights.html" hreflang="en-us" class="hover:text-blue-600">Center Highlights</a></li>
-          <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="hover:text-blue-600">Published Papers</a></li>
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Papa Parse (for CSV parsing) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+    <!-- Custom Animations -->
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeInUp {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header (Navigation remains unchanged) -->
+    <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <a href="../index.html" hreflang="en-us">
+          <div class="text-2xl font-bold text-blue-600">Electronic Systems Research Center</div>
+        </a>
+        <!-- Navigation Menu (Desktop) -->
+        <nav class="hidden md:flex space-x-6 text-gray-700">
+          <ul class="flex space-x-6">
+            <li><a href="../index.html#about" hreflang="en-us" class="hover:text-blue-600">About</a></li>
+            <li><a href="../index.html#research" hreflang="en-us" class="hover:text-blue-600">Research</a></li>
+            <li><a href="../build/teammembers.html" hreflang="en-us" class="hover:text-blue-600">Team</a></li>
+            <li><a href="../build/centerhighlights.html" hreflang="en-us" class="hover:text-blue-600">Center Highlights</a></li>
+            <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="hover:text-blue-600">Published Papers</a></li>
+          </ul>
+        </nav>
+        <!-- Mobile Toggle Button -->
+        <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile Navigation Menu -->
+      <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4">
+        <ul class="flex flex-col space-y-2">
+          <li><a href="../index.html#about" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">About</a></li>
+          <li><a href="../index.html#research" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
+          <li><a href="teammembers.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
+          <li><a href="../build/centerhighlights.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Center Highlights</a></li>
+          <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Published Papers</a></li>
         </ul>
       </nav>
-  
-      <!-- Mobile Toggle Button -->
-      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">‎ 
-        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
-    </div>
-  
-    <!-- Mobile Navigation Menu -->
-    <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4">
-      <ul class="flex flex-col space-y-2">
-        <li><a href="../index.html#about" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">About</a></li>
-        <li><a href="../index.html#research" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
-        <li><a href="teammembers.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
-        <li><a href="../build/centerhighlights.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Center Highlights</a></li>
-        <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Published Papers</a></li>
-      </ul>
-    </nav>
-  </header>
+    </header>
 
     <!-- Page Title -->
-    <h1 class="text-center text-5xl font-bold text-gray-800 mt-20 mb-5">CENTER HIGHLIGHTS</h1>
+    <h1 class="text-center text-5xl font-bold text-gray-800 mt-24 mb-8">CENTER HIGHLIGHTS</h1>
 
-    <!-- Articles Container -->
-    <section class="max-w-6xl mx-auto px-4 space-y-10">
+    <!-- Articles Container (Dynamic from CSV) -->
+    <section class="max-w-6xl mx-auto px-4 space-y-10" x-data="articlesData()" x-init="fetchData()">
+      <!-- Sorting Dropdown -->
+      <div class="flex justify-end items-center mb-6">
+        <label for="sort" class="mr-2 text-gray-700 font-medium">Sort by:</label>
+        <select id="sort" x-model="sortOrder" class="p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+      </div>
 
-        <!-- ARTICLE 1 -->
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
-            <!-- Image Carousel with Smooth Transition -->
-            <div class="md:w-1/3 relative h-64" 
-                 x-data="{ 
-                    images: [
-                        '../build/img/Research Center Highlights/1.webp',
-                        '../build/img/Research Center Highlights/2.webp',
-                        '../build/img/Research Center Highlights/3.webp',
-                        '../build/img/Research Center Highlights/4.webp',
-                        '../build/img/Research Center Highlights/5.webp'
-                    ], 
-                    currentIndex: 0, 
-                    interval: null 
-                 }"
-                 @mouseenter="interval = setInterval(() => currentIndex = (currentIndex + 1) % images.length, 1000)"
-                 @mouseleave="clearInterval(interval)">
-                <template x-for="(img, index) in images" :key="index">
-                    <img 
-                        :src="img" 
-                        class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
-                        :class="{ 'opacity-100': currentIndex === index, 'opacity-0': currentIndex !== index }"
-                    >
-                </template>
+      <!-- Article Template -->
+      <template x-for="article in sortedArticles()" :key="article.title">
+        <!-- Each card is an Alpine component controlling its own carousel and hover effects -->
+        <div x-data="{ article: article, carousel: carousel(article.images) }"
+             @mouseenter="carousel.start()"
+             @mouseleave="carousel.stop()"
+             class="bg-white border border-gray-200 rounded-xl overflow-hidden transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-2 animate-fadeInUp">
+          <div class="md:flex">
+            <!-- Image Carousel -->
+            <div class="md:w-1/3 relative h-64">
+              <template x-for="(img, index) in carousel.images" :key="index">
+                <img :src="img" :alt="article.alt" class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
+                     :class="{ 'opacity-100': carousel.currentIndex === index, 'opacity-0': carousel.currentIndex !== index }">
+              </template>
             </div>
             <!-- Content -->
             <div class="p-6 md:w-2/3 flex flex-col justify-center">
-                <h2 class="text-2xl font-bold text-gray-900">Empowering Innovation: Arduino Training for Biomedical Engineering</h2>
-                <p class="text-blue-500 font-semibold mt-2">Feb 11, 2025</p>
-                <p class="text-gray-700 mt-2">
-                    Excited to share the highlights from our Arduino Training in Biomedical Engineering, guided by 
-                    𝐄𝐧𝐠𝐫. 𝐂𝐚𝐫𝐥𝐨𝐬 𝐉𝐡𝐚𝐲 𝐀. 𝐀𝐫𝐫𝐨𝐲𝐨, along with the support from the 𝐄𝐒𝐑𝐂 𝐢𝐧𝐭𝐞𝐫𝐧𝐬!
-                    It was an incredible learning experience as we explored the intersection of technology and healthcare.
-                </p>
+              <h2 class="text-2xl font-bold text-gray-900" x-text="article.title"></h2>
+              <!-- Separator between title and date -->
+              <div class="w-16 border-b-2 border-gray-200 my-2"></div>
+              <p class="text-blue-600 font-semibold" x-text="article.formattedDate"></p>
+              <p class="text-gray-700 mt-2 leading-relaxed" x-text="article.description"></p>
             </div>
+          </div>
         </div>
-
-        <!-- ARTICLE 2 -->
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
-            <!-- Image Carousel with Smooth Transition -->
-            <div class="md:w-1/3 relative h-64" 
-                 x-data="{ 
-                    images: [
-                        '../build/img/Research Center Highlights/6.webp',
-                        '../build/img/Research Center Highlights/7.webp',
-                        '../build/img/Research Center Highlights/8.webp',
-                        '../build/img/Research Center Highlights/9.webp',
-                        '../build/img/Research Center Highlights/10.webp'
-                    ], 
-                    currentIndex: 0, 
-                    interval: null 
-                 }"
-                 @mouseenter="interval = setInterval(() => currentIndex = (currentIndex + 1) % images.length, 1000)"
-                 @mouseleave="clearInterval(interval)">
-                <template x-for="(img, index) in images" :key="index">
-                    <img 
-                        :src="img" 
-                        class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
-                        :class="{ 'opacity-100': currentIndex === index, 'opacity-0': currentIndex !== index }"
-                    >
-                </template>
-            </div>
-            <!-- Content -->
-            <div class="p-6 md:w-2/3 flex flex-col justify-center">
-                <h2 class="text-2xl font-bold text-gray-900">Where Innovation meets Action: PPDO at BatStateU - TNEU</h2>
-                <p class="text-blue-500 font-semibold mt-2">Jan 21, 2025</p>
-                <p class="text-gray-700 mt-2">
-                    The 𝐁𝐚𝐭𝐚𝐧𝐠𝐚𝐬 𝐏𝐫𝐨𝐯𝐢𝐧𝐜𝐢𝐚𝐥 𝐏𝐥𝐚𝐧𝐧𝐢𝐧𝐠 𝐚𝐧𝐝 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭 𝐎𝐟𝐟𝐢𝐜𝐞 (𝐏𝐏𝐃𝐎) explored the advanced research, including 
-                    the Collapsible Solar Power Station Project of the Electronic Systems Research Center (ESRC) and Digital 
-                    Transformation Center (DTC).
-                </p>
-            </div>
-        </div>
-
+      </template>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-100 py-6 mt-10">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2025 Electronic Systems Research Center. All Rights Reserved.</p>
-            <p>Email: esrc@g.batstate-u.edu.ph | Phone: (043) 980 0385 loc.2405</p>
-        </div>
+    <footer class="bg-gray-800 text-gray-100 py-6 mt-12">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2025 Electronic Systems Research Center. All Rights Reserved.</p>
+        <p>Email: esrc@g.batstate-u.edu.ph | Phone: (043) 980 0385 loc.2405</p>
+      </div>
     </footer>
 
-</body>
+    <!-- Alpine.js Data & Carousel Functions -->
+    <script>
+      // Alpine component to fetch and store CSV data with sorting
+      function articlesData() {
+        return {
+          articles: [],
+          sortOrder: 'newest', // Default sort order
+          fetchData() {
+            fetch('../src/research_center_highlights.csv')
+              .then(response => response.text())
+              .then(csvText => {
+                // Parse CSV with header row using Papa Parse
+                let parsed = Papa.parse(csvText, { header: true });
+                this.articles = parsed.data.map(row => {
+                  // Create an array of images (filtering out empty strings)
+                  row.images = [row.img1, row.img2, row.img3, row.img4, row.img5].filter(url => url && url.trim() !== "");
+                  // Convert date string (assumed as MM/DD/YYYY) to a Date object
+                  row.dateObj = new Date(row.date);
+                  // Format the date into "Month Day, Year"
+                  row.formattedDate = row.dateObj.toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                  });
+                  return row;
+                });
+              })
+              .catch(error => console.error('Error fetching CSV:', error));
+          },
+          // Return a sorted copy of articles based on sortOrder
+          sortedArticles() {
+            return this.articles.slice().sort((a, b) => {
+              return this.sortOrder === 'newest'
+                ? b.dateObj - a.dateObj
+                : a.dateObj - b.dateObj;
+            });
+          }
+        };
+      }
+
+      // Alpine component for the image carousel functionality
+      function carousel(images) {
+        return {
+          images: images,
+          currentIndex: 0,
+          interval: null,
+          start() {
+            this.interval = setInterval(() => {
+              this.currentIndex = (this.currentIndex + 1) % this.images.length;
+            }, 1000);
+          },
+          stop() {
+            clearInterval(this.interval);
+          }
+        };
+      }
+    </script>
+  </body>
 </html>
