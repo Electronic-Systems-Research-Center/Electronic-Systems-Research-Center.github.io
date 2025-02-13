@@ -96,7 +96,7 @@
             <!-- Image Carousel -->
             <div class="md:w-1/3 relative h-64">
               <template x-for="(img, index) in carousel.images" :key="index">
-                <img :src="img" :alt="article.alt" class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
+                <img :src="img" :alt="article.alt" class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-3000"
                      :class="{ 'opacity-100': carousel.currentIndex === index, 'opacity-0': carousel.currentIndex !== index }">
               </template>
             </div>
