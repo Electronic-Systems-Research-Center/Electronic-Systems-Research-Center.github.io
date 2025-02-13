@@ -1,5 +1,7 @@
-img_path,alt,title,description
-../build/img/Center Projects/BARAKO.webp,Project BARAKO Deployed in an Area,Project BARAKO,The Batangas Actions towards Revitalization of Kapeng Barako Industry Project aims to develop an optimized method of propagating kapeng Barako seedlings.
-../build/img/Center Projects/SIGAW.webp,Project SIGAW Installation,Project SIGAW,A cost-efficient tsunami early warning system to serve as an early warning to high-risk coastal areas. Several SIGAW units have been installed in the provinces of Batangas and Quezon with additional units being developed.
-../build/img/Center Projects/SAGIP.webp,Project SAGIP,Project SAGIP, A cost-efficient tsunami early warning system to serve as an early warning to high-risk coastal areas. Several SIGAW units have been installed in the provinces of Batangas and Quezon with additional units being developed.
-../build/img/Center Projects/SINAG.webp,Project SINAG,Project SINAG, A cost-efficient tsunami early warning system to serve as an early warning to high-risk coastal areas. Several SIGAW units have been installed in the provinces of Batangas and Quezon with additional units being developed.
+img_path,alt,title,description,year
+../build/img/Center Projects/CHILI.webp,Chili Dryer,Chili Dryer,Chili Dryer,20XX
+../build/img/Center Projects/BARAKO.webp,Project BARAKO Deployed in an Area,Project BARAKO,The BARAKO Project aims to develop an optimized method of propagating kapeng Barako seedlings.,20XX
+../build/img/Center Projects/SIGAW.webp,Project SIGAW Installation,Project SIGAW,A cost-efficient tsunami early warning system to serve as an early warning to high-risk coastal areas.,20XX
+../build/img/Center Projects/SAGIP.webp,Project SAGIP,Project SAGIP, A cost-efficient tsunami early warning system to serve as an early warning to high-risk coastal areas. Several SIGAW units have been installed in the provinces of Batangas and Quezon with additional units being developed.,20XX
+../build/img/Center Projects/COLLAPSIBLE.webp,Collapsible Solar Power Station for Farms,
+../build/img/Center Projects/SINAG.webp,Project SINAG,Project SINAG,Project SINAG, A cost-efficient tsunami early warning system to serve as an early warning to high-risk coastal areas. Several SIGAW units have been installed in the provinces of Batangas and Quezon with additional units being developed.,2025
