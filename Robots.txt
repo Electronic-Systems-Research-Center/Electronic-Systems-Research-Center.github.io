@@ -34,4 +34,4 @@ Disallow:
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: https://electronic-systems-research-center.github.io/
+Sitemap: https://electronic-systems-research-center.github.io/sitemap.xml
