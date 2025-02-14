@@ -29,12 +29,12 @@
         "@id": "https://electronic-systems-research-center.github.io/"
       },
       "headline": "Electronic Systems Research Center (ESRC)",
-      "image": "",  
+      "image": "", 
       "author": {
         "@type": "Organization",
         "name": "Electronic Systems Research Center",
         "url": "https://electronic-systems-research-center.github.io/"
-      },  
+      }, 
       "publisher": {
         "@type": "Organization",
         "name": "",
@@ -73,31 +73,34 @@
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" hreflang="en-us" rel="stylesheet">
-  
-  <!-- Custom CSS for fade-out effect and circular wave -->
+ 
+  <!-- Custom CSS for fade-out effect, circular wave, and button transitions -->
   <style>
     .fade-out {
       transition: opacity 0.5s ease;
       opacity: 0;
     }
+    .hero-section {
+      background-image: url('../build/img/esrc4.webp');
+    }
     /* Ensures the animated wave remains a perfect circle */
     .circle-wave {
       clip-path: circle(50%);
+    }
+    /* Resource Button Styles with a smoother transition */
+    .resource-btn {
+      transition: background 0.5s ease, color 0.5s ease;
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans pt-20 overflow-hidden" oncontextmenu="return false;">
 
-  <!-- Loader Overlay (blocks entire viewport & interaction) -->
+  <!-- Loader Overlay -->
   <div id="loader" class="fixed inset-0 flex items-center justify-center z-[9999] bg-white">
-    <!-- Perfect circular pulsing wave -->
     <div class="relative">
       <div class="absolute inset-0 flex items-center justify-center">
-        <!-- Updated: Using aspect-square to ensure a perfect circle -->
         <div class="w-64 aspect-square rounded-full circle-wave bg-gradient-to-r from-blue-500 to-blue-600 opacity-30 animate-ping"></div>
       </div>
-      <!-- ESRC Logo with pulsing effect -->
-      <!-- Updated: Force the logo image into a square and use object-cover to crop it -->
       <img src="../build/img/spinner.png" alt="ESRC Logo" class="relative w-32 h-32 object-cover object-center rounded-full animate-pulse" />
     </div>
   </div>
@@ -119,7 +122,7 @@
           <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="hover:text-blue-600">Published Papers</a></li>
         </ul>
       </nav>
-      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">‎
+      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
@@ -137,12 +140,13 @@
   </header>
 
   <!-- Hero Section with Overlay -->
-  <section class="relative bg-cover bg-center text-white py-20" style="background-image: url('../build/img/esrc4.webp');">
+  <section class="relative bg-cover bg-center text-white py-20 hero-section">
     <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-800 opacity-55"></div>
     <div class="container relative z-10 mx-auto text-center">
       <h1 class="text-4xl font-bold mb-4">Innovating the Future Through Research</h1>
       <p class="text-lg mb-6">Discover cutting-edge research, collaborate with world-class experts, and make a lasting impact.</p>
-      <a href="build/dashboard.html" hreflang="en-us" class="bg-white text-blue-600 px-6 py-3 rounded-lg shadow-lg hover:bg-gray-100">
+      <!-- Updated Resource & Materials Button -->
+      <a href="build/dashboard.html" hreflang="en-us" class="resource-btn bg-white text-[#1489d7] px-6 py-3 rounded-lg shadow-lg">
         Resources and Materials
       </a>
     </div>
@@ -220,6 +224,20 @@
     </div>
   </footer>
 
+  <!-- Modern, Larger Modal for Pop-up More Info (above navigation) -->
+  <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300 z-[100]">
+    <div id="modalContent" class="relative bg-white rounded-lg overflow-hidden shadow-xl max-w-4xl w-full mx-4 transform transition-all duration-300 ease-out scale-95">
+      <!-- Modal Close Button -->
+      <button id="modalClose" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none text-3xl">&times;</button>
+      <!-- Container with Skeleton Loader and Image -->
+      <div class="relative">
+        <div id="modalSkeleton" class="absolute inset-0 bg-gray-200 animate-pulse"></div>
+        <img id="modalImage" class="w-full h-auto object-contain" src="" alt="Project More Info"
+             onload="document.getElementById('modalSkeleton').classList.add('hidden')" />
+      </div>
+    </div>
+  </div>
+
   <!-- Preline UI Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/preline"></script>
 
@@ -227,7 +245,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const projectsCSV = 'src/research_projects.csv';
-  
+ 
       fetch(projectsCSV)
         .then(response => {
           if (!response.ok) {
@@ -238,14 +256,14 @@
         .then(csvText => {
           const container = document.getElementById('projectCardContainer');
           container.innerHTML = '';
-  
+ 
           const rows = csvText
             .split('\n')
             .map(line => line.trim())
             .filter(line => line.length > 0);
-  
+ 
           const headers = rows.shift().split(',').map(header => header.trim());
-  
+ 
           let cardsData = rows.map(row => {
             const values = row.split(',').map(value => value.trim());
             const obj = {};
@@ -254,34 +272,67 @@
             });
             return obj;
           });
-  
+ 
           // Optionally reverse the order
           cardsData = cardsData.reverse();
-  
+ 
           cardsData.forEach(card => {
             const cardDiv = document.createElement('div');
-            cardDiv.className = "group relative bg-white rounded-lg shadow-lg overflow-hidden";
-  
+            cardDiv.className = "bg-white rounded-lg shadow-lg overflow-hidden";
+            
+            // Create a container for the image and its overlay
+            const imageContainer = document.createElement('div');
+            imageContainer.className = "relative group";
+ 
             const img = document.createElement('img');
             img.src = card.img_path;
             img.alt = card.alt || card.title;
             img.loading = "lazy";
             img.className = "w-full h-48 object-cover";
-            cardDiv.appendChild(img);
-  
+ 
+            imageContainer.appendChild(img);
+ 
+            if(card.more_info) {
+              img.classList.add('cursor-pointer');
+              img.addEventListener('click', () => {
+                const modal = document.getElementById('modal');
+                const modalContent = document.getElementById('modalContent');
+                // Reset skeleton loader visibility on modal open
+                document.getElementById('modalSkeleton').classList.remove('hidden');
+                document.getElementById('modalImage').src = card.more_info;
+                modal.classList.remove('hidden');
+                // Trigger smooth scaling for a modern feel
+                setTimeout(() => {
+                  modalContent.classList.remove('scale-95');
+                  modalContent.classList.add('scale-100');
+                }, 10);
+              });
+ 
+              // Create a hover overlay on the image with a blue tinted blurred glass effect
+              const overlay = document.createElement('div');
+              overlay.className = "absolute inset-0 flex items-center justify-center bg-blue-500 bg-opacity-20 backdrop-blur-md transition duration-300 pointer-events-none opacity-0 group-hover:opacity-100";
+              const overlayText = document.createElement('span');
+              overlayText.textContent = "Read More";
+              overlayText.className = "text-white transition duration-300 text-lg font-semibold";
+              overlay.appendChild(overlayText);
+              imageContainer.appendChild(overlay);
+            }
+ 
+            cardDiv.appendChild(imageContainer);
+ 
             const contentDiv = document.createElement('div');
             contentDiv.className = "p-6";
-  
+ 
             const title = document.createElement('h3');
             title.className = "font-bold text-xl mb-2";
             title.textContent = card.title;
             contentDiv.appendChild(title);
-  
+ 
             const description = document.createElement('p');
             description.className = "text-gray-600";
             description.textContent = card.description;
             contentDiv.appendChild(description);
-  
+ 
             cardDiv.appendChild(contentDiv);
             container.appendChild(cardDiv);
           });
@@ -289,6 +340,49 @@
         .catch(error => {
           console.error('Error loading project cards:', error);
         });
+    });
+  </script>
+  
+  <!-- Modal Close Script with Smooth Scaling -->
+  <script>
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      const modalContent = document.getElementById('modalContent');
+      modalContent.classList.remove('scale-100');
+      modalContent.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('modal')) {
+        closeModal();
+      }
+    });
+  </script>
+  
+  <!-- Resource Button Mousemove Gradient Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const resourceBtn = document.querySelector('.resource-btn');
+      if(resourceBtn) {
+        resourceBtn.addEventListener('mousemove', function(e) {
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const posX = (x / rect.width * 100).toFixed(2);
+          const posY = (y / rect.height * 100).toFixed(2);
+          // Set a smoother radial gradient centered at the mouse position with a gradient stop
+          this.style.background = `radial-gradient(circle at ${posX}% ${posY}%, #1489d7, #45b8bc 80%)`;
+          this.style.color = "white";
+        });
+        resourceBtn.addEventListener('mouseleave', function() {
+          // Reset the background and text color smoothly
+          this.style.background = "white";
+          this.style.color = "#1489d7";
+        });
+      }
     });
   </script>
 
