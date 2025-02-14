@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Electronic Systems Research Center is committed in providing technical support for R&D activities related to the field of electronics engineering.">
-  <meta property="og:title" content="Electronic Systems Research Center">
-  <meta property="og:site_name" content="Electronic Systems Research Center (ESRC)">
-  <meta property="og:image" content="build/img/esrc logo 2.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://electronic-systems-research-center.github.io/">
-  <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp">
-  <link rel="canonical" href="https://electronic-systems-research-center.github.io/">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Electronic Systems Research Center is committed in providing technical support for R&D activities related to the field of electronics engineering." />
+  <meta property="og:title" content="Electronic Systems Research Center" />
+  <meta property="og:site_name" content="Electronic Systems Research Center (ESRC)" />
+  <meta property="og:image" content="build/img/esrc logo 2.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://electronic-systems-research-center.github.io/" />
+  <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp" />
+  <link rel="canonical" href="https://electronic-systems-research-center.github.io/" />
+  <!-- Preconnect for improved font load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Alpine.js -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
   <title>Electronic Systems Research Center</title>
 
-
+  <!-- Structured Data -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -52,37 +57,33 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Roboto', 'Arial', 'sans-serif'], 
+            sans: ['Roboto', 'Arial', 'sans-serif'],
           },
           colors: {
             scrollbar: {
-              DEFAULT: '#cbd5e1', 
-              hover: '#94a3b8',   
+              DEFAULT: '#cbd5e1',
+              hover: '#94a3b8',
             },
-        },
+          },
         },
       },
       plugins: [preline],
     };
   </script>
 
-  <!-- Font -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" hreflang="en-us" rel="stylesheet">
-
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans pt-20" oncontextmenu="return false;">
 
   <!-- Header -->
-  <!-- Header -->
   <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
     <div class="container mx-auto px-4 flex items-center justify-between">
-      <!-- Responsive Brand -->
       <a href="../index.html" hreflang="en-us">
         <div class="text-base sm:text-xl md:text-2xl font-bold text-blue-600 whitespace-nowrap">
           Electronic Systems Research Center
         </div>
       </a>
-      <!-- Desktop Navigation -->
       <nav class="hidden md:flex space-x-6 text-gray-700">
         <ul class="flex space-x-6">
           <li><a href="../index.html#about" hreflang="en-us" class="hover:text-blue-600">About</a></li>
@@ -92,37 +93,34 @@
           <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="hover:text-blue-600">Published Papers</a></li>
         </ul>
       </nav>
-      <!-- Mobile Toggle Button -->
       <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
       </button>
     </div>
-    <!-- Mobile Navigation Menu -->
     <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4">
       <ul class="flex flex-col space-y-2">
         <li><a href="../index.html#about" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">About</a></li>
         <li><a href="../index.html#research" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
-        <li><a href="teammembers.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
+        <li><a href="../build/teammembers.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
         <li><a href="../build/centerhighlights.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Center Highlights</a></li>
         <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Published Papers</a></li>
       </ul>
     </nav>
   </header>
 
-
   <!-- Hero Section with Overlay -->
-<section class="relative bg-cover bg-center text-white py-20" style="background-image: url('../build/img/esrc4.webp');">
-  <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-800 opacity-55"></div>
-  <div class="container relative z-10 mx-auto text-center">
-    <h1 class="text-4xl font-bold mb-4">Innovating the Future Through Research</h1>
-    <p class="text-lg mb-6">Discover cutting-edge research, collaborate with world-class experts, and make a lasting impact.</p>
-    <a href="build/dashboard.html" hreflang="en-us" class="bg-white text-blue-600 px-6 py-3 rounded-lg shadow-lg hover:bg-gray-100">
-      Resources and Materials
-    </a>
-  </div>
-</section>
+  <section class="relative bg-cover bg-center text-white py-20" style="background-image: url('../build/img/esrc4.webp');">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-800 opacity-55"></div>
+    <div class="container relative z-10 mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-4">Innovating the Future Through Research</h1>
+      <p class="text-lg mb-6">Discover cutting-edge research, collaborate with world-class experts, and make a lasting impact.</p>
+      <a href="build/dashboard.html" hreflang="en-us" class="bg-white text-blue-600 px-6 py-3 rounded-lg shadow-lg hover:bg-gray-100">
+        Resources and Materials
+      </a>
+    </div>
+  </section>
 
   <!-- About Section -->
   <section id="about" class="py-16">
@@ -134,7 +132,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         <div class="p-6 bg-white rounded-lg shadow">
           <h3 class="font-bold text-xl mb-2">Center Mandate</h3>
-          <p class="text-gray-600">The Electronic Systems Research Center (ESRC) is committed to providing technical support and working space for R&D activities related to the field of electronics engineering. The ESRC conducts research, provides custom experimental setups, and develops prototypes for various fields of research that involve electronic systems.</p>
+          <p class="text-gray-600">The ESRC provides technical support, custom experimental setups, and prototype development for various fields of research involving electronic systems.</p>
         </div>
         <div class="p-6 bg-white rounded-lg shadow">
           <h3 class="font-bold text-xl mb-2">Equipment Available</h3>
@@ -145,49 +143,74 @@
           <p class="text-gray-600">Function Generators</p>
           <p class="text-gray-600">Bench Power Supply</p>
         </div>
-
       </div>
     </div>
   </section>
 
-    <!-- Project Highlights -->
-    <section id="research" class="bg-gray-100 py-16">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
-        <p class="text-gray-600 mb-8">Marvel at the innovative projects made by the ESRC for social and technological innovation.</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6" id="projectCardContainer"></div>
-      </div>
-    </section>
-
-<!-- Team Section -->
-<section id="team" class="py-16">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Meet Our Team</h2>
-    <p class="text-gray-600 mb-8">A team of dedicated researchers and professionals.</p>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div class="text-center">
-        <img src="../build/img/Engr.Amante.webp" alt="Assoc. Prof Albertson D. Amante" class="mx-auto w-25 h-20 rounded-full shadow">
-        <h3 class="mt-4 font-bold">Assoc. Prof Albertson D. Amante</h3>
-        <p class="text-gray-600">Director for STEERHUB, VPRDES BatStateU</p>
-      </div>
-      <div class="text-center">
-        <img src="../build/img/Dr.Ralph.webp" alt="Dr. Ralph Gerard B. Sangalang" class="mx-auto w-25 h-20 rounded-full shadow">
-        <h3 class="mt-4 font-bold">Dr. Ralph Gerard B. Sangalang</h3>
-        <p class="text-gray-600">Center Head, ESRC</p>
-      </div>
-      <div class="text-center">
-        <img src="../build/img/engrcj.webp" alt="Engr. Carlos Jhay A. Arroyo" class="mx-auto w-25 h-20 rounded-full shadow">
-        <h3 class="mt-4 font-bold">Engr. Carlos Jhay A. Arroyo</h3>
-        <p class="text-gray-600">University Research Associate, ESRC</p>
-      </div>
-      <div class="text-center">
-        <img src="../build/img/engraries.webp" alt="Team Member 4" class="mx-auto w-25 h-20 rounded-full shadow">
-        <h3 class="mt-4 font-bold">Engr. Ariel M. Rosales</h3>
-        <p class="text-gray-600">UNIRA, Project Sinag</p>
+  <!-- Research Projects Section with Skeleton Loader -->
+  <section id="research" class="bg-gray-100 py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
+      <p class="text-gray-600 mb-8">Marvel at the innovative projects made by the ESRC for social and technological innovation.</p>
+      <!-- The container initially holds skeleton cards -->
+      <div id="projectCardContainer" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <!-- Skeleton Card 1 -->
+        <div class="animate-pulse bg-white rounded-lg shadow-lg">
+          <div class="bg-gray-300 h-48 w-full rounded-t-lg"></div>
+          <div class="p-6">
+            <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+          </div>
+        </div>
+        <!-- Skeleton Card 2 -->
+        <div class="animate-pulse bg-white rounded-lg shadow-lg">
+          <div class="bg-gray-300 h-48 w-full rounded-t-lg"></div>
+          <div class="p-6">
+            <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+          </div>
+        </div>
+        <!-- Skeleton Card 3 -->
+        <div class="animate-pulse bg-white rounded-lg shadow-lg">
+          <div class="bg-gray-300 h-48 w-full rounded-t-lg"></div>
+          <div class="p-6">
+            <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+            <div class="h-4 bg-gray-300 rounded w-full"></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">Meet Our Team</h2>
+      <p class="text-gray-600 mb-8">A team of dedicated researchers and professionals.</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <img src="../build/img/Engr.Amante.webp" alt="Assoc. Prof Albertson D. Amante" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+          <h3 class="mt-4 font-bold">Assoc. Prof Albertson D. Amante</h3>
+          <p class="text-gray-600">Director for STEERHUB, VPRDES BatStateU</p>
+        </div>
+        <div class="text-center">
+          <img src="../build/img/Dr.Ralph.webp" alt="Dr. Ralph Gerard B. Sangalang" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+          <h3 class="mt-4 font-bold">Dr. Ralph Gerard B. Sangalang</h3>
+          <p class="text-gray-600">Center Head, ESRC</p>
+        </div>
+        <div class="text-center">
+          <img src="../build/img/engrcj.webp" alt="Engr. Carlos Jhay A. Arroyo" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+          <h3 class="mt-4 font-bold">Engr. Carlos Jhay A. Arroyo</h3>
+          <p class="text-gray-600">University Research Associate, ESRC</p>
+        </div>
+        <div class="text-center">
+          <img src="../build/img/engraries.webp" alt="Engr. Ariel M. Rosales" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+          <h3 class="mt-4 font-bold">Engr. Ariel M. Rosales</h3>
+          <p class="text-gray-600">UNIRA, Project Sinag</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer id="contact" class="bg-gray-800 text-gray-100 py-6">
@@ -200,82 +223,11 @@
   <!-- Preline UI Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/preline"></script>
 
+  <!-- CSV Fetch and DOM Insertion Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Path to CSV Source Files
-      const highlightsCSV = 'src/research_center_highlights.csv';
-      const projectsCSV = 'src/research_projects.csv'
+      const projectsCSV = 'src/research_projects.csv';
   
-      // Fetch CSV File for Research Center Highlights
-      fetch(highlightsCSV)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Could not fetch CSV");
-          }
-          return response.text();
-        })
-        .then(csvText => {
-          // Parse the CSV data
-          const rows = csvText
-            .split('\n')
-            .map(line => line.trim())
-            .filter(line => line.length > 0);
-          
-          // Fetch headers from first row (img_path,alt,title,description)
-          const headers = rows.shift().split(',').map(header => header.trim());
-          
-          // Convert remaining items into an array
-          let cardsData = rows.map(row => {
-            const values = row.split(',').map(value => value.trim());
-            const obj = {};
-            headers.forEach((header, index) => {
-              obj[header] = values[index];
-            });
-            return obj;
-          });
-  
-          // Reverse order of cards so the last added information is in the first card.
-          cardsData = cardsData.reverse();
-
-          // Create a card for every record to be shown
-          const container = document.getElementById('cardsContainer');
-          cardsData.forEach(card => {
-            const cardDiv = document.createElement('div');
-            cardDiv.className = "group relative bg-white rounded-lg shadow-lg overflow-hidden";
-            const img = document.createElement('img');
-
-            // Image Element
-            img.src = card.img_path;
-            img.alt = card.alt || card.title;
-            img.className = "w-full h-48 object-cover";
-            cardDiv.appendChild(img);
-
-            // Container Element
-            const contentDiv = document.createElement('div');
-            contentDiv.className = "p-6";
-
-            // Title Element
-            const title = document.createElement('h3');
-            title.className = "font-bold text-xl mb-2";
-            title.textContent = card.title;
-            contentDiv.appendChild(title);
-  
-            // Description Element
-            const description = document.createElement('p');
-            description.className = "text-gray-600";
-            description.textContent = card.description;
-            contentDiv.appendChild(description);
-  
-            cardDiv.appendChild(contentDiv);
-            container.appendChild(cardDiv);
-          });
-        })
-        .catch(error => {
-          console.error('Error loading cards:', error);
-        });
-
-
-      // Fetch CSV Source File for Projects
       fetch(projectsCSV)
         .then(response => {
           if (!response.ok) {
@@ -284,16 +236,17 @@
           return response.text();
         })
         .then(csvText => {
-          // Parse the CSV data
+          // Clear skeleton loaders from the container
+          const container = document.getElementById('projectCardContainer');
+          container.innerHTML = '';
+          
           const rows = csvText
             .split('\n')
             .map(line => line.trim())
             .filter(line => line.length > 0);
           
-          // Fetch headers from first row (img_path,alt,title,description)
           const headers = rows.shift().split(',').map(header => header.trim());
           
-          // Convert remaining items into an array
           let cardsData = rows.map(row => {
             const values = row.split(',').map(value => value.trim());
             const obj = {};
@@ -302,36 +255,29 @@
             });
             return obj;
           });
-
-          // Reverse order of cards so the last added information is in the first card.
+  
+          // Reverse order if needed
           cardsData = cardsData.reverse();
   
-          // Get the container to insert cards
-          const container = document.getElementById('projectCardContainer');
-  
-          // Create a card for every record to be shown
           cardsData.forEach(card => {
             const cardDiv = document.createElement('div');
             cardDiv.className = "group relative bg-white rounded-lg shadow-lg overflow-hidden";
   
-            // Image Element
             const img = document.createElement('img');
             img.src = card.img_path;
             img.alt = card.alt || card.title;
+            img.loading = "lazy";
             img.className = "w-full h-48 object-cover";
             cardDiv.appendChild(img);
   
-            // Container Element
             const contentDiv = document.createElement('div');
             contentDiv.className = "p-6";
   
-            // Title Element
             const title = document.createElement('h3');
             title.className = "font-bold text-xl mb-2";
             title.textContent = card.title;
             contentDiv.appendChild(title);
   
-            // Description Element
             const description = document.createElement('p');
             description.className = "text-gray-600";
             description.textContent = card.description;
@@ -342,9 +288,9 @@
           });
         })
         .catch(error => {
-          console.error('Error loading cards:', error);
+          console.error('Error loading project cards:', error);
         });
     });
-  </script>  
+  </script>
 </body>
 </html>
