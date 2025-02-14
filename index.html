@@ -73,11 +73,37 @@
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" hreflang="en-us" rel="stylesheet">
+  
+  <!-- Custom CSS for fade-out effect and circular wave -->
+  <style>
+    .fade-out {
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+    /* Ensures the animated wave remains a perfect circle */
+    .circle-wave {
+      clip-path: circle(50%);
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans pt-20" oncontextmenu="return false;">
+<body class="bg-gray-50 text-gray-800 font-sans pt-20 overflow-hidden" oncontextmenu="return false;">
+
+  <!-- Loader Overlay (blocks entire viewport & interaction) -->
+  <div id="loader" class="fixed inset-0 flex items-center justify-center z-[9999] bg-white">
+    <!-- Perfect circular pulsing wave -->
+    <div class="relative">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <!-- Updated: Using aspect-square to ensure a perfect circle -->
+        <div class="w-64 aspect-square rounded-full circle-wave bg-gradient-to-r from-blue-500 to-blue-600 opacity-30 animate-ping"></div>
+      </div>
+      <!-- ESRC Logo with pulsing effect -->
+      <!-- Updated: Force the logo image into a square and use object-cover to crop it -->
+      <img src="../build/img/spinner.png" alt="ESRC Logo" class="relative w-32 h-32 object-cover object-center rounded-full animate-pulse" />
+    </div>
+  </div>
 
   <!-- Header -->
-  <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
+  <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 shadow-md z-50 h-16 flex items-center">
     <div class="container mx-auto px-4 flex items-center justify-between">
       <a href="../index.html" hreflang="en-us">
         <div class="text-base sm:text-xl md:text-2xl font-bold text-blue-600 whitespace-nowrap">
@@ -129,7 +155,7 @@
       <p class="text-gray-600 mb-8">
         The Electronic Systems Research Center (ESRC) is committed in providing technical support and working space for R&D activities related to the field of electronics engineering.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="p-6 bg-white rounded-lg shadow">
           <h3 class="font-bold text-xl mb-2">Center Mandate</h3>
           <p class="text-gray-600">The ESRC provides technical support, custom experimental setups, and prototype development for various fields of research involving electronic systems.</p>
@@ -147,38 +173,12 @@
     </div>
   </section>
 
-  <!-- Research Projects Section with Skeleton Loader -->
+  <!-- Research Projects Section (CSV-loaded content) -->
   <section id="research" class="bg-gray-100 py-16">
     <div class="container mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
       <p class="text-gray-600 mb-8">Marvel at the innovative projects made by the ESRC for social and technological innovation.</p>
-      <!-- The container initially holds skeleton cards -->
-      <div id="projectCardContainer" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
-        <!-- Skeleton Card 1 -->
-        <div class="animate-pulse bg-white rounded-lg shadow-lg">
-          <div class="bg-gray-300 h-48 w-full rounded-t-lg"></div>
-          <div class="p-6">
-            <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
-            <div class="h-4 bg-gray-300 rounded w-full"></div>
-          </div>
-        </div>
-        <!-- Skeleton Card 2 -->
-        <div class="animate-pulse bg-white rounded-lg shadow-lg">
-          <div class="bg-gray-300 h-48 w-full rounded-t-lg"></div>
-          <div class="p-6">
-            <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
-            <div class="h-4 bg-gray-300 rounded w-full"></div>
-          </div>
-        </div>
-        <!-- Skeleton Card 3 -->
-        <div class="animate-pulse bg-white rounded-lg shadow-lg">
-          <div class="bg-gray-300 h-48 w-full rounded-t-lg"></div>
-          <div class="p-6">
-            <div class="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
-            <div class="h-4 bg-gray-300 rounded w-full"></div>
-          </div>
-        </div>
-      </div>
+      <div id="projectCardContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </div>
   </section>
 
@@ -223,7 +223,7 @@
   <!-- Preline UI Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/preline"></script>
 
-  <!-- CSV Fetch and DOM Insertion Script -->
+  <!-- CSV Fetch and DOM Insertion Script for Research Projects -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const projectsCSV = 'src/research_projects.csv';
@@ -236,17 +236,16 @@
           return response.text();
         })
         .then(csvText => {
-          // Clear skeleton loaders from the container
           const container = document.getElementById('projectCardContainer');
           container.innerHTML = '';
-          
+  
           const rows = csvText
             .split('\n')
             .map(line => line.trim())
             .filter(line => line.length > 0);
-          
+  
           const headers = rows.shift().split(',').map(header => header.trim());
-          
+  
           let cardsData = rows.map(row => {
             const values = row.split(',').map(value => value.trim());
             const obj = {};
@@ -256,7 +255,7 @@
             return obj;
           });
   
-          // Reverse order if needed
+          // Optionally reverse the order
           cardsData = cardsData.reverse();
   
           cardsData.forEach(card => {
@@ -290,6 +289,19 @@
         .catch(error => {
           console.error('Error loading project cards:', error);
         });
+    });
+  </script>
+
+  <!-- Loader Removal Script -->
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      loader.classList.add('fade-out');
+      setTimeout(() => {
+        loader.style.display = 'none';
+        // Restore scrolling after loader is removed
+        document.body.classList.remove('overflow-hidden');
+      }, 500);
     });
   </script>
 </body>
