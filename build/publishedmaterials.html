@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Published Materials</title>
-    <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp">
-    <link rel="canonical" href="https://electronic-systems-research-center.github.io/">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Include Alpine.js -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Published Materials - Electronic Systems Research Center</title>
+  <meta name="description" content="A curated list of conference papers and journals by the Center Head of the Electronic Systems Research Center." />
+  <meta name="keywords" content="Conference Papers, Journals, Publications, Electronic Systems Research Center, Research" />
+  <meta property="og:title" content="Published Materials - Electronic Systems Research Center" />
+  <meta property="og:description" content="A curated list of conference papers and journals by the Center Head." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://electronic-systems-research-center.github.io/" />
+  <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp" />
+  <link rel="canonical" href="https://electronic-systems-research-center.github.io/" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fuse.js for fuzzy search -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js" defer></script>
+  <!-- Schema.org JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Published Materials - Electronic Systems Research Center",
+    "description": "A curated list of conference papers and journals by the Center Head of the Electronic Systems Research Center."
+  }
+  </script>
 </head>
-
-  <!-- Header -->
+<body class="bg-gray-50 min-h-screen flex flex-col" oncontextmenu="return false;">
+  <!-- HEADER (Fixed) -->
   <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
     <div class="container mx-auto px-4 flex items-center justify-between">
-      <!-- Responsive Brand -->
+      <!-- Brand -->
       <a href="../index.html" hreflang="en-us">
         <div class="text-base sm:text-xl md:text-2xl font-bold text-blue-600 whitespace-nowrap">
           Electronic Systems Research Center
@@ -23,1146 +40,302 @@
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex space-x-6 text-gray-700">
         <ul class="flex space-x-6">
-          <li><a href="../index.html#about" hreflang="en-us" class="hover:text-blue-600">About</a></li>
-          <li><a href="../index.html#research" hreflang="en-us" class="hover:text-blue-600">Research</a></li>
-          <li><a href="../build/teammembers.html" hreflang="en-us" class="hover:text-blue-600">Team</a></li>
-          <li><a href="../build/centerhighlights.html" hreflang="en-us" class="hover:text-blue-600">Center Highlights</a></li>
-          <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="hover:text-blue-600">Published Papers</a></li>
+          <li><a href="../index.html#about" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">About</a></li>
+          <li><a href="../index.html#research" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Research</a></li>
+          <li><a href="../build/teammembers.html" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Team</a></li>
+          <li><a href="../build/centerhighlights.html" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Center Highlights</a></li>
+          <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Published Papers</a></li>
         </ul>
       </nav>
       <!-- Mobile Toggle Button -->
-      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">‎
+      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle Navigation Menu">
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
       </button>
     </div>
     <!-- Mobile Navigation Menu -->
-    <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4">
+    <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4" aria-label="Mobile Navigation">
       <ul class="flex flex-col space-y-2">
-        <li><a href="../index.html#about" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">About</a></li>
-        <li><a href="../index.html#research" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
-        <li><a href="../build/teammembers.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
-        <li><a href="../build/centerhighlights.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Center Highlights</a></li>
-        <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Published Papers</a></li>
+        <li><a href="../index.html#about" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">About</a></li>
+        <li><a href="../index.html#research" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Research</a></li>
+        <li><a href="../build/teammembers.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Team</a></li>
+        <li><a href="../build/centerhighlights.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Center Highlights</a></li>
+        <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Published Papers</a></li>
       </ul>
     </nav>
   </header>
 
- <!-- PUBLISHED CONFERENCE PAPERS -->
-  
-<body class="bg-gray-100 p-6" oncontextmenu="return false;">
-    <div class="max-w-2xl mx-auto">
-        <h2 class="text-xl font-semibold mb-4">Conference Papers</h2>
-
-        <!-- Card 1 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">February 7, 2025</p>
-            <h3 class="text-lg font-bold mt-1">
-                A Power-efficient 0.5668 TOPS/W Digital Logic Accelerator Implemented Using 40-nm CMOS Process For Underwater Object Recognition Usage
-            </h3>
-            
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                DNN (deep neural network) and CNN (convolution neural network) have been widely used in real-time artificial intelligent (AI) applications, 
-                particularly image or video recognitions, because they have been proved physically in many occasions.
-                <span x-show="expanded">
-                    However, most prior AI hardware works are either suffered from high on-silicon area cost or low usage thereof. This investigation presents 
-                    a power efficient and high performance implementation of a digital logic accelerator (DLA) for the underwater real-time underwater object 
-                    recognition. The proposed DLA is also featured with 2-dimensional PE (processing element) array to increase the processing throughput by 
-                    the enhancement of parallelism. The DLA design was realized and fabricated using TSMC 40-nm CMOS process. Not only the post-layout simulation 
-                    results are shown, the on-silicon measurement outcome as well as the system validation in water are also demonstrated to prove the function 
-                    correctness and the performance. The area efficiency (GOPS/mm2) is 4.562, and the power efficiency (TOPS/W) is 0.5668 on silicon, which both 
-                    are the best to date.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/abstract/document/10877824" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Deep Neural Networks (DNN)</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Digital Logic Accelerator (DLA)</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Object Recognition</span>
-                </div>
-            </div>
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow pt-24 px-4 sm:px-6 md:px-8">
+    <div class="max-w-4xl mx-auto" x-data="publications()" x-init="init()">
+      <!-- First Row: Filter Chips & Sort Dropdown -->
+      <div class="flex flex-col sm:flex-row items-center justify-between mb-4">
+        <!-- Filter Chips -->
+        <div class="flex flex-wrap gap-2" role="group" aria-label="Filter Publications">
+          <button @click="selectedFilter = 'All'; currentPage = 1" 
+                  :class="selectedFilter === 'All' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'" 
+                  class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  :aria-pressed="selectedFilter === 'All'">All</button>
+          <button @click="selectedFilter = 'Conference Paper'; currentPage = 1" 
+                  :class="selectedFilter === 'Conference Paper' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'" 
+                  class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  :aria-pressed="selectedFilter === 'Conference Paper'">Conference Paper</button>
+          <button @click="selectedFilter = 'Journal'; currentPage = 1" 
+                  :class="selectedFilter === 'Journal' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'" 
+                  class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  :aria-pressed="selectedFilter === 'Journal'">Journal</button>
         </div>
-
-        <!-- Card 1 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">January 24, 2025</p>
-            <h3 class="text-lg font-bold mt-1">
-                An on-chip temperature sensor with 0.5 °C resolution and 0.34% linearity error using 180-nm CMOS process
-            </h3>
-            
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This investigation demonstrates an on-chip temperature sensor with a maximum linear error less than 0.4% and 0.5 °C resolution.
-                <span x-show="expanded">
-                    The design comprises Current-to-Frequency Converters (CFC), complementary (CTAT), and proportional (PTAT) to absolute temperature 
-                    current generator circuits. Most important of all, the proposed sensor is featured with the ratio of these two currents to enhance 
-                    the linearity and high resolution. The proposed sensor was realized using a 180-nm CMOS process. The core area is 0.196 mm. The 
-                    measurement results show 0.3484% maximum linearity error for the PTAT/CTAT ratio. The maximum output frequency of the temperature 
-                    detector is 4.817 MHz, with the highest power consumption of 20.13 mW. It was proved to be used in a –40 °C 100 °C temperature 
-                    detection range with 0.5 °C resolution.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167926025000197" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                </div>
-            </div>
+        <!-- Sort Dropdown -->
+        <div class="flex items-center mt-4 sm:mt-0">
+          <label for="sortOrder" class="mr-2 text-sm font-medium text-gray-700">Sort by:</label>
+          <select id="sortOrder" x-model="sortOrder" @change="sortPublications()"
+                  class="appearance-none border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="desc">Most Recent</option>
+            <option value="asc">Oldest</option>
+          </select>
         </div>
-        
-        <!-- Card 1 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">December 16-19, 2024</p>
-            <h3 class="text-lg font-bold mt-1">
-                Power Supply for Submerged Camera as Applied to Environmental Monitoring
-            </h3>
-            
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                Underwater monitoring technology is crucial for studying aquatic life, particularly in mangrove ecosystems, which are vital to marine biodiversity.
-                <span x-show="expanded">
-                    However, these environments present challenges such as limited power supply and frequent manual battery replacements. 
-                    To address these issues, a renewable energy-powered supply system was developed for a submersible camera tailored for
-                    use in mangrove ecosystems. Various energy sources, including solar, wind, and wave energy, were evaluated, with the
-                    most suitable option selected based on energy availability and environmental compatibility. The waterproof 
-                    prototype was designed for durability and ease of maintenance and tested initially in a controlled pool environment,
-                    followed by field deployment in the Lobo, Batangas mangrove area in the Philippines. Key performance aspects, 
-                    including waterproofing, energy efficiency, and maintenance, were assessed. The system used a commercial utility
-                    box with silicone sealant to ensure waterproofing, and voltage and current measurements confirmed the reliable 
-                    energy supply under varied load conditions. Results demonstrate the system’s capability to meet continuous camera 
-                    energy needs with minimal intervention, offering an effective solution for long-term underwater monitoring in
-                    mangrove ecosystems.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10819568" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Thermal Expansion</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Power Supply</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Ecosystems</span>
-                </div>
-            </div>
+      </div>
+      <!-- Second Row: Search Bar with Auto-Suggest -->
+      <div class="mb-6 relative">
+        <input type="text" placeholder="Search publications..."
+               x-model="searchQuery"
+               @input="showSuggestions = true"
+               @focus="showSuggestions = true"
+               @blur="setTimeout(() => showSuggestions = false, 200)"
+               class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <!-- Auto-Suggest Dropdown with Enhanced Styling and Accessibility -->
+        <template x-if="showSuggestions && suggestions.length > 0">
+          <ul role="listbox" class="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1 max-h-48 overflow-y-auto">
+            <template x-for="suggestion in suggestions" :key="suggestion">
+              <li tabindex="0" role="option" @click="selectSuggestion(suggestion)" class="px-4 py-2 hover:bg-gray-100 cursor-pointer" x-text="suggestion"></li>
+            </template>
+          </ul>
+        </template>
+      </div>
+      <!-- Skeleton Loader -->
+      <template x-if="loading">
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm animate-pulse">
+            <div class="h-4 bg-gray-300 rounded w-1/4 mb-4"></div>
+            <div class="h-6 bg-gray-300 rounded w-3/4 mb-6"></div>
+            <div class="h-4 bg-gray-300 rounded w-full mb-4"></div>
+            <div class="h-4 bg-gray-300 rounded w-5/6"></div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm animate-pulse">
+            <div class="h-4 bg-gray-300 rounded w-1/4 mb-4"></div>
+            <div class="h-6 bg-gray-300 rounded w-3/4 mb-6"></div>
+            <div class="h-4 bg-gray-300 rounded w-full mb-4"></div>
+            <div class="h-4 bg-gray-300 rounded w-5/6"></div>
+          </div>
         </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500"> October 02-03, 2024</p>
-            <h3 class="text-lg font-bold mt-1">
-                Trends in Technological Areas using Patent Analytics: A Comparative 
-                Study on the Time Series Forecasting of International Patent Classification
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                Intellectual Properties like Patents, Utility Models, Industrial Designs, and Copyrights are considered the 
-                drivers of today’s modern knowledge-based economy.
-                <span x-show="expanded">
-                    The number of registered and granted Intellectual Properties is one key performance indicator of a state in
-                    advancing science and technology. Thus, analyzing the trends is vital as it sets directions for the state. 
-                    This study aims to analyze the patent trends in the International Patent Classification by incorporating 
-                    various classical statistical-based techniques and algorithms in time series forecasting. This leads to 
-                    the generation of insight into the present and future of registered and granted intellectual properties.
-                    Autoregression, Seasonal Autoregressive Integrated Moving-Average and Holt Winter’s Exponential Smoothing
-                    are the classical time series forecasting algorithms that were compared using three performance indicators,
-                    i.e., Root Mean Square Errors, Mean Absolute Errors, and the Coefficient of Determination. It was concluded
-                    that the seasonal autoregressive integrated moving average achieved a high performance of several indicators
-                     per section. However, it is vital to consider the behaviour of the present data and the appropriate time series
-                      forecasting algorithms for forecasting, thus having it on a case-to-case basis.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4" >
-                <a href="https://ieeexplore.ieee.org/document/10775190" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Patent</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Smoothing Methods</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Time Series Analysis</span>
-                </div>
+      </template>
+      <!-- Publication Cards -->
+      <template x-if="!loading">
+        <template x-for="(pub, index) in paginatedPublications()" :key="index">
+          <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 mb-6 relative" x-data="{ expanded: false }">
+            <!-- Header: Date on left, Type Chip on right -->
+            <div class="flex justify-between items-center">
+              <p class="text-sm text-gray-500" x-text="pub.formattedDate"></p>
+              <span class="px-3 py-1 text-xs rounded bg-blue-100 text-blue-800" x-text="pub.type"></span>
             </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">August 13-14, 2024</p>
-            <h3 class="text-lg font-bold mt-1">
-                An External Method of Estimating Lateral Forces for a Da Vinci Xi Surgical Instrument
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This study presents a comprehensive investigation into the development of an external method for estimating 
-                lateral forces at the custom trocar clamp of the da Vinci Xi surgical robot arm. 
-                <span x-show="expanded">
-                    The research focuses on the mechanical, electrical, and software design aspects involved in data collection, 
-                    detailing the meticulous attention paid to strain gauge placement and the integration of custom strain modules.
-                    A detailed analysis of the collected data is conducted, emphasizing the importance of data preprocessing techniques
-                    such as alignment, truncation, and smoothing. The study highlights the challenges encountered and the strategies 
-                    employed to overcome them, leading to the derivation of discrete-time state-space models tailored to voltage-force
-                    and strain-force data. The performance of various model forms and identification methods, including N4SID and SSEST,
-                    is evaluated, with training fit reaching 95.49% and validation fit at 93.55%, demonstrating high accuracy and 
-                    generalization capability. The findings underscore the importance of considering feedthrough components in model 
-                    development, and the study contributes valuable insights into the integration of force sensing technologies into 
-                    surgical robotics. These advancements pave the way for enhanced surgical precision and safety, ultimately benefiting
-                    patients and healthcare providers alike.
-                </span>
+            <!-- Title -->
+            <h3 class="text-xl font-semibold mt-1" x-text="pub.title"></h3>
+            <!-- Summary with Inline Details -->
+            <p class="text-gray-600 mt-3 text-base">
+              <span x-text="pub.summary"></span>
+              <span x-show="expanded"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 transform -translate-y-1"
+                    x-transition:enter-end="opacity-100 transform translate-y-0"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 transform translate-y-0"
+                    x-transition:leave-end="opacity-0 transform -translate-y-1"
+                    class="ml-1"
+                    x-text="pub.details"></span>
             </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
+            <!-- Toggle Details Button -->
+            <button class="text-blue-500 text-sm font-medium mt-3 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center"
+                    @click="expanded = !expanded"
+                    :aria-expanded="expanded">
+              <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+              <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+              </svg>
             </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10652440" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Surgical Instruments</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Lateral Force</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Da Vinci Xi</span>
-                </div>
+            <!-- Read More & Keywords -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-4">
+              <a :href="pub.link" hreflang="en-us" class="text-blue-500 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500" target="_blank" rel="noopener noreferrer">
+                Read more
+              </a>
+              <div class="flex flex-wrap gap-2 mt-2 sm:mt-0">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full" x-text="pub.keyword1"></span>
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full" x-text="pub.keyword2"></span>
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full" x-text="pub.keyword3"></span>
+              </div>
             </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">August 13-14, 2024</p>
-            <h3 class="text-lg font-bold mt-1">
-                Design and Simulation of Short Circuit Fault Detection in DC Power Supply using 
-                Daubechies Wavelet and Convolutional Neural Networks
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                Power supply systems are an essential component of current infrastructure and must operate reliably. 
-                <span x-show="expanded">
-                    Short-circuit defects pose a danger to power supply stability and may potentially result in equipment damage 
-                    and system outages. This research presents a novel approach for predicting and detecting short circuit faults 
-                    in power supply systems by combining the Daubechies wavelet transform with convolutional neural networks (CNNs). 
-                    The researcher will make use of MATLAB Simulink and focuses on the design and simulation with short circuit faults 
-                    introduced at known points of linear power supplies, boost converters, and buck converters. The voltage and current 
-                    from the simulations were exported and then fed to Python with the use of PyWavelet for mathematical analysis. 
-                    The researcher will make use of the db4 transform for the Daubechies wavelet. This decomposes the signals into 
-                    detail coefficients at various scales, which are then converted into 1D vectors to be flattened and used for 
-                    training with CNN. Based on the data and results, this shows 94.22% accuracy and 94.67% mAP (mean average precision) 
-                    at 35 epochs. The researchers concluded that this study was feasible and reliable for implementation in real-world 
-                    scenarios.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10652523" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">CNN</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Short Circuit</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Direct Current Power</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">April 22-25 2024</p>
-            <h3 class="text-lg font-bold mt-1">
-                A 54.61-GOPS 96.35-mW Digital Logic Accelerator For Underwater Object Recognition DNN Using 40-nm CMOS Process
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                CNN (convolution neural network) and DNN (deep neural network) have been widely used in real-time artificial 
-                intelligent (AI) applications, particularly image or video recognitions, because they have been proved physically
-                in many occasions.  
-                <span x-show="expanded">
-                    However, most prior AI hardware works are either suffered from high on-silicon area cost or low usage thereof.
-                    This paper presents a power efficient and high performance implementation of a digital logic accelerator (DLA)
-                    for the usage of real-time underwater object recognition. The proposed DLA is also featured with 2-dimentional
-                    PE (processing element) array to increase the processing throughput by the enhancement of parallelism. The design
-                    was realized and fabricated using TSMC 40-nm CMOS process. Not only the post-layout simulation results are shown,
-                    the on-silicon measurement outcome is also demonstrated to prove the function correctness and the performance.
-                    The area efficiency (GOPS/mm2) is 4.562, and the power efficiency (TOPS/W) is 0.5668 on silicon, which both 
-                    are the best to date.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10595977" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">ANN</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Parallel Processing</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Streaming Media</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">May 24-25, 2024</p>
-            <h3 class="text-lg font-bold mt-1">
-                A Highly Reliable XNOR-XOR-RO PUF Design for IoT Security Applications
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                PUFs or Physical Unclonable Function is now an emerging trend for hardware and IoT (internet-of-things)
-                 security solutions.
-                <span x-show="expanded">
-                    IoT solutions always have a poor security features and are vulnerable to external attacks. 
-                    Hence, a highly reliable security solution is important for their implementation. This work
-                    presents a highly reliable physical unclonable function implemented in an FPGA for use in IoT
-                    security. The proposed PUF is implemented in Xilinx ZYNQ 7000 FPGA board and operates at 100 MHz.
-                    A novel XNX (XNOR-XOR) Ring Oscillator (RO) PUF with configurable frequency is presented in this report.
-                    A statistical measure is used to report the experiments done in the design. The proposed design gives a 
-                    highly reliable output of 99.86%, uniqueness of 49.90%, and a uniformity of 67.30%. The proposed design offered
-                     the most reliable design compared to previous works.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10576561" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Ring Oscillators</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Iot Security</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Histograms</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">November 19-22, 2023</p>
-            <h3 class="text-lg font-bold mt-1">
-                A 4-kHz per °C High Linearity On-chip Temperature Sensor Implemented Using 40-nm CMOS Process
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                In this research, a standard TSMC 40-nm CMOS process is used to implement a highly linear and high resolution temperature sensor. 
-                <span x-show="expanded">
-                    It is composed of an averaging feedback operational amplifier relaxation oscillator controlled by a PTAT 
-                    current generator. Post-layout simulations show a detection range of 0∘∼100∘C and a 4 kHz per °C resolution.
-                    The maximum linearity error is simulated to be 0.15% at the FF corner and 99.85% linear fit. The power consumption
-                    of the design is 0.2015 mW at the maximum output frequency =1.57MHz, and the area of 5291.5μ m2.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10740073" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Temperature sensors</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Operational amplifiers</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Power demand</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">November 19-22, 2023 </p>
-            <h3 class="text-lg font-bold mt-1">
-                A 1-kb Sub-1 fJ/b Per Access CAM Design Using 40-nm CMOS Process
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This investigation presents a low-power content addressable memory (CAM) design using 10T single-ended cells.
-                <span x-show="expanded">
-                    It uses the single-ended SRAM cell as a memory unit and a single-ended comparison circuit.
-                    By adopting this circuit, the proposed CAM cell is the first to have both the read/write and
-                    search operation to be in a single-ended mode. An energy reduction by power gating unused column is also
-                    presented in this investigation. The proposed CAM is implemented using the typical TSMC 40-nm CMOS logic process.
-                    It has an area of 1.4 × 1.4 mm2 with a core of 0.89 mm2. Simulation results show that the energy per bit per search
-                    is 0.938 fJ with a search time of 0.47 ns. An FOM comparison based on the search time, energy per bit per search,
-                    and supply voltage also showed that the proposed CAM is the best compared to prior designs.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10509947" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Associative memory</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Circuits and systems</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Simulation</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">October 24-27, 2023 </p>
-            <h3 class="text-lg font-bold mt-1">
-                Passiveless Digitally Controlled Oscillator With Embedded PVT Detector Using 40-nm CMOS
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This paper presents a design of a digitally controlled oscillator (DCO) with a build-in PVT 
-                (process, voltage, temperature) variation sensor using a 40-nm CMOS process.
-                <span x-show="expanded">
-                    The DCO is designed using a 128-stage differential ring oscillator wherein the number of stages is
-                    being controlled by an input of 7-bit digital code. It is further realized using serpentine style
-                    arrangement to minimize variation on wafer. A multiplexed PVT sensor is integrated to provide a way
-                    to feedback for output correction using any auto-calibration strategy, e.g., PID control or artificial
-                    intelligent control. A linearized model of the DCO is presented based on the results of the post-layout
-                    simulations. The DCO has a dynamic range of 9.9 MHz to 527.43 MHz. The DCO is designed to operate at the
-                    frequencies –20 °C to 75 °C. The overall chip consumes 0.235 mW from a 0.9 V supply. The overall chip area
-                    is 0.67 mm2 with a core area of 0.05 mm2. The all-PVT-corner post-layout simulations show a highly linear
-                    fit for the period vs. input code with the worst R2 of 0.992 in the SS corner at 0.99 V supply and 25 °C.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10396334" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Phase noise</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Process control</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Voltage control</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 10 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">September 25-28, 2023</p>
-            <h3 class="text-lg font-bold mt-1">
-                A High Resolution And Wide Range Temperature Detector Using 180-nm CMOS Process
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This paper presents a highly linear and high resolution temperature detector implemented using a typical TSMC 180-nm CMOS process. 
-                <span x-show="expanded">
-                    It is composed of PTAT & CTAT current generator circuits and a current-to-frequency converter.
-                    The PTAT current generator is based on a bandgap reference circuit connected to a cascode current mirror,
-                    while the CTAT generator is a current mirror driven by a voltage-to-current circuit. Post-layout simulation
-                    shows a detection range of –40° ~ 100°C and a 0.5°C resolution. The maximum linearity error is simulated to
-                    be 0.406% for the PTAT/CTAT ratio. The power consumption of the design is 15.4 mW at the maximum output
-                    frequency = 4.07 MHz, and the area of 0.682 mm2.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10332257" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Temperature sensors</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Temperature distribution</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Integrated circuits</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 11 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">August 09-10, 2023</p>
-            <h3 class="text-lg font-bold mt-1">
-                FPGA-Based Radio Transceiver Using the TV White Space for Disaster Response Operation
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                In this paper an FPGA-based radio transceiver that operates on a frequency band from unused TV white space - specifically 512 MHz - 518 MHz - is presented. 
-                <span x-show="expanded">
-                    The investigation was done to introduce an application of TV white space and FPGA hardware in creating a 
-                    communication system for disaster rescue operations and in hopes of being used as material for further
-                    research. The transceiver used an FPGA Arty7-35T board which was programmed using the Verilog HDL.
-                    A QPSK scheme of modulation/demodulation was utilized to maximize the performance of the transceiver
-                    while considering the resources available from the chosen board. The transceiver was designed using
-                    model- based design approach and was implemented on FPGA. Appropriate functionality and performance
-                    tests were conducted. These include RTL schematic analysis and Verilog test benches, and evaluation
-                    of the bit-error-rate, signal-to- noise ratio, and root mean squared error. Finally, the transceiver's
-                    performance was assessed to have a BER of < 1, an RMSE of < 0.1 and an SNR of 24.3 dB.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10225776" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Radio transceivers</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Communication systems</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Television White Spaces</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 12 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">August 09-10, 2023</p>
-            <h3 class="text-lg font-bold mt-1">
-                Developing an LTE Learning Material: Experiences from a University in a Developing Country
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                Remote learning has increased, especially in engineering courses that require digital platforms, due to the COVID-19 pandemic. 
-                <span x-show="expanded">
-                    However, the current curriculum doesn't emphasize telecommunications, making LTE principles difficult for
-                    students to understand. To address this issue, researchers developed a 4G LTE learning system using MATLAB
-                    LTE Toolbox. MATLAB's Live Scripts, Scripts, and App Designer implement nine lab experiments. A course framework
-                    was devised, encompassing essential competencies and laboratory experiments to teach LTE fundamentals.
-                    Additionally, a laboratory manual and instructor's guide were provided to support and assess the experiments.
-                    The manual's content, layout, and general satisfaction were all factors in the assessments made by both teachers
-                    and students.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10225892" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Learning systems</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Laboratory Experiments</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">4G LTE</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 13 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">September 06-08, 2023</p>
-            <h3 class="text-lg font-bold mt-1">
-                Schmitt-Trigger-Based Low Power SRAM Implemented Using 45-nm CMOS Technology
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This paper presents a Schmitt-trigger-based SRAM with a separated read port, which significantly improves read static noise margin (RSNM) and consumes low energy. 
-                <span x-show="expanded">
-                    Post-layout simulation results show that the proposed design performed better than the conventional
-                    6T SRAM cell. The SNM of the designed cell is 1.16 mV higher than the conventional 6T SRAM cell in
-                    write mode, and 232.37 mV and 207.46 mV in read mode 1 and 0, respectively. The impact of the process,
-                    voltage, and temperature variations on cell performance parameters such as read, write and hold SNM, power per
-                    access, power per bit, delay, and energy per bit was investigated. Aside from this, the DNM of the cell was
-                    also measured to determine the noise tolerance of the cell during the write operation. Monte Carlo simulation
-                    results verified how robust the proposed cell is. The design was implemented in a 45-nm technology in which the
-                    cell occupies 4.53×4.53 µm2 and the system is 568.55×568.55 µm2. This cell consumes only 0.396 fJ, which is lower
-                    than the energy per bit consumed on the 6T conventional cell which is 7.265 fJ. All-corner simulation results show
-                    that the proposed cell is suitable for low-power applications.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10223482" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Temperature measurement</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Monte Carlo methods</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">SRAM</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 14 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">January 24-26, 2023</p>
-            <h3 class="text-lg font-bold mt-1">
-                A Smart Building Design using Cyber-Physical System Modeling
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                Due to the demand for IoT technologies, the concept of CPS was explored in this paper.
-                <span x-show="expanded">
-                    CPS refers to the coordination and communication of physical processes and computing elements connecting 
-                    the physical and digital worlds. With the increasing number of smart buildings, the researchers considered 
-                    the automation control of various facilities in a smart building which are air conditioning, lighting, and 
-                    surveillance systems for sustainability. With this, the researchers acquired and analyzed the STEER Hub building’s 
-                    layout diagram as the basis of a smart building design. It was verified and evaluated by an ocular visit, and the 
-                    total number of existing system devices for air conditioning, lighting, and surveillance was 313. Wireless access 
-                    points connect these devices to the internet. The network architecture was designed and simulated in Cisco Packet 
-                    Tracer. Meanwhile, the aforementioned systems were modeled and simulated in MATLAB® and Simulink®. A digital signal,
-                    signifying the On/Off condition, serves as the output of the air conditioning and lighting systems. Meanwhile, the 
-                    surveillance system’s output is a waveform that compares the motion intensity to a threshold value. The captured 
-                    picture displaying the total number of source and captured frames were also presented.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10080712" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Air conditioning</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Wireless sensor networks</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Smart buildings</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 15 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">January 24-26, 2023</p>
-            <h3 class="text-lg font-bold mt-1">
-                Design of an Exoskeleton Robot for Lower-Body Rehabilitation
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This paper presents a design of an exoskeleton robot to aid in lower-body rehabilitation of patients who have trouble with walking.
-                <span x-show="expanded">
-                    The robot is intended for people who suffered from spinal cord injuries, brain trauma, cerebral palsy, Parkinson’s disease,
-                    and stroke. Specifically, a robot for rehabilitation can aid therapists and patients by letting the robot lead the walking
-                    pattern of the patient. ErgoFellow, SoliWorks, and MATLAB were the software used to design and simulate the robot.
-                    Linear stress analysis was done to determine the response of the parts and assemblies to different types of forces.
-                    The stress analysis gave the result of Von Mises stress which helped determine the forces the robot can withstand. 
-                    Model-based design work flow was done to simulate and visualize the movement of the robot. Through this simulation,
-                    the visualization of how the robot will move in a real walking platform was effectively visualized.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10080501" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Legged locomotion</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Visualization</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Robots</span>
-                </div>
-            </div>
-        </div>
-
-         <!-- Card 16 -->
-         <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">November 11-13, 2022</p>
-            <h3 class="text-lg font-bold mt-1">
-                A Power Effective DLA for PBs in Opto-Electrical Neural Network Architecture
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                Deep neural networks (DNN) have been widely used in many real-time artificial intelligent (AI) applications because of effective hardware accelerators. 
-                <span x-show="expanded">
-                    However, most present designs either suffer from high area cost or low hardware usage.
-                    This paper presents a design of a digital logic accelerator (DLA) for use in PBs (processing block)
-                    of an opto-electrical neural network (OENN). The proposed DLA uses processing elements that detects
-                    underflow and overflow. Besides, it also increased the processing time to resolve the timing problems.
-                    The details of the design together with post-layout simulations are presented in this paper. The DLA is 
-                    implemented using a typical 40-nm CMOS process. It showed a performance result of 51.2 GOPS and the power 
-                    consumption is 91.3 mW at 125 MHz.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10090303" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Deep learning</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Energy consumption</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">CMOS process</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 17 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">September 21-23, 2022</p>
-            <h3 class="text-lg font-bold mt-1">
-                Sub-0.2 pJ/Access Schmitt Trigger Based 1-kb 8T SRAM Implemented Using 40-nm CMOS Process
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This investigation presents a low-power 1-kb SRAM, where memory cells are based on skewed inverter design.  
-                <span x-show="expanded">
-                    More specifically, Schmitt trigger inverters are utilized in the cell to enhance read, write, and hold capabilities.
-                    To minimize power usage, a supply voltage selection circuit is included to the proposed cell, where the supply
-                    voltage of the cells is selected in different nodes. The 1-kb SRAM is designed using a typical 40-nm CMOS.
-                    The post-layout simulation is presented to verify the low power consumption. The design is operated at 100 MHz
-                    clock with an energy per bit simulated to be 5.968 fJ given VDD=0.8 V. The energy/access is simulated to be 0.191 pJ
-                    in the same condition.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/9933116" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Memory management</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Random access memory</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Schmitt trigger</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 18 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">August 23-25, 2021</p>
-            <h3 class="text-lg font-bold mt-1">
-                An Ultra-low Power Thermo-Electric Harvester in 45nm CMOS Process
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                An ultra-low power thermoelectric harvester implemented in 45nm CMOS (Complementary Metal Oxide Semiconductor) process is presented in this paper. 
-                <span x-show="expanded">
-                    With the increasing demand of using low voltage portable devices and wireless systems,
-                    energy harvesting has become an attractive approach to overcome the problems correlated with
-                    battery life and power source and TEG (Thermoelectric Generator) is the most commonly used among
-                    different types of energy scavengers. The input of the system will be coming from a TEG with a
-                    minimum input voltage of 100mV and will have an output of 1V (unregulated). The architecture for
-                    boosting such extremely low voltages is based on a modified Dickson charge pump using ring oscillator
-                    as clock signals. The ring oscillator is designed to operate in the subthreshold region employing a
-                    forward body bias design technique.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/9550924" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Ring oscillators</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Wireless communication</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Charge pumps</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ADD HERE -->
-
+          </div>
+        </template>
+      </template>
+      <!-- Modern Pagination Controls -->
+      <div class="flex justify-center items-center mt-6 mb-6 space-x-2" x-show="totalPages > 1">
+        <button :disabled="currentPage === 1" @click="currentPage--"
+                class="px-3 py-1 bg-gray-300 text-gray-700 rounded disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          Prev
+        </button>
+        <template x-for="page in visiblePages()" :key="page">
+          <button @click="currentPage = page"
+                  :class="page === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'"
+                  class="px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <span x-text="page"></span>
+          </button>
+        </template>
+        <button :disabled="currentPage === totalPages" @click="currentPage++"
+                class="px-3 py-1 bg-gray-300 text-gray-700 rounded disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          Next
+        </button>
+      </div>
     </div>
-
-    <!-- PUBLISHED JOURNALS HERE -->
-    
-    <div class="max-w-2xl mx-auto">
-        <h2 class="text-xl font-semibold mb-4">Journals</h2>
-
-        <!-- Card Journal 1 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">February 26, 2024 </p>
-            <h3 class="text-lg font-bold mt-1">
-                A 6.25-MHz 3.4-mW Single Clock DPWM Technique Using Matrix Shift Array
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                Recent digital pulsewidth modulation (DPWM) researches use multiple clock inputs and long D flip-flop (DFF) arrays,
-                which makes scaling to different DPWM frequencies challenging. 
-                <span x-show="expanded">
-                    This brief demonstrates a DPWM that utilizes a single clock and a Matrix shift array, allowing it to be scaled
-                    to any frequency and reducing the effects of clock skew. It has a clock gating technique that selects a specific
-                    row of DFFs based on the required % duty cycle. The DPWM design has a dead time generator to prevent shoot-throughs.
-                    The DPWM has been fabricated using UMC 180-nm CMOS process. The performance and functionality of the DPWM have been
-                    verified through the measured comparisons of % duty ratio, dead time ( Tdt ), and output frequency ( fout ) at input
-                    clock frequency ( fclkin ) equal to 10 ∼ 100 MHz. The DPWM design has a maximum % duty ratio of 90.6%, Tdt = 1.8 ns,
-                    and fout = 6.25 MHz with 3.4-mW power consumption at fclkin = 100 MHz.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10445309" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Clocks</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Pulse Width</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Dead time</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card Journal 2 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">June 27, 2023</p>
-            <h3 class="text-lg font-bold mt-1">
-                A 210-MHz 4.23 fJ Energy/Bit 1-kb Asymmetrical Schmitt-Trigger-Based SRAM Using 40-nm CMOS Process
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This brief introduces a 1-kb SRAM design that operates at low power utilizing asymmetrical Schmitt-trigger based SRAM cells. 
-                <span x-show="expanded">
-                    By adopting an asymmetrical design, the SRAM cell performance in terms of hold, access, and write
-                    capabilities were enhanced. A power reduction and speed compensation circuit is presented in the
-                    design. The SRAM is implemented and fabricated on-silicon using a typical 40-nm TSMC CMOS technology.
-                    Measurements show that the design can operate up to 210 MHz clock frequency with a 4.23 fJ energy
-                    per bit for a supply voltage of 0.8 V. It also has an average delay of 5.659 ns, which is reduced
-                    to an average of 1.708 ns when the speed compensation circuit is enabled.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/10164648" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Transistors</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Voltage measurement</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Voltage</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card Journal 3 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">July 21, 2022</p>
-            <h3 class="text-lg font-bold mt-1">
-                A 40.96-GOPS 196.8-mW Digital Logic Accelerator Used in DNN for Underwater Object Recognition
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                This investigation presents a digital logic accelerator (DLA) design of a neural network hardware that utilizes output reuse.  
-                <span x-show="expanded">
-                    The DLA is used in the detection mechanism of underwater objects that was deployed in an underwater vehicle.
-                    A modified YoloV3-tiny network was also implemented to detect more than 20 underwater objects. The proposed
-                    DLA uses processing units that have parallel architectures of output windows, and output channels. Moreover,
-                    a new Inter-Controller is designed to control the direct memory access (DMA) together with a new Reshape module
-                    to improve the performance and power efficiency. A detailed description of the design as well as the measurements
-                    on silicon are presented. The chip is realized using a typical 180-nm CMOS process. It showed a performance result
-                    of 40.96 GOPS and the power consumption is 196.8 mW. The DLA was tested to demonstrate 19.88 frames per second and
-                    40.96 GOPS.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/9835025" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Energy efficiency</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">CNN</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Hardware acceleration</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card Journal 4 -->
-        <div class="bg-white p-6 rounded-lg shadow mb-4" x-data="{ expanded: false }">
-            <p class="text-sm text-gray-500">October 28, 2021</p>
-            <h3 class="text-lg font-bold mt-1">
-                A Single-Ended Low Power 16-nm FinFET 6T SRAM Design With PDP Reduction Circuit
-            </h3>
-
-            <!-- Collapsible Text -->
-            <p class="text-gray-600 mt-2 text-sm">
-                Memory arrays such as SRAM cells are responsible to the high-power consumption of modern digital systems.  
-                <span x-show="expanded">
-                    This investigation proposed an SRAM utilizing an ultra-low power cell, implemented using the 16-nm FinFET CMOS
-                    technology. Voltage supply selection of the static RAM cells is done by gating the wordline (WL) enable.
-                    In standby mode, the cell wordline is not activated, where the cell operates on a lower voltage level so
-                    that the stored bit status is still retained. On the other hand, the normal mode is activated when the 
-                    wordline of the cell is enabled. Theoretical derivations, all-PVT-corner post-layout simulations, and measurement
-                    results were provided for verification of the functionality and performance. An SRAM of 1-kb capacity is designed
-                    based on the propose cell. The on-silicon measurement demonstrates 0.006832 fJ (energy/bit) at 500 MHz clock rate
-                    and 0.8 V supply.
-                </span>
-            </p>
-            
-            <!-- Toggle Button with Icons -->
-            <button 
-                class="text-blue-500 text-sm font-medium mt-2 focus:outline-none flex items-center"
-                @click="expanded = !expanded">‎
-                <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-                <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Keywords -->
-            <div class="flex justify-between items-center mt-4">
-                <a href="https://ieeexplore.ieee.org/document/9592684" hreflang="en-us" class="text-blue-500 text-sm font-medium">Read more</a>
-                <div class="flex flex-wrap space-x-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">SRAM cells</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Built-in self-test</span>
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full">Low-power electronics</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ADD HERE -->
+  </main>
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-gray-100 py-6 w-full mt-6">
+    <div class="text-center">
+      <p>&copy; 2025 Electronic Systems Research Center. All Rights Reserved.</p>
+      <p>Email: <a href="mailto:esrc@g.batstate-u.edu.ph" class="text-blue-400 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500">esrc@g.batstate-u.edu.ph</a> | Phone: (043) 980 0385 loc.2405</p>
     </div>
-
-        <!-- Footer -->
-        <footer class="bg-gray-800 text-gray-100 py-6 mt-12">
-            <div class="container mx-auto text-center">
-              <p>&copy; 2025 Electronic Systems Research Center. All Rights Reserved.</p>
-              <p>Email: esrc@g.batstate-u.edu.ph | Phone: (043) 980 0385 loc.2405</p>
-            </div>
-          </footer>
-    
+  </footer>
+  <!-- PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <!-- Alpine.js Component for Publications -->
+  <script>
+    function publications() {
+      return {
+        publications: [],
+        fuse: null,
+        loading: true,
+        currentPage: 1,
+        papersPerPage: 20,
+        sortOrder: 'desc',
+        selectedFilter: 'All',
+        searchQuery: '',
+        showSuggestions: false,
+        async init() {
+          try {
+            const response = await fetch('../src/dr_sang_publications.csv');
+            const csvText = await response.text();
+            const result = Papa.parse(csvText, { header: true });
+            let pubs = result.data.filter(pub => pub.title && pub.title.trim() !== "");
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            pubs = pubs.map(pub => {
+              if (pub.date) {
+                // Regex to handle bundled dates (e.g., "April 22-25 2024") and regular dates.
+                const regex = /([A-Za-z]+\s+\d{1,2})(?:-\d{1,2})?[\s,]+(\d{4})/;
+                const match = pub.date.match(regex);
+                if (match) {
+                  const startDate = `${match[1]}, ${match[2]}`;
+                  pub.dateObj = new Date(startDate);
+                  pub.formattedDate = pub.date;
+                } else if (pub.date.includes('/')) {
+                  let parts = pub.date.split("/");
+                  if (parts.length === 3) {
+                    let month = parseInt(parts[0], 10);
+                    let day = parseInt(parts[1], 10);
+                    let year = parseInt(parts[2], 10);
+                    pub.dateObj = new Date(year, month - 1, day);
+                    pub.formattedDate = `${months[month - 1]} ${day}, ${year}`;
+                  } else {
+                    pub.dateObj = new Date(pub.date);
+                    pub.formattedDate = pub.date;
+                  }
+                } else {
+                  pub.dateObj = new Date(pub.date);
+                  pub.formattedDate = pub.date;
+                }
+              } else {
+                pub.formattedDate = "";
+                pub.dateObj = new Date(0);
+              }
+              return pub;
+            });
+            this.publications = pubs;
+            // Initialize Fuse.js for fuzzy search with token-based matching
+            this.fuse = new Fuse(this.publications, {
+              keys: ['title', 'summary', 'details', 'keyword1', 'keyword2', 'keyword3'],
+              threshold: 0.4
+            });
+            this.sortPublications();
+          } catch (error) {
+            console.error("Error loading publications:", error);
+          } finally {
+            this.loading = false;
+          }
+        },
+        sortPublications() {
+          if (this.sortOrder === 'desc') {
+            this.publications.sort((a, b) => b.dateObj - a.dateObj);
+          } else {
+            this.publications.sort((a, b) => a.dateObj - b.dateObj);
+          }
+          this.currentPage = 1;
+        },
+        filteredPublications() {
+          let filtered = this.selectedFilter === 'All'
+                         ? this.publications
+                         : this.publications.filter(pub => pub.type === this.selectedFilter);
+          if (this.searchQuery.trim() !== '') {
+            const q = this.searchQuery.toLowerCase();
+            filtered = filtered.filter(pub =>
+              pub.title.toLowerCase().includes(q) ||
+              pub.summary.toLowerCase().includes(q) ||
+              (pub.details && pub.details.toLowerCase().includes(q)) ||
+              (pub.keyword1 && pub.keyword1.toLowerCase().includes(q)) ||
+              (pub.keyword2 && pub.keyword2.toLowerCase().includes(q)) ||
+              (pub.keyword3 && pub.keyword3.toLowerCase().includes(q))
+            );
+          }
+          return filtered;
+        },
+        paginatedPublications() {
+          const filtered = this.filteredPublications();
+          const start = (this.currentPage - 1) * this.papersPerPage;
+          return filtered.slice(start, start + this.papersPerPage);
+        },
+        get totalPages() {
+          return Math.ceil(this.filteredPublications().length / this.papersPerPage);
+        },
+        // Fuzzy search suggestions using token-based matching with Fuse.js
+        get suggestions() {
+          if (!this.searchQuery.trim() || !this.fuse) return [];
+          let tokens = this.searchQuery.trim().split(/\s+/);
+          let suggestionsSet = new Set();
+          tokens.forEach(token => {
+            let fuseResults = this.fuse.search(token);
+            fuseResults.slice(0, 3).forEach(result => suggestionsSet.add(result.item.title));
+          });
+          return Array.from(suggestionsSet).slice(0, 5);
+        },
+        selectSuggestion(suggestion) {
+          this.searchQuery = suggestion;
+          this.showSuggestions = false;
+        },
+        // Returns an array of up to 5 page numbers centered on the current page
+        visiblePages() {
+          const total = this.totalPages;
+          let start = this.currentPage - 2;
+          let end = this.currentPage + 2;
+          if (start < 1) { end += 1 - start; start = 1; }
+          if (end > total) { start -= end - total; end = total; }
+          if (start < 1) { start = 1; }
+          const pages = [];
+          for (let i = start; i <= end; i++) {
+            pages.push(i);
+          }
+          return pages;
+        }
+      }
+    }
+  </script>
 </body>
-
 </html>

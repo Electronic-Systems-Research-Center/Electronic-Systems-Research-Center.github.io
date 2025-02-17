@@ -1,23 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp">
-    <link rel="canonical" href="https://electronic-systems-research-center.github.io/">
-    <link rel="stylesheet" href="../build/css/teammembers.css">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
-    <title>Team-Electronic Systems Research Center</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Swiper.js CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp">
+  <link rel="canonical" href="https://electronic-systems-research-center.github.io/">
+  <link rel="stylesheet" href="../build/css/teammembers.css">
+  <title>Team - Electronic Systems Research Center</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Header -->
-<header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
+
+  <!-- PapaParse for CSV parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+  <!-- Alpine Component for Counting Papers -->
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('publicationStats', () => ({
+        conferenceCount: 0,
+        journalCount: 0,
+        // Flag to ensure init() runs only once
+        _initialized: false,
+  
+        async init() {
+          if (this._initialized) return;
+          this._initialized = true;
+          // Reset counts
+          this.conferenceCount = 0;
+          this.journalCount = 0;
+          try {
+            // Fetch CSV
+            const response = await fetch('../src/dr_sang_publications.csv');
+            const csvText = await response.text();
+            const result = Papa.parse(csvText, { header: true });
+  
+            // Filter out rows missing a title
+            const pubs = result.data.filter(pub => pub.title && pub.title.trim() !== "");
+  
+            // Count conference papers vs. journals
+            pubs.forEach(pub => {
+              const t = (pub.type || '').trim().toLowerCase();
+              if (t === 'conference paper') {
+                this.conferenceCount++;
+              } else if (t === 'journal') {
+                this.journalCount++;
+              }
+            });
+          } catch (error) {
+            console.error('Error loading publications:', error);
+          }
+        }
+      }));
+    });
+  </script>
+</head>
+<body class="bg-gray-100 pt-20" oncontextmenu="return false;" x-data="publicationStats()" x-init="init()">
+  <!-- Header (inside body) -->
+  <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
     <div class="container mx-auto px-4 flex items-center justify-between">
       <!-- Responsive Brand -->
       <a href="../index.html" hreflang="en-us">
@@ -36,7 +82,7 @@
         </ul>
       </nav>
       <!-- Mobile Toggle Button -->
-      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">‎
+      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
@@ -54,105 +100,102 @@
     </nav>
   </header>
 
-
-<body class="bg-gray-100" oncontextmenu="return false;">
-
+  <!-- Main Content -->
+  <main class="mt-24">
     <!-- Title -->
-    <h1 class="text-center text-5xl font-bold text-gray-800 mt-20 mb-5">MEET OUR TEAM</h1>
-
+    <h1 class="text-center text-5xl font-bold text-gray-800 mb-5">MEET OUR TEAM</h1>
+  
     <!-- Meet Our Team Section -->
     <section class="max-w-6xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-            <!-- Image -->
-            <div>
-                <img src="../build/img/Staff/Dr.Sang.webp" alt="Dr.Ralph" class="rounded-lg shadow-md">
-            </div>
-            
-            <!-- Text Content -->
-            <div>
-                <h2 class="text-4xl font-bold text-gray-800 text-pretty">Dr. Ralph Gerard B. Sangalang</h2>
-                <p class="mt-4 text-gray-600 text-pretty">
-                    Dr. Ralph Sanggalang is an Assistant Professor III at the Department of Electronics Engineering, College of Engineering,
-                    Batangas University - The National Engineering University, Alangilan, Batangas City. He also serves as the Center
-                    Head of the Electronic Research Center (ESRC), STEER Hub. With a wealth of experience, Dr. Sangalang has held 
-                    various leadership roles, including BS Biomedical Engineering Program Chair, BS Electronics Engineering Program Chair,
-                    and Chair od both College and Department Student Outcomes (SO) Committees. He has also contributed as a Department Book
-                    Committee Member and Senior Coach for ECE Quizzers.
-
-                    Dr. Sangalang's academic journey and professional contributions are marked by a dedication to research and Student
-                    success, making him a respected figure in his field. 
-                </p>
-                <div class="flex mt-6 space-x-6">
-                    <div>
-                        <h3 class="text-2xl font-bold text-blue-600">18</h3>
-                        <p class="text-gray-500 text-sm">Published Conference Papers</p>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-blue-600">4</h3>
-                        <p class="text-gray-500 text-sm">Published Journals</p>
-                    </div>
-                </div>
-                <a href="https://www.facebook.com/ESRC.BatStateU" hreflang="en-us" class="mt-6 inline-block bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">Contact Us</a>
-                <a href="../build/publishedmaterials.html" hreflang="en-us" class="mt-6 inline-block bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">Published Papers</a>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+        <!-- Image -->
+        <div>
+          <img src="../build/img/Staff/Dr.Sang.webp" alt="Dr.Ralph" class="rounded-lg shadow-md">
         </div>
+        
+        <!-- Text Content -->
+        <div>
+          <h2 class="text-4xl font-bold text-gray-800 text-pretty">Dr. Ralph Gerard B. Sangalang</h2>
+          <p class="mt-4 text-gray-600 text-pretty">
+            Dr. Ralph Sangalang is an Assistant Professor III at the Department of Electronics Engineering, College of Engineering,
+            Batangas University - The National Engineering University, Alangilan, Batangas City. He also serves as the Center
+            Head of the Electronic Research Center (ESRC), STEER Hub. With a wealth of experience, Dr. Sangalang has held 
+            various leadership roles, including BS Biomedical Engineering Program Chair, BS Electronics Engineering Program Chair,
+            and Chair of both College and Department Student Outcomes (SO) Committees. He has also contributed as a Department Book
+            Committee Member and Senior Coach for ECE Quizzers.
+    
+            Dr. Sangalang's academic journey and professional contributions are marked by a dedication to research and student
+            success, making him a respected figure in his field.
+          </p>
+    
+          <!-- Dynamic Stats from CSV -->
+          <div class="flex mt-6 space-x-6">
+            <!-- Conference Papers Count -->
+            <div>
+              <h3 class="text-2xl font-bold text-blue-600" x-text="conferenceCount"></h3>
+              <p class="text-gray-500 text-sm">Published Conference Papers</p>
+            </div>
+            <!-- Journal Papers Count -->
+            <div>
+              <h3 class="text-2xl font-bold text-blue-600" x-text="journalCount"></h3>
+              <p class="text-gray-500 text-sm">Published Journals</p>
+            </div>
+          </div>
+    
+          <a href="https://www.facebook.com/ESRC.BatStateU"
+             hreflang="en-us"
+             class="mt-6 inline-block bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">
+            Contact Us
+          </a>
+          <a href="../build/publishedmaterials.html"
+             hreflang="en-us"
+             class="mt-6 inline-block bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">
+            Published Papers
+          </a>
+        </div>
+      </div>
     </section>
-
+  
     <!-- Team Section -->
-    <section class="max-w-full mx-auto px-8 py-12 mr-0 ml-0 items-center bg-blue-600">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 bg-center max-h-500px lg:mr-[10%] lg:ml-[10%] md:mr-[5%] md:mr-[5%]">
-            
-            <!-- Team Member 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                <img src="../build/img/Staff/engrcj.webp" alt="Engr. Carlos Jhay Arroyo" class="team-image">
-                <h2 class="mt-4 text-xl font-bold text-gray-800">Engr. Carlos Jhay A. Arroyo </h2>
-                <p class="mt-2 text-gray-600 text-sm mt-[-2px]">University Research Associate, ESRC</p>
-                <p class="mt-4 text-gray-600 text-sm">
-                    Engr. Carlos Jhay A. Arroyo is a dedicated Instrumentation and
-                    Control Engineer from Balayan, Batangas. He currently serves as
-                    a University Research Associate and Project Technical Assistant
-                    at the Electronic Systems Research Center (ESRC) and Digital
-                    Transformation Center (DTC), STEERHub, Batangas State
-                    University The National Engineering University, and he is also a
-                    Lecturer I (teaching Data analysis, statistic etc.) at the
-                    Department of Electronics Engineering-BatStateU.
-                    He graduated with a Bachelor of Science in Instrumentation and
-                    Control Engineering from Batangas State University The
-                    National Engineering University in 2023. Additionally, he has a
-                    unit toward a Master of Science in Engineering Management
-                    and is now pursuing a Master of Science in Electronics
-                    Engineering at Batangas State University TNEU.
-                </p>
-            </div>
-
-            <!-- Team Member 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                <img src="../build/img/Staff/engraries.webp" alt="Team Member 2" class="team-image">
-                <h2 class="mt-4 text-xl font-bold text-gray-800">Engr. Ariel M. Rosales</h2>
-                <p class="mt-2 text-gray-600 text-sm mt-[-2px]">UNIRA, Project Sinag</p>
-                <p class="mt-4 text-gray-600 text-sm">
-                    Engr. Rosales earned a Bachelor of Science in Mechatronics Engineering 
-                    from Batangas State University - The National Engineering University, 
-                    Alangilan Campus. His expertise lies in Industrial Automation, 3D Modeling, 
-                    and Fabrication. After graduating, he joined Katolec Philippines Corporation in 
-                    Laguna Technopark, Biñan, Laguna, as an Automation Engineer in the Production 
-                    Engineering Department. However, after a few months, he realized his desire to explore 
-                    a different engineering field. As a result, he resigned and pursued a Master of Science in 
-                    Electronics Engineering at his alma mater. Currently, while pursuing his master's degree, 
-                    he works as a full-time University Research Associate at the Electronic Systems Research Center 
-                    under Project SINAG and serves as a part-time College Guest Lecturer in the Electronics Engineering 
-                    Department under the College of Engineering.
-                </p>
-            </div>
+    <section class="max-w-full mx-auto px-8 py-12 items-center bg-blue-600">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 bg-center max-h-500px lg:mx-[10%] md:mx-[5%]">
+        <!-- Team Member 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <img src="../build/img/Staff/engrcj.webp" alt="Engr. Carlos Jhay Arroyo" class="team-image">
+          <h2 class="mt-4 text-xl font-bold text-gray-800">Engr. Carlos Jhay A. Arroyo</h2>
+          <p class="mt-2 text-gray-600 text-sm">University Research Associate, ESRC</p>
+          <p class="mt-4 text-gray-600 text-sm">
+            Engr. Carlos Jhay A. Arroyo is a dedicated Instrumentation and Control Engineer from Balayan, Batangas. He currently serves as
+            a University Research Associate and Project Technical Assistant at the Electronic Systems Research Center (ESRC) and Digital
+            Transformation Center (DTC), STEERHub, Batangas State University - The National Engineering University, and he is also a
+            Lecturer I (teaching Data analysis, statistics, etc.) at the Department of Electronics Engineering - BatStateU.
+            He graduated with a Bachelor of Science in Instrumentation and Control Engineering from Batangas State University - The
+            National Engineering University in 2023. Additionally, he has a unit toward a Master of Science in Engineering Management and is now pursuing a Master of Science in Electronics
+            Engineering at Batangas State University TNEU.
+          </p>
         </div>
+    
+        <!-- Team Member 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <img src="../build/img/Staff/engraries.webp" alt="Engr. Ariel M. Rosales" class="team-image">
+          <h2 class="mt-4 text-xl font-bold text-gray-800">Engr. Ariel M. Rosales</h2>
+          <p class="mt-2 text-gray-600 text-sm">UNIRA, Project Sinag</p>
+          <p class="mt-4 text-gray-600 text-sm">
+            Engr. Rosales earned a Bachelor of Science in Mechatronics Engineering from Batangas State University - The National Engineering University, 
+            Alangilan Campus. His expertise lies in Industrial Automation, 3D Modeling, and Fabrication. After graduating, he joined Katolec Philippines Corporation 
+            in Laguna Technopark, Biñan, Laguna, as an Automation Engineer in the Production Engineering Department. However, after a few months, he realized his desire to explore 
+            a different engineering field. As a result, he resigned and pursued a Master of Science in Electronics Engineering at his alma mater. Currently, while pursuing his master's degree, 
+            he works as a full-time University Research Associate at the Electronic Systems Research Center under Project SINAG and serves as a part-time College Guest Lecturer in the Electronics Engineering Department under the College of Engineering.
+          </p>
+        </div>
+      </div>
     </section>
-
+  
     <!-- Members Carousel Section 1-->
-    <section class="max-w-5xl mx-auto px-5 mt-[20px]">
-        <p></p>
-        <h2 class="text-3xl font-bold text-gray-800">2024-2025 2nd Semester Interns</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
+    <section class="max-w-5xl mx-auto px-5 mt-8">
+      <h2 class="text-3xl font-bold text-gray-800">2024-2025 2nd Semester Interns</h2>
+      <div class="swiper mySwiper mt-4">
+        <div class="swiper-wrapper">
                 <!-- Team Members -->
                 <div class="swiper-slide">
                     <img src="../build/img/OJT/1.webp" class="team-image" alt="Patrick James G. Verroya">
@@ -258,21 +301,19 @@
                         <p class="text-gray-500 text-sm">BS Information Technology</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+          <!-- Add additional slides for each intern as needed -->
         </div>
-        
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
     </section>
-
+  
     <!-- Members Carousel Section 2-->
-    <section class="max-w-5xl mx-auto px-5  mt-[30px]">
-        <p></p>
-        <h2 class="text-3xl font-bold text-gray-800">2024-2025 1st Semester Interns</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
+    <section class="max-w-5xl mx-auto px-5 mt-8">
+      <h2 class="text-3xl font-bold text-gray-800">2024-2025 1st Semester Interns</h2>
+      <div class="swiper mySwiper mt-4">
+        <div class="swiper-wrapper">
                 <!-- Team Members -->
                 <div class="swiper-slide">
                     <img src="../build/img/OJT/14.webp" class="team-image" alt="John Romar A. Buenaflor">
@@ -354,21 +395,18 @@
                         <p class="text-gray-500 text-sm">BS Electronics Engineering</p>
                     </div>
                 </div>
-            </div>
-
-
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </div>
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
     </section>
-
-     <!-- Members Carousel Section 3-->
-     <section class="max-w-5xl mx-auto px-5  mt-[30px]">
-        <p></p>
-        <h2 class="text-3xl font-bold text-gray-800">2024-2025 Midterm Interns</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
+  
+    <!-- Members Carousel Section 3-->
+    <section class="max-w-5xl mx-auto px-5 mt-8">
+      <h2 class="text-3xl font-bold text-gray-800">2024-2025 Midterm Interns</h2>
+      <div class="swiper mySwiper mt-4">
+        <div class="swiper-wrapper">
                 <!-- Team Members -->
                 <div class="swiper-slide">
                     <img src="../build/img/OJT/25.webp" class="team-image" alt="Haron Lewer V. Muñoz">
@@ -402,32 +440,38 @@
                         <p class="text-gray-500 text-sm">BS Fine Arts & Design</p>
                     </div>
                 </div>
-            </div>
-
-
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </div>
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
     </section>
-
-    <!-- Swiper.js Script -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 3,
-            centeredSlides: true,
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            breakpoints: {
-                780: { slidesPerView: 1 },
-                1024: { slidesPerView: 3 },
-            },
-        });
-    </script>
+  </main>
+  
+  <!-- Swiper.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Initialize all Swiper instances with responsive breakpoints:
+    var swipers = document.querySelectorAll('.mySwiper');
+    swipers.forEach(function(swiperEl) {
+      new Swiper(swiperEl, {
+        // Default: small devices (mobile)
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        speed: 800,
+        navigation: {
+          nextEl: swiperEl.querySelector('.swiper-button-next'),
+          prevEl: swiperEl.querySelector('.swiper-button-prev'),
+        },
+        breakpoints: {
+          // For medium devices (e.g., tablets)
+          640: { slidesPerView: 2 },
+          // For large devices (e.g., desktops)
+          1024: { slidesPerView: 3 },
+        },
+      });
+    });
+  </script>
 </body>
 </html>
