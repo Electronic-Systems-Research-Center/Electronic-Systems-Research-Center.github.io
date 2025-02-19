@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Electronic Systems Research Center is committed in providing technical support for R&D activities related to the field of electronics engineering." />
+  <meta name="description" content="The Electronic Systems Research Center is committed to providing technical support for R&D activities in electronics engineering." />
   <meta property="og:title" content="Electronic Systems Research Center" />
   <meta property="og:site_name" content="Electronic Systems Research Center (ESRC)" />
   <meta property="og:image" content="build/img/esrc logo 2.png" />
@@ -29,12 +29,12 @@
         "@id": "https://electronic-systems-research-center.github.io/"
       },
       "headline": "Electronic Systems Research Center (ESRC)",
-      "image": "", 
+      "image": "",
       "author": {
         "@type": "Organization",
         "name": "Electronic Systems Research Center",
         "url": "https://electronic-systems-research-center.github.io/"
-      }, 
+      },
       "publisher": {
         "@type": "Organization",
         "name": "",
@@ -57,24 +57,24 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Roboto', 'Arial', 'sans-serif'],
+            sans: ['Roboto', 'Arial', 'sans-serif']
           },
           colors: {
             scrollbar: {
               DEFAULT: '#cbd5e1',
-              hover: '#94a3b8',
-            },
-          },
-        },
+              hover: '#94a3b8'
+            }
+          }
+        }
       },
-      plugins: [preline],
+      plugins: [preline]
     };
   </script>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" hreflang="en-us" rel="stylesheet">
- 
-  <!-- Custom CSS for fade-out effect, circular wave, and button transitions -->
+  
+  <!-- Custom CSS -->
   <style>
     .fade-out {
       transition: opacity 0.5s ease;
@@ -83,20 +83,46 @@
     .hero-section {
       background-image: url('../build/img/esrc4.webp');
     }
-    /* Ensures the animated wave remains a perfect circle */
     .circle-wave {
       clip-path: circle(50%);
     }
-    /* Resource Button Styles with a smoother transition */
     .resource-btn {
       transition: background 0.5s ease, color 0.5s ease;
+    }
+    .resource-btn:hover,
+    .resource-btn:focus {
+      background: radial-gradient(circle at center, #1489d7, #45b8bc 80%);
+      color: white;
+      outline: none;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .sr-only:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans pt-20 overflow-hidden" oncontextmenu="return false;">
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
 
   <!-- Loader Overlay -->
-  <div id="loader" class="fixed inset-0 flex items-center justify-center z-[9999] bg-white">
+  <div id="loader" class="fixed inset-0 flex items-center justify-center z-[9999] bg-white" aria-hidden="true">
     <div class="relative">
       <div class="absolute inset-0 flex items-center justify-center">
         <div class="w-64 aspect-square rounded-full circle-wave bg-gradient-to-r from-blue-500 to-blue-600 opacity-30 animate-ping"></div>
@@ -105,134 +131,101 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 shadow-md z-50 h-16 flex items-center">
-    <div class="container mx-auto px-4 flex items-center justify-between">
-      <a href="../index.html" hreflang="en-us">
-        <div class="text-base sm:text-xl md:text-2xl font-bold text-blue-600 whitespace-nowrap">
-          Electronic Systems Research Center
-        </div>
-      </a>
-      <nav class="hidden md:flex space-x-6 text-gray-700">
-        <ul class="flex space-x-6">
-          <li><a href="../index.html#about" hreflang="en-us" class="hover:text-blue-600">About</a></li>
-          <li><a href="../index.html#research" hreflang="en-us" class="hover:text-blue-600">Research</a></li>
-          <li><a href="../build/teammembers.html" hreflang="en-us" class="hover:text-blue-600">Team</a></li>
-          <li><a href="../build/centerhighlights.html" hreflang="en-us" class="hover:text-blue-600">Center Highlights</a></li>
-          <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="hover:text-blue-600">Published Papers</a></li>
-        </ul>
-      </nav>
-      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">
-        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
-    </div>
-    <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4">
-      <ul class="flex flex-col space-y-2">
-        <li><a href="../index.html#about" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">About</a></li>
-        <li><a href="../index.html#research" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Research</a></li>
-        <li><a href="../build/teammembers.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Team</a></li>
-        <li><a href="../build/centerhighlights.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Center Highlights</a></li>
-        <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600">Published Papers</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Navigation Placeholder -->
+  <div id="navPlaceholder"></div>
 
-  <!-- Hero Section with Overlay -->
-  <section class="relative bg-cover bg-center text-white py-20 hero-section">
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-800 opacity-55"></div>
-    <div class="container relative z-10 mx-auto text-center">
-      <h1 class="text-4xl font-bold mb-4">Innovating the Future Through Research</h1>
-      <p class="text-lg mb-6">Discover cutting-edge research, collaborate with world-class experts, and make a lasting impact.</p>
-      <!-- Updated Resource & Materials Button -->
-      <a href="build/dashboard.html" hreflang="en-us" class="resource-btn bg-white text-[#1489d7] px-6 py-3 rounded-lg shadow-lg">
-        Resources and Materials
-      </a>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center text-white py-20 hero-section">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-800 opacity-55"></div>
+      <div class="container relative z-10 mx-auto text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-4">Innovating the Future Through Research</h1>
+        <p class="text-lg mb-6">Discover cutting-edge research, collaborate with world-class experts, and make a lasting impact.</p>
+        <a href="build/dashboard.html" hreflang="en-us" class="resource-btn bg-white text-[#1489d7] px-6 py-3 rounded-lg shadow-lg focus:outline-none">
+          Resources and Materials
+        </a>
+      </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-16">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4">About Us</h2>
-      <p class="text-gray-600 mb-8">
-        The Electronic Systems Research Center (ESRC) is committed in providing technical support and working space for R&D activities related to the field of electronics engineering.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-6 bg-white rounded-lg shadow">
-          <h3 class="font-bold text-xl mb-2">Center Mandate</h3>
-          <p class="text-gray-600">The ESRC provides technical support, custom experimental setups, and prototype development for various fields of research involving electronic systems.</p>
-        </div>
-        <div class="p-6 bg-white rounded-lg shadow">
-          <h3 class="font-bold text-xl mb-2">Equipment Available</h3>
-          <p class="text-gray-600">Spectral Camera and Weather Station</p>
-          <p class="text-gray-600">Test and Measurement Instrument</p>
-          <p class="text-gray-600">Data Loggers and Dremel Tools</p>
-          <p class="text-gray-600">3D Printers and Solder Workstation</p>
-          <p class="text-gray-600">Function Generators</p>
-          <p class="text-gray-600">Bench Power Supply</p>
+    <!-- About Section -->
+    <section id="about" class="py-16">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">About Us</h2>
+        <p class="text-gray-600 mb-8">
+          The Electronic Systems Research Center (ESRC) is committed to providing technical support and workspace for R&D activities in electronics engineering.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 bg-white rounded-lg shadow">
+            <h3 class="font-bold text-xl mb-2">Center Mandate</h3>
+            <p class="text-gray-600">
+              The ESRC provides technical support, custom experimental setups, and prototype development for various research fields involving electronic systems.
+            </p>
+          </div>
+          <div class="p-6 bg-white rounded-lg shadow">
+            <h3 class="font-bold text-xl mb-2">Equipment Available</h3>
+            <p class="text-gray-600">Spectral Camera and Weather Station</p>
+            <p class="text-gray-600">Test and Measurement Instrument</p>
+            <p class="text-gray-600">Data Loggers and Dremel Tools</p>
+            <p class="text-gray-600">3D Printers and Solder Workstation</p>
+            <p class="text-gray-600">Function Generators</p>
+            <p class="text-gray-600">Bench Power Supply</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Research Projects Section (CSV-loaded content) -->
-  <section id="research" class="bg-gray-100 py-16">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
-      <p class="text-gray-600 mb-8">Marvel at the innovative projects made by the ESRC for social and technological innovation.</p>
-      <div id="projectCardContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-    </div>
-  </section>
+    <!-- Research Projects Section -->
+    <section id="research" class="bg-gray-100 py-16">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
+        <p class="text-gray-600 mb-8">Marvel at the innovative projects made by the ESRC for social and technological innovation.</p>
+        <div id="projectCardContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
 
-  <!-- Team Section -->
-  <section id="team" class="py-16">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4">Meet Our Team</h2>
-      <p class="text-gray-600 mb-8">A team of dedicated researchers and professionals.</p>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="text-center">
-          <img src="../build/img/Staff/Engr.Amante.webp" alt="Assoc. Prof Albertson D. Amante" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
-          <h3 class="mt-4 font-bold">Assoc. Prof Albertson D. Amante</h3>
-          <p class="text-gray-600">Director for STEERHUB, VPRDES BatStateU</p>
-        </div>
-        <div class="text-center">
-          <img src="../build/img/Staff/Dr.Ralph.webp" alt="Dr. Ralph Gerard B. Sangalang" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
-          <h3 class="mt-4 font-bold">Dr. Ralph Gerard B. Sangalang</h3>
-          <p class="text-gray-600">Center Head, ESRC</p>
-        </div>
-        <div class="text-center">
-          <img src="../build/img/Staff/engrcj.webp" alt="Engr. Carlos Jhay A. Arroyo" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
-          <h3 class="mt-4 font-bold">Engr. Carlos Jhay A. Arroyo</h3>
-          <p class="text-gray-600">University Research Associate, ESRC</p>
-        </div>
-        <div class="text-center">
-          <img src="../build/img/Staff/engraries.webp" alt="Engr. Ariel M. Rosales" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
-          <h3 class="mt-4 font-bold">Engr. Ariel M. Rosales</h3>
-          <p class="text-gray-600">UNIRA, Project Sinag</p>
+    <!-- Team Section -->
+    <section id="team" class="py-16">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">Meet Our Team</h2>
+        <p class="text-gray-600 mb-8">A team of dedicated researchers and professionals.</p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <img src="../build/img/Staff/Engr.Amante.webp" alt="Assoc. Prof Albertson D. Amante" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+            <h3 class="mt-4 font-bold">Assoc. Prof Albertson D. Amante</h3>
+            <p class="text-gray-600">Director for STEERHUB, VPRDES BatStateU</p>
+          </div>
+          <div class="text-center">
+            <img src="../build/img/Staff/Dr.Ralph.webp" alt="Dr. Ralph Gerard B. Sangalang" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+            <h3 class="mt-4 font-bold">Dr. Ralph Gerard B. Sangalang</h3>
+            <p class="text-gray-600">Center Head, ESRC</p>
+          </div>
+          <div class="text-center">
+            <img src="../build/img/Staff/engrcj.webp" alt="Engr. Carlos Jhay A. Arroyo" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+            <h3 class="mt-4 font-bold">Engr. Carlos Jhay A. Arroyo</h3>
+            <p class="text-gray-600">University Research Associate, ESRC</p>
+          </div>
+          <div class="text-center">
+            <img src="../build/img/Staff/engraries.webp" alt="Engr. Ariel M. Rosales" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+            <h3 class="mt-4 font-bold">Engr. Ariel M. Rosales</h3>
+            <p class="text-gray-600">UNIRA, Project Sinag</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer id="contact" class="bg-gray-800 text-gray-100 py-6">
-    <div class="container mx-auto text-center">
-      <p>&copy; 2025 Electronic Systems Research Center. All Rights Reserved.</p>
-      <p>Email: esrc@g.batstate-u.edu.ph | Phone: (043) 980 0385 loc.2405</p>
-    </div>
-  </footer>
+  <!-- Footer Placeholder -->
+  <div id="footerPlaceholder"></div>
 
-  <!-- Modern, Larger Modal for Pop-up More Info (above navigation) -->
-  <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300 z-[100]">
-    <div id="modalContent" class="relative bg-white rounded-lg overflow-hidden shadow-xl max-w-4xl w-full mx-4 transform transition-all duration-300 ease-out scale-95">
-      <!-- Modal Close Button -->
-      <button id="modalClose" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none text-3xl">&times;</button>
-      <!-- Container with Skeleton Loader and Image -->
+  <!-- Modal for Pop-up More Info -->
+  <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300 z-[100]" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div id="modalContent" class="relative bg-white rounded-lg overflow-hidden shadow-xl w-full mx-4 max-w-lg md:max-w-4xl transform transition-all duration-300 ease-out scale-95">
+      <button id="modalClose" aria-label="Close modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-3xl">&times;</button>
+      <h2 id="modalTitle" class="sr-only">Project More Information</h2>
       <div class="relative">
         <div id="modalSkeleton" class="absolute inset-0 bg-gray-200 animate-pulse"></div>
-        <img id="modalImage" class="w-full h-auto object-contain" src="" alt="Project More Info"
+        <img id="modalImage" class="w-full h-auto object-contain" src="" alt="Detailed project view"
              onload="document.getElementById('modalSkeleton').classList.add('hidden')" />
       </div>
     </div>
@@ -241,100 +234,103 @@
   <!-- Preline UI Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/preline"></script>
 
-  <!-- CSV Fetch and DOM Insertion Script for Research Projects -->
+  <!-- CSV Fetch Script for Research Projects -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const projectsCSV = 'src/research_projects.csv';
- 
-      fetch(projectsCSV)
+      const csvFilePath = 'src/research_projects.csv';
+
+      fetch(csvFilePath)
         .then(response => {
           if (!response.ok) {
-            throw new Error("Could not fetch CSV");
+            throw new Error(`Could not fetch CSV from ${csvFilePath}`);
           }
           return response.text();
         })
         .then(csvText => {
-          const container = document.getElementById('projectCardContainer');
-          container.innerHTML = '';
- 
-          const rows = csvText
+          const projectContainer = document.getElementById('projectCardContainer');
+          projectContainer.innerHTML = '';
+
+          const csvRows = csvText
             .split('\n')
-            .map(line => line.trim())
-            .filter(line => line.length > 0);
- 
-          const headers = rows.shift().split(',').map(header => header.trim());
- 
-          let cardsData = rows.map(row => {
+            .map(row => row.trim())
+            .filter(row => row.length > 0);
+
+          const headers = csvRows.shift().split(',').map(header => header.trim());
+          const projectCards = csvRows.map(row => {
             const values = row.split(',').map(value => value.trim());
-            const obj = {};
+            const cardData = {};
             headers.forEach((header, index) => {
-              obj[header] = values[index];
+              cardData[header] = values[index];
             });
-            return obj;
-          });
- 
-          // Optionally reverse the order
-          cardsData = cardsData.reverse();
- 
-          cardsData.forEach(card => {
+            return cardData;
+          }).reverse();
+
+          projectCards.forEach(card => {
             const cardDiv = document.createElement('div');
             cardDiv.className = "bg-white rounded-lg shadow-lg overflow-hidden";
             
-            // Create a container for the image and its overlay
+            // Image Container
             const imageContainer = document.createElement('div');
             imageContainer.className = "relative group";
- 
-            const img = document.createElement('img');
-            img.src = card.img_path;
-            img.alt = card.alt || card.title;
-            img.loading = "lazy";
-            img.className = "w-full h-48 object-cover";
- 
-            imageContainer.appendChild(img);
- 
-            if(card.more_info) {
-              img.classList.add('cursor-pointer');
-              img.addEventListener('click', () => {
+
+            const cardImage = document.createElement('img');
+            cardImage.src = card.img_path;
+            cardImage.alt = card.alt || card.title;
+            cardImage.loading = "lazy";
+            cardImage.className = "w-full h-48 object-cover";
+
+            if (card.more_info) {
+              cardImage.classList.add('cursor-pointer');
+              cardImage.setAttribute('role', 'button');
+              cardImage.setAttribute('tabindex', '0');
+
+              const openModal = () => {
                 const modal = document.getElementById('modal');
                 const modalContent = document.getElementById('modalContent');
-                // Reset skeleton loader visibility on modal open
                 document.getElementById('modalSkeleton').classList.remove('hidden');
                 document.getElementById('modalImage').src = card.more_info;
                 modal.classList.remove('hidden');
-                // Trigger smooth scaling for a modern feel
+                document.getElementById('modalClose').focus();
                 setTimeout(() => {
                   modalContent.classList.remove('scale-95');
                   modalContent.classList.add('scale-100');
                 }, 10);
+              };
+
+              cardImage.addEventListener('click', openModal);
+              cardImage.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  openModal();
+                }
               });
- 
-              // Create a hover overlay on the image with a blue tinted blurred glass effect
-              const overlay = document.createElement('div');
-              overlay.className = "absolute inset-0 flex items-center justify-center bg-blue-500 bg-opacity-20 backdrop-blur-md transition duration-300 pointer-events-none opacity-0 group-hover:opacity-100";
+
+              // Overlay for interactive image
+              const overlayDiv = document.createElement('div');
+              overlayDiv.className = "absolute inset-0 flex items-center justify-center bg-blue-500 bg-opacity-20 backdrop-blur-md transition duration-300 pointer-events-none opacity-0 group-hover:opacity-100 group-focus:opacity-100";
               const overlayText = document.createElement('span');
               overlayText.textContent = "Read More";
               overlayText.className = "text-white transition duration-300 text-lg font-semibold";
-              overlay.appendChild(overlayText);
-              imageContainer.appendChild(overlay);
+              overlayDiv.appendChild(overlayText);
+              imageContainer.appendChild(overlayDiv);
             }
- 
+            imageContainer.appendChild(cardImage);
             cardDiv.appendChild(imageContainer);
- 
-            const contentDiv = document.createElement('div');
-            contentDiv.className = "p-6";
- 
-            const title = document.createElement('h3');
-            title.className = "font-bold text-xl mb-2";
-            title.textContent = card.title;
-            contentDiv.appendChild(title);
- 
-            const description = document.createElement('p');
-            description.className = "text-gray-600";
-            description.textContent = card.description;
-            contentDiv.appendChild(description);
- 
-            cardDiv.appendChild(contentDiv);
-            container.appendChild(cardDiv);
+
+            // Card Content
+            const cardContent = document.createElement('div');
+            cardContent.className = "p-6";
+            const cardTitle = document.createElement('h3');
+            cardTitle.className = "font-bold text-xl mb-2";
+            cardTitle.textContent = card.title;
+            const cardDescription = document.createElement('p');
+            cardDescription.className = "text-gray-600";
+            cardDescription.textContent = card.description;
+
+            cardContent.appendChild(cardTitle);
+            cardContent.appendChild(cardDescription);
+            cardDiv.appendChild(cardContent);
+            projectContainer.appendChild(cardDiv);
           });
         })
         .catch(error => {
@@ -342,8 +338,8 @@
         });
     });
   </script>
-  
-  <!-- Modal Close Script with Smooth Scaling -->
+
+  <!-- Modal Close Script -->
   <script>
     function closeModal() {
       const modal = document.getElementById('modal');
@@ -355,32 +351,38 @@
       }, 300);
     }
     document.getElementById('modalClose').addEventListener('click', closeModal);
-    document.getElementById('modal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('modal')) {
+    document.getElementById('modal').addEventListener('click', (event) => {
+      if (event.target === document.getElementById('modal')) {
         closeModal();
       }
     });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        const modal = document.getElementById('modal');
+        if (!modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      }
+    });
   </script>
-  
+
   <!-- Resource Button Mousemove Gradient Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const resourceBtn = document.querySelector('.resource-btn');
-      if(resourceBtn) {
-        resourceBtn.addEventListener('mousemove', function(e) {
-          const rect = this.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const posX = (x / rect.width * 100).toFixed(2);
-          const posY = (y / rect.height * 100).toFixed(2);
-          // Set a smoother radial gradient centered at the mouse position with a gradient stop
-          this.style.background = `radial-gradient(circle at ${posX}% ${posY}%, #1489d7, #45b8bc 80%)`;
-          this.style.color = "white";
+    document.addEventListener("DOMContentLoaded", () => {
+      const resourceButton = document.querySelector('.resource-btn');
+      if (resourceButton) {
+        resourceButton.addEventListener('mousemove', (event) => {
+          const buttonRect = resourceButton.getBoundingClientRect();
+          const mouseX = event.clientX - buttonRect.left;
+          const mouseY = event.clientY - buttonRect.top;
+          const posXPercent = (mouseX / buttonRect.width * 100).toFixed(2);
+          const posYPercent = (mouseY / buttonRect.height * 100).toFixed(2);
+          resourceButton.style.background = `radial-gradient(circle at ${posXPercent}% ${posYPercent}%, #1489d7, #45b8bc 80%)`;
+          resourceButton.style.color = "white";
         });
-        resourceBtn.addEventListener('mouseleave', function() {
-          // Reset the background and text color smoothly
-          this.style.background = "white";
-          this.style.color = "#1489d7";
+        resourceButton.addEventListener('mouseleave', () => {
+          resourceButton.style.background = "white";
+          resourceButton.style.color = "#1489d7";
         });
       }
     });
@@ -389,14 +391,34 @@
   <!-- Loader Removal Script -->
   <script>
     window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
-      loader.classList.add('fade-out');
+      const loaderElement = document.getElementById('loader');
+      loaderElement.classList.add('fade-out');
       setTimeout(() => {
-        loader.style.display = 'none';
-        // Restore scrolling after loader is removed
+        loaderElement.style.display = 'none';
         document.body.classList.remove('overflow-hidden');
       }, 500);
     });
+  </script>
+
+  <!-- Load Navigation and Footer Content -->
+  <script>
+    function loadHTMLContent(filePath, containerId) {
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Could not load ${filePath}`);
+          }
+          return response.text();
+        })
+        .then(htmlContent => {
+          document.getElementById(containerId).innerHTML = htmlContent;
+        })
+        .catch(error => console.error('Error loading content:', error));
+    }
+
+    // Load the navigation and footer into their placeholders.
+    loadHTMLContent('build/components/nav.html', 'navPlaceholder');
+    loadHTMLContent('build/components/footer.html', 'footerPlaceholder');
   </script>
 </body>
 </html>

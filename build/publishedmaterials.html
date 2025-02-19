@@ -29,90 +29,111 @@
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col" oncontextmenu="return false;">
   <!-- HEADER (Fixed) -->
-  <header x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50 h-16 flex items-center">
-    <div class="container mx-auto px-4 flex items-center justify-between">
-      <!-- Brand -->
-      <a href="../index.html" hreflang="en-us">
-        <div class="text-base sm:text-xl md:text-2xl font-bold text-blue-600 whitespace-nowrap">
-          Electronic Systems Research Center
-        </div>
-      </a>
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex space-x-6 text-gray-700">
-        <ul class="flex space-x-6">
-          <li><a href="../index.html#about" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">About</a></li>
-          <li><a href="../index.html#research" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Research</a></li>
-          <li><a href="../build/teammembers.html" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Team</a></li>
-          <li><a href="../build/centerhighlights.html" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Center Highlights</a></li>
-          <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Published Papers</a></li>
-        </ul>
-      </nav>
-      <!-- Mobile Toggle Button -->
-      <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle Navigation Menu">
-        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
-    </div>
-    <!-- Mobile Navigation Menu -->
-    <nav :class="open ? 'block' : 'hidden'" class="absolute top-full left-0 w-full bg-white shadow-md md:hidden p-4" aria-label="Mobile Navigation">
-      <ul class="flex flex-col space-y-2">
-        <li><a href="../index.html#about" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">About</a></li>
-        <li><a href="../index.html#research" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Research</a></li>
-        <li><a href="../build/teammembers.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Team</a></li>
-        <li><a href="../build/centerhighlights.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Center Highlights</a></li>
-        <li><a href="../build/publishedmaterials.html" hreflang="en-us" class="block px-4 py-2 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Published Papers</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div id="navPlaceholder"></div>
 
   <!-- MAIN CONTENT -->
   <main class="flex-grow pt-24 px-4 sm:px-6 md:px-8">
     <div class="max-w-4xl mx-auto" x-data="publications()" x-init="init()">
-      <!-- First Row: Filter Chips & Sort Dropdown -->
-      <div class="flex flex-col sm:flex-row items-center justify-between mb-4">
-        <!-- Filter Chips -->
-        <div class="flex flex-wrap gap-2" role="group" aria-label="Filter Publications">
-          <button @click="selectedFilter = 'All'; currentPage = 1" 
-                  :class="selectedFilter === 'All' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'" 
-                  class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :aria-pressed="selectedFilter === 'All'">All</button>
-          <button @click="selectedFilter = 'Conference Paper'; currentPage = 1" 
-                  :class="selectedFilter === 'Conference Paper' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'" 
-                  class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :aria-pressed="selectedFilter === 'Conference Paper'">Conference Paper</button>
-          <button @click="selectedFilter = 'Journal'; currentPage = 1" 
-                  :class="selectedFilter === 'Journal' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'" 
-                  class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :aria-pressed="selectedFilter === 'Journal'">Journal</button>
-        </div>
-        <!-- Sort Dropdown -->
-        <div class="flex items-center mt-4 sm:mt-0">
-          <label for="sortOrder" class="mr-2 text-sm font-medium text-gray-700">Sort by:</label>
-          <select id="sortOrder" x-model="sortOrder" @change="sortPublications()"
-                  class="appearance-none border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="desc">Most Recent</option>
-            <option value="asc">Oldest</option>
-          </select>
-        </div>
-      </div>
-      <!-- Second Row: Search Bar with Auto-Suggest -->
+      
+      <!-- Search Bar: Always first -->
       <div class="mb-6 relative">
-        <input type="text" placeholder="Search publications..."
-               x-model="searchQuery"
-               @input="showSuggestions = true"
-               @focus="showSuggestions = true"
-               @blur="setTimeout(() => showSuggestions = false, 200)"
-               class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        <!-- Auto-Suggest Dropdown with Enhanced Styling and Accessibility -->
+        <input
+          type="text"
+          placeholder="Search publications..."
+          x-model="searchQuery"
+          @input="showSuggestions = true"
+          @focus="showSuggestions = true"
+          @blur="setTimeout(() => showSuggestions = false, 200)"
+          @keydown.tab="showSuggestions = false"
+          class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          aria-label="Search publications"
+        />
+        <!-- Auto-Suggest Dropdown -->
         <template x-if="showSuggestions && suggestions.length > 0">
           <ul role="listbox" class="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1 max-h-48 overflow-y-auto">
             <template x-for="suggestion in suggestions" :key="suggestion">
-              <li tabindex="0" role="option" @click="selectSuggestion(suggestion)" class="px-4 py-2 hover:bg-gray-100 cursor-pointer" x-text="suggestion"></li>
+              <li
+                role="option"
+                @click="selectSuggestion(suggestion)"
+                @keydown.tab="showSuggestions = false"
+                class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                <span x-text="suggestion"></span>
+              </li>
             </template>
           </ul>
         </template>
       </div>
+
+      <!-- Filter & Sort Controls -->
+      <div class="mb-4">
+        <!-- Mobile: Minimalistic inline filter & sort dropdowns -->
+        <div class="sm:hidden flex items-center gap-2 mb-4">
+          <select
+            id="filterSelectMobile"
+            x-model="selectedFilter"
+            @change="currentPage = 1"
+            aria-label="Filter publications"
+            class="flex-1 border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="All">All</option>
+            <option value="Conference Paper">Conference Paper</option>
+            <option value="Journal">Journal</option>
+          </select>
+          <select
+            id="sortOrderMobile"
+            x-model="sortOrder"
+            @change="sortPublications()"
+            aria-label="Sort by"
+            class="flex-1 border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="desc">Recent</option>
+            <option value="asc">Oldest</option>
+          </select>
+        </div>
+        <!-- Larger screens: Filter chips and sort dropdown -->
+        <div class="hidden sm:flex items-center justify-between">
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filter publications">
+            <button
+              @click="selectedFilter = 'All'; currentPage = 1"
+              :class="selectedFilter === 'All' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'"
+              class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :aria-pressed="selectedFilter === 'All'"
+            >
+              All
+            </button>
+            <button
+              @click="selectedFilter = 'Conference Paper'; currentPage = 1"
+              :class="selectedFilter === 'Conference Paper' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'"
+              class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :aria-pressed="selectedFilter === 'Conference Paper'"
+            >
+              Conference Paper
+            </button>
+            <button
+              @click="selectedFilter = 'Journal'; currentPage = 1"
+              :class="selectedFilter === 'Journal' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'"
+              class="px-4 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :aria-pressed="selectedFilter === 'Journal'"
+            >
+              Journal
+            </button>
+          </div>
+          <div class="flex items-center">
+            <label for="sortOrder" class="mr-2 text-sm font-medium text-gray-700">Sort by:</label>
+            <select
+              id="sortOrder"
+              x-model="sortOrder"
+              @change="sortPublications()"
+              class="appearance-none border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="desc">Most Recent</option>
+              <option value="asc">Oldest</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
       <!-- Skeleton Loader -->
       <template x-if="loading">
         <div class="space-y-6">
@@ -130,82 +151,142 @@
           </div>
         </div>
       </template>
+
       <!-- Publication Cards -->
       <template x-if="!loading">
         <template x-for="(pub, index) in paginatedPublications()" :key="index">
-          <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 mb-6 relative" x-data="{ expanded: false }">
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 mb-6 relative"
+            x-data="{ expanded: false }"
+          >
             <!-- Header: Date on left, Type Chip on right -->
             <div class="flex justify-between items-center">
               <p class="text-sm text-gray-500" x-text="pub.formattedDate"></p>
-              <span class="px-3 py-1 text-xs rounded bg-blue-100 text-blue-800" x-text="pub.type"></span>
+              <span
+                :class="pub.type === 'Journal' ? 'bg-teal-100 text-teal-800' : (pub.type === 'Conference Paper' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800')"
+                class="px-3 py-1 text-xs rounded"
+                x-text="pub.type"
+              ></span>
             </div>
             <!-- Title -->
             <h3 class="text-xl font-semibold mt-1" x-text="pub.title"></h3>
             <!-- Summary with Inline Details -->
             <p class="text-gray-600 mt-3 text-base">
               <span x-text="pub.summary"></span>
-              <span x-show="expanded"
-                    x-transition:enter="transition ease-out duration-300"
-                    x-transition:enter-start="opacity-0 transform -translate-y-1"
-                    x-transition:enter-end="opacity-100 transform translate-y-0"
-                    x-transition:leave="transition ease-in duration-300"
-                    x-transition:leave-start="opacity-100 transform translate-y-0"
-                    x-transition:leave-end="opacity-0 transform -translate-y-1"
-                    class="ml-1"
-                    x-text="pub.details"></span>
+              <span
+                x-show="expanded"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform -translate-y-1"
+                x-transition:enter-end="opacity-100 transform translate-y-0"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 transform translate-y-0"
+                x-transition:leave-end="opacity-0 transform -translate-y-1"
+                class="ml-1"
+                x-text="pub.details"
+              ></span>
             </p>
             <!-- Toggle Details Button -->
-            <button class="text-blue-500 text-sm font-medium mt-3 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center"
-                    @click="expanded = !expanded"
-                    :aria-expanded="expanded">
-              <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
+            <button
+              class="text-blue-500 text-sm font-medium mt-3 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center"
+              @click="expanded = !expanded"
+              :aria-expanded="expanded"
+            >
+              <svg
+                x-show="!expanded"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+                aria-hidden="true"
+              >
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
-              <svg x-show="expanded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
+              <svg
+                x-show="expanded"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+                aria-hidden="true"
+              >
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
               </svg>
             </button>
             <!-- Read More & Keywords -->
-            <div class="flex flex-col sm:flex-row justify-between items-center mt-4">
-              <a :href="pub.link" hreflang="en-us" class="text-blue-500 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500" target="_blank" rel="noopener noreferrer">
+            <div class="flex flex-col sm:flex-row justify-between mt-4">
+              <!-- Keywords (only rendered if nonblank) -->
+              <div class="flex flex-wrap gap-2 order-1 sm:order-2">
+                <template x-if="pub.keyword1 && pub.keyword1.trim()">
+                  <span
+                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                    style="font-size: clamp(0.75rem, 2vw, 1rem);"
+                    x-text="pub.keyword1"
+                  ></span>
+                </template>
+                <template x-if="pub.keyword2 && pub.keyword2.trim()">
+                  <span
+                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                    style="font-size: clamp(0.75rem, 2vw, 1rem);"
+                    x-text="pub.keyword2"
+                  ></span>
+                </template>
+                <template x-if="pub.keyword3 && pub.keyword3.trim()">
+                  <span
+                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                    style="font-size: clamp(0.75rem, 2vw, 1rem);"
+                    x-text="pub.keyword3"
+                  ></span>
+                </template>
+              </div>
+              <!-- Read more link -->
+              <a
+                :href="pub.link"
+                hreflang="en-us"
+                class="text-blue-500 text-sm font-medium order-2 sm:order-1 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-2 sm:mt-0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Read more
               </a>
-              <div class="flex flex-wrap gap-2 mt-2 sm:mt-0">
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full" x-text="pub.keyword1"></span>
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full" x-text="pub.keyword2"></span>
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full" x-text="pub.keyword3"></span>
-              </div>
             </div>
           </div>
         </template>
       </template>
+
       <!-- Modern Pagination Controls -->
       <div class="flex justify-center items-center mt-6 mb-6 space-x-2" x-show="totalPages > 1">
-        <button :disabled="currentPage === 1" @click="currentPage--"
-                class="px-3 py-1 bg-gray-300 text-gray-700 rounded disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button
+          :disabled="currentPage === 1"
+          @click="currentPage--"
+          class="px-3 py-1 bg-gray-300 text-gray-700 rounded disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
           Prev
         </button>
         <template x-for="page in visiblePages()" :key="page">
-          <button @click="currentPage = page"
-                  :class="page === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'"
-                  class="px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <button
+            @click="currentPage = page"
+            :class="page === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'"
+            class="px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
             <span x-text="page"></span>
           </button>
         </template>
-        <button :disabled="currentPage === totalPages" @click="currentPage++"
-                class="px-3 py-1 bg-gray-300 text-gray-700 rounded disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button
+          :disabled="currentPage === totalPages"
+          @click="currentPage++"
+          class="px-3 py-1 bg-gray-300 text-gray-700 rounded disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
           Next
         </button>
       </div>
     </div>
   </main>
   <!-- FOOTER -->
-  <footer class="bg-gray-800 text-gray-100 py-6 w-full mt-6">
-    <div class="text-center">
-      <p>&copy; 2025 Electronic Systems Research Center. All Rights Reserved.</p>
-      <p>Email: <a href="mailto:esrc@g.batstate-u.edu.ph" class="text-blue-400 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500">esrc@g.batstate-u.edu.ph</a> | Phone: (043) 980 0385 loc.2405</p>
-    </div>
-  </footer>
+  <div id="footerPlaceholder"></div>
   <!-- PapaParse -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <!-- Alpine.js Component for Publications -->
@@ -229,8 +310,8 @@
             let pubs = result.data.filter(pub => pub.title && pub.title.trim() !== "");
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             pubs = pubs.map(pub => {
+              // Process Date
               if (pub.date) {
-                // Regex to handle bundled dates (e.g., "April 22-25 2024") and regular dates.
                 const regex = /([A-Za-z]+\s+\d{1,2})(?:-\d{1,2})?[\s,]+(\d{4})/;
                 const match = pub.date.match(regex);
                 if (match) {
@@ -257,10 +338,21 @@
                 pub.formattedDate = "";
                 pub.dateObj = new Date(0);
               }
+              // Clean and normalize the publication type
+              if (pub.type) {
+                pub.type = pub.type.replace(/^"+|"+$/g, '').trim();
+                if (pub.type.toLowerCase().includes('journal')) {
+                  pub.type = 'Journal';
+                } else if (pub.type.toLowerCase().includes('conference')) {
+                  pub.type = 'Conference Paper';
+                }
+              } else {
+                pub.type = 'Unknown';
+              }
               return pub;
             });
             this.publications = pubs;
-            // Initialize Fuse.js for fuzzy search with token-based matching
+            // Initialize Fuse.js for fuzzy search
             this.fuse = new Fuse(this.publications, {
               keys: ['title', 'summary', 'details', 'keyword1', 'keyword2', 'keyword3'],
               threshold: 0.4
@@ -305,7 +397,6 @@
         get totalPages() {
           return Math.ceil(this.filteredPublications().length / this.papersPerPage);
         },
-        // Fuzzy search suggestions using token-based matching with Fuse.js
         get suggestions() {
           if (!this.searchQuery.trim() || !this.fuse) return [];
           let tokens = this.searchQuery.trim().split(/\s+/);
@@ -320,7 +411,6 @@
           this.searchQuery = suggestion;
           this.showSuggestions = false;
         },
-        // Returns an array of up to 5 page numbers centered on the current page
         visiblePages() {
           const total = this.totalPages;
           let start = this.currentPage - 2;
@@ -336,6 +426,27 @@
         }
       }
     }
+  </script>
+
+  <!-- Load Navigation and Footer Content -->
+  <script>
+    function loadHTMLContent(filePath, containerId) {
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Could not load ${filePath}`);
+          }
+          return response.text();
+        })
+        .then(htmlContent => {
+          document.getElementById(containerId).innerHTML = htmlContent;
+        })
+        .catch(error => console.error('Error loading content:', error));
+    }
+
+    // Load the navigation and footer into their placeholders.
+    loadHTMLContent('../build/components/nav.html', 'navPlaceholder');
+    loadHTMLContent('../build/components/footer.html', 'footerPlaceholder');
   </script>
 </body>
 </html>
