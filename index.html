@@ -127,7 +127,7 @@
       <div class="absolute inset-0 flex items-center justify-center">
         <div class="w-64 aspect-square rounded-full circle-wave bg-gradient-to-r from-blue-500 to-blue-600 opacity-30 animate-ping"></div>
       </div>
-      <img src="../build/img/spinner.png" alt="ESRC Logo" class="relative w-32 h-32 object-cover object-center rounded-full animate-pulse" />
+      <img src="../build/img/spinner.png" alt="ESRC Logo" draggable="false" class="relative w-32 h-32 object-cover object-center rounded-full animate-pulse" />
     </div>
   </div>
 
@@ -191,22 +191,22 @@
         <p class="text-gray-600 mb-8">A team of dedicated researchers and professionals.</p>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div class="text-center">
-            <img src="../build/img/Staff/Engr.Amante.webp" alt="Assoc. Prof Albertson D. Amante" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+            <img src="../build/img/Staff/Engr.Amante.webp" alt="Assoc. Prof Albertson D. Amante" loading="lazy" draggable="false" class="mx-auto w-25 h-20 rounded-full shadow" />
             <h3 class="mt-4 font-bold">Assoc. Prof Albertson D. Amante</h3>
             <p class="text-gray-600">Director for STEERHUB, VPRDES BatStateU</p>
           </div>
           <div class="text-center">
-            <img src="../build/img/Staff/Dr.Ralph.webp" alt="Dr. Ralph Gerard B. Sangalang" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+            <img src="../build/img/Staff/Dr.Ralph.webp" alt="Dr. Ralph Gerard B. Sangalang" loading="lazy" draggable="false" class="mx-auto w-25 h-20 rounded-full shadow" />
             <h3 class="mt-4 font-bold">Dr. Ralph Gerard B. Sangalang</h3>
             <p class="text-gray-600">Center Head, ESRC</p>
           </div>
           <div class="text-center">
-            <img src="../build/img/Staff/engrcj.webp" alt="Engr. Carlos Jhay A. Arroyo" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+            <img src="../build/img/Staff/engrcj.webp" alt="Engr. Carlos Jhay A. Arroyo" loading="lazy" draggable="false" class="mx-auto w-25 h-20 rounded-full shadow" />
             <h3 class="mt-4 font-bold">Engr. Carlos Jhay A. Arroyo</h3>
             <p class="text-gray-600">University Research Associate, ESRC</p>
           </div>
           <div class="text-center">
-            <img src="../build/img/Staff/engraries.webp" alt="Engr. Ariel M. Rosales" loading="lazy" class="mx-auto w-25 h-20 rounded-full shadow" />
+            <img src="../build/img/Staff/engraries.webp" alt="Engr. Ariel M. Rosales" loading="lazy" draggable="false" class="mx-auto w-25 h-20 rounded-full shadow" />
             <h3 class="mt-4 font-bold">Engr. Ariel M. Rosales</h3>
             <p class="text-gray-600">UNIRA, Project Sinag</p>
           </div>
@@ -225,7 +225,7 @@
       <h2 id="modalTitle" class="sr-only">Project More Information</h2>
       <div class="relative">
         <div id="modalSkeleton" class="absolute inset-0 bg-gray-200 animate-pulse"></div>
-        <img id="modalImage" class="w-full h-auto object-contain" src="" alt="Detailed project view"
+        <img id="modalImage" class="w-full h-auto object-contain" src="" alt="Detailed project view" draggable="false"
              onload="document.getElementById('modalSkeleton').classList.add('hidden')" />
       </div>
     </div>
@@ -277,6 +277,7 @@
             cardImage.src = card.img_path;
             cardImage.alt = card.alt || card.title;
             cardImage.loading = "lazy";
+            cardImage.draggable = false; // Disable dragging for dynamically created images
             cardImage.className = "w-full h-48 object-cover";
 
             if (card.more_info) {
@@ -419,6 +420,15 @@
     // Load the navigation and footer into their placeholders.
     loadHTMLContent('build/components/nav.html', 'navPlaceholder');
     loadHTMLContent('build/components/footer.html', 'footerPlaceholder');
+  </script>
+
+  <!-- Global Script to Prevent Image Dragging -->
+  <script>
+    document.addEventListener('dragstart', function(event) {
+      if (event.target.tagName.toLowerCase() === 'img') {
+        event.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
