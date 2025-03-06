@@ -1,103 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
-  <loc>http://electronic-systems-research-center.github.io/index.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
+  <loc>https://electronic-systems-research-center.github.io/</loc>
+  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://electronic-systems-research-center.github.io/build/teammembers.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
+  <loc>https://electronic-systems-research-center.github.io/build/dashboard.html</loc>
+  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://electronic-systems-research-center.github.io/../build/publishedmaterials.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
+  <loc>https://electronic-systems-research-center.github.io/index.html</loc>
+  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://electronic-systems-research-center.github.io/../build/teammembers.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
+  <loc>https://electronic-systems-research-center.github.io/build/manager/engineering-research.html</loc>
+  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://electronic-systems-research-center.github.io/build/dashboard.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
+  <loc>https://electronic-systems-research-center.github.io/build/manager/design-principles-and-logic-design.html</loc>
+  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../index.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../index.html#about</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../index.html#research</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../index.html#contact</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/teammembers.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../index.html#team</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/dashboard.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../manager/design-principles-and-logic-design.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/build/manager/engineering-research.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../build/manager/design-principles-and-logic-design.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../build/manager/engineering-research.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../../index.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../dashboard.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
-<url>
-  <loc>http://electronic-systems-research-center.github.io/../manager/engineering-research.html</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>2025-02-13</lastmod>
-</url>
+
+
 </urlset>
