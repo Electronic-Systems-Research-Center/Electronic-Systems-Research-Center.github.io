@@ -1,33 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-  <loc>https://electronic-systems-research-center.github.io/</loc>
-  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
-  <priority>1.00</priority>
+	<loc>https://electronic-systems-research-center.github.io/</loc>
+	<lastmod>2025-03-07T01:45:31+01:00</lastmod>
+	<priority>1.0</priority>
 </url>
 <url>
-  <loc>https://electronic-systems-research-center.github.io/build/dashboard.html</loc>
-  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://electronic-systems-research-center.github.io/build/dashboard.html</loc>
+	<lastmod>2025-03-07T01:45:31+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>https://electronic-systems-research-center.github.io/index.html</loc>
-  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
-  <priority>0.64</priority>
+	<loc>https://electronic-systems-research-center.github.io/index.html</loc>
+	<lastmod>2025-03-07T01:45:31+01:00</lastmod>
+	<priority>1.0</priority>
 </url>
 <url>
-  <loc>https://electronic-systems-research-center.github.io/build/manager/engineering-research.html</loc>
-  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
-  <priority>0.64</priority>
+	<loc>https://electronic-systems-research-center.github.io/build/manager/engineering-research.html</loc>
+	<lastmod>2025-03-07T01:45:31+01:00</lastmod>
+	<priority>0.6</priority>
 </url>
 <url>
-  <loc>https://electronic-systems-research-center.github.io/build/manager/design-principles-and-logic-design.html</loc>
-  <lastmod>2025-03-06T05:32:20+00:00</lastmod>
-  <priority>0.64</priority>
+	<loc>https://electronic-systems-research-center.github.io/build/manager/design-principles-and-logic-design.html</loc>
+	<lastmod>2025-03-07T01:45:31+01:00</lastmod>
+	<priority>0.6</priority>
 </url>
-
-
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/Engineering%20Research/intro-to-research.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/Engineering%20Research/citation-and-attribution.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/Engineering%20Research/email-etiquette.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/Engineering%20Research/literature-review.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/Engineering%20Research/methodology.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/lesson-1.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/lesson-2.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/lesson-3.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/lesson-4.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/lesson-5.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/lesson-6.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/exercises-1.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/lab-1.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://electronic-systems-research-center.github.io/build/flipbook/references.html</loc>
+	<lastmod>2025-03-07T01:45:33+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
 </urlset>
