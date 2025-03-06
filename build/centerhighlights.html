@@ -13,16 +13,11 @@
     <link rel="canonical" href="https://electronic-systems-research-center.github.io" />
     <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp" />
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Swiper.js CSS (if used in carousel) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Papa Parse for CSV parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-    <!-- Alpine.js -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
 
-    <!-- Custom Animations -->
     <style>
       @keyframes fadeInUp {
         from {
@@ -40,19 +35,12 @@
     </style>
   </head>
   <body class="bg-gray-50 min-h-screen flex flex-col" oncontextmenu="return false;">
-    <!-- HEADER (Unified) -->
     <div id="navPlaceholder"></div>
-
-    <!-- PAGE TITLE -->
     <main class="flex-grow pt-24 px-4 sm:px-6 md:px-8">
       <h1 class="text-center text-5xl font-bold text-gray-800 mb-8">CENTER HIGHLIGHTS</h1>
-
-      <!-- Articles Component -->
       <div x-data="articlesData()" x-init="fetchData()">
-        <!-- Unified Filter & Sort Controls -->
         <div class="max-w-6xl mx-auto mb-6">
           <div class="flex flex-wrap justify-end items-center gap-4">
-            <!-- Sort Dropdown -->
             <div class="flex items-center">
               <label for="sort" class="sr-only">Sort by</label>
               <select id="sort" x-model="sortOrder" @change="currentPage = 1" 
@@ -62,7 +50,6 @@
                 <option value="oldest">Oldest First</option>
               </select>
             </div>
-            <!-- Month Filter Dropdown -->
             <div class="flex items-center">
               <label for="month" class="sr-only">Filter by month</label>
               <select id="month" x-model="selectedMonth" @change="currentPage = 1" 
@@ -74,7 +61,6 @@
                 </template>
               </select>
             </div>
-            <!-- Year Filter Dropdown -->
             <div class="flex items-center">
               <label for="year" class="sr-only">Filter by year</label>
               <select id="year" x-model="selectedYear" @change="currentPage = 1" 
@@ -89,9 +75,7 @@
           </div>
         </div>
 
-        <!-- Articles Container -->
         <div class="max-w-6xl mx-auto space-y-6">
-          <!-- Skeleton Loader -->
           <template x-if="articles.length === 0">
             <div class="space-y-6">
               <template x-for="n in 3" :key="n">
@@ -105,14 +89,12 @@
             </div>
           </template>
 
-          <!-- Article Cards with Image on the Left -->
           <template x-if="articles.length > 0">
             <template x-for="article in paginatedArticles()" :key="article.title">
               <div x-data="{ carousel: carousel(article.images) }"
                    @mouseenter="carousel.start()"
                    @mouseleave="carousel.stop()"
                    class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 mb-6 relative animate-fadeInUp flex flex-col md:flex-row">
-                <!-- Image Carousel on the Left -->
                 <div class="relative md:w-1/3 h-64 md:h-auto overflow-hidden rounded-md mr-0 md:mr-4 mb-4 md:mb-0">
                   <template x-for="(img, index) in carousel.images" :key="index">
                     <img :src="img" :alt="article.alt || 'Center highlight image'"
@@ -122,7 +104,6 @@
                          :class="{ 'opacity-100': carousel.currentIndex === index, 'opacity-0': carousel.currentIndex !== index }">
                   </template>
                 </div>
-                <!-- Article Details on the Right -->
                 <div class="flex flex-col justify-center md:w-2/3">
                   <h2 class="text-2xl font-bold text-gray-900 mb-2" x-text="article.title"></h2>
                   <div class="w-16 border-b-2 border-gray-200 mb-2"></div>
@@ -134,7 +115,6 @@
           </template>
         </div>
 
-        <!-- Pagination Controls -->
         <div class="flex justify-center items-center mt-8 space-x-2" x-show="articles.length > 0">
           <button 
             @click="currentPage = Math.max(1, currentPage - 1); window.scrollTo({ top: 0, behavior: 'smooth' })"
@@ -163,7 +143,6 @@
       </div>
     </main>
 
-    <!-- Modal for Full-Screen Image Navigation -->
     <div x-data 
          x-show="$store.modal.open" 
          x-transition:enter="transition ease-out duration-300"
@@ -173,30 +152,22 @@
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
          class="fixed inset-0 flex items-center justify-center z-50" role="dialog" aria-modal="true">
-      <!-- Dark Overlay -->
       <div class="absolute inset-0 bg-black opacity-50" @click="$store.modal.close()" tabindex="0"></div>
-      <!-- Image Container -->
       <div class="relative w-full max-w-4xl mx-4">
         <img :src="$store.modal.images[$store.modal.currentIndex]" alt="Expanded image" loading="lazy" class="w-full h-auto object-contain rounded-lg shadow-lg">
-        <!-- Close Button -->
         <button @click="$store.modal.close()" class="absolute top-2 right-2 text-white text-3xl focus:outline-none focus:ring-2 focus:ring-white" aria-label="Close modal">&times;</button>
-        <!-- Prev Button -->
         <button @click="$store.modal.prev()" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 text-white text-2xl focus:outline-none focus:ring-2 focus:ring-white" aria-label="Previous image">
           &lt;
         </button>
-        <!-- Next Button -->
         <button @click="$store.modal.next()" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 text-white text-2xl focus:outline-none focus:ring-2 focus:ring-white" aria-label="Next image">
           &gt;
         </button>
       </div>
     </div>
 
-    <!-- FOOTER (Unified) -->
     <div id="footerPlaceholder"></div>
 
-    <!-- Alpine.js Stores & Components -->
     <script>
-      // Alpine store for modal functionality with navigation
       document.addEventListener('alpine:init', () => {
         Alpine.store('modal', {
           open: false,
@@ -223,7 +194,6 @@
         });
       });
 
-      // Alpine component to fetch CSV data for highlights with sorting, filtering, and pagination
       function articlesData() {
         return {
           articles: [],
@@ -254,7 +224,6 @@
                       });
                       return row;
                     });
-                    // Compute available months and years
                     let monthSet = new Set();
                     let yearSet = new Set();
                     this.articles.forEach(article => {
@@ -304,7 +273,6 @@
         };
       }
 
-      // Alpine component for image carousel functionality
       function carousel(images) {
         return {
           images: images,
@@ -324,7 +292,6 @@
       }
     </script>
 
-    <!-- Load Navigation and Footer Content -->
   <script>
     function loadHTMLContent(filePath, containerId) {
       fetch(filePath)
@@ -340,7 +307,6 @@
         .catch(error => console.error('Error loading content:', error));
     }
 
-    // Load the navigation and footer into their placeholders.
     loadHTMLContent('../build/components/nav.html', 'navPlaceholder');
     loadHTMLContent('../build/components/footer.html', 'footerPlaceholder');
   </script>
