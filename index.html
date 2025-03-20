@@ -3,134 +3,267 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Electronic Systems Research Center (ESRC) of Batangas State University The NEU's STEER Hub, is committed to providing technical support for R&D project and activities in the field of Electronics Engineering." />
-  <meta property="og:title" content="Electronic Systems Research Center (ESRC)" />
-  <meta property="og:site_name" content="Electronic Systems Research Center (ESRC)" />
-  <meta property="og:image" content="build/img/esrc logo 2.png" />
+  <meta name="description" content="Explore the Electronic Systems Research Center (ESRC) at Batangas State University The NEU. Discover cutting-edge research in Electronics Engineering and view our accomplishments." />
+  <meta name="keywords" content="ESRC, Electronic Systems Research Center, Batangas State University The NEU, BatStateU, Electronics Research, Engineering Innovation, Electronics Engineering" />
+  <meta name="author" content="Electronic Systems Research Center" />
+  
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Electronic Systems Research Center - Batangas State University The NEU" />
+  <meta property="og:site_name" content="ESRC - Batangas State University The NEU" />
+  <meta property="og:image" content="https://electronic-systems-research-center.github.io/build/img/esrc_logo.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://electronic-systems-research-center.github.io/" />
-  <link rel="icon" type="image/x-icon" href="../build/img/esrc logo 2.webp" />
   <link rel="canonical" href="https://electronic-systems-research-center.github.io/" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-64NF2N18ZD"></script>
+  <title>Electronic Systems Research Center - Batangas State University The NEU</title>
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-64NF2N18ZD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-64NF2N18ZD');
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
-  <title>Electronic Systems Research Center - Batangas State University The NEU</title>
-
-  <!-- Structured Data -->
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Blog",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://electronic-systems-research-center.github.io/"
-      },
-      "affiliation": {
+      "@type": "Organization",
+      "name": "Electronic Systems Research Center",
+      "url": "https://electronic-systems-research-center.github.io/",
+      "logo": "https://electronic-systems-research-center.github.io/build/img/esrc_logo.png",
+      "sameAs": [
+        "https://www.facebook.com/ESRC",
+        "https://twitter.com/ESRC",
+        "https://www.linkedin.com/company/esrc"
+      ],
+      "memberOf": {
         "@type": "CollegeOrUniversity",
         "name": "Batangas State University The National Engineering University"
       }
-      "headline": "Electronic Systems Research Center (ESRC) - Batangas State University The NEU",
-      "image": "",
-      "author": {
-        "@type": "Organization",
-        "name": "Electronic Systems Research Center - Batangas State University The NEU",
-        "url": "https://electronic-systems-research-center.github.io/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Electronic Systems Research Center",
-        "affiliation": {
-          "@type": "CollegeOrUniversity",
-          "name": "Batangas State University The National Engineering University"
-        }
-      },
-      "datePublished": "2025-01-28",
-      "dateModified": "2025-03-17"
     }
   </script>
 
-  <!-- Tailwind CSS & Preline UI -->
+  <!-- Fonts & Tailwind CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@preline/plugin"></script>
   <script>
     tailwind.config = {
-      content: ['./**/*.html'],
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Roboto', 'Arial', 'sans-serif']
-          },
           colors: {
-            scrollbar: {
-              DEFAULT: '#cbd5e1',
-              hover: '#94a3b8'
-            }
+            primary: "#1589d7",
+            accent: "#44b8bc"
+          },
+          fontFamily: {
+            sans: ["Roboto", "Arial", "sans-serif"]
           }
         }
-      },
-      plugins: [preline]
+      }
     };
   </script>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" hreflang="en-us" rel="stylesheet">
-  
-  <!-- Custom CSS -->
+  <!-- Custom Styles -->
   <style>
     .fade-out {
       transition: opacity 0.5s ease;
       opacity: 0;
     }
+    /* HERO SECTION */
     .hero-section {
-      background-image: url('../build/img/esrc4.webp');
+      position: relative;
+      min-height: 98vh;
+      background:
+        linear-gradient(to bottom, rgba(30, 89, 177, 0.55), rgba(30, 89, 177, 0.55)),
+        url('../build/img/esrc4.webp');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
     }
-    .circle-wave {
-      clip-path: circle(50%);
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 25%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 80%);
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffffff;
+      font-size: 2rem;
+      opacity: 0.8;
+      z-index: 2;
+    }
+    body {
+      padding-top: 0 !important;
     }
     .resource-btn {
       transition: background 0.5s ease, color 0.5s ease;
     }
     .resource-btn:hover,
     .resource-btn:focus {
-      background: radial-gradient(circle at center, #1489d7, #45b8bc 80%);
+      background: radial-gradient(circle at center, #1589d7, #44b8bc 80%);
       color: white;
       outline: none;
     }
     .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
+      position: absolute; 
+      width: 1px; 
+      height: 1px; 
+      padding: 0; 
       margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
+      overflow: hidden; 
+      clip: rect(0, 0, 0, 0); 
+      white-space: nowrap; 
       border: 0;
     }
     .sr-only:focus {
-      position: static;
-      width: auto;
-      height: auto;
+      position: static; 
+      width: auto; 
+      height: auto; 
       margin: 0;
-      overflow: visible;
-      clip: auto;
+      overflow: visible; 
+      clip: auto; 
       white-space: normal;
+    }
+    /* ABOUT US SECTION */
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media(min-width: 768px) {
+      .about-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .about-card {
+      flex: 1;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    /* Panorama Card Container */
+    .panorama-card {
+      background: #ffffff;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      width: 100%;
+      height: 450px; /* container's height - adjust as needed */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* The inner container that holds the actual background image */
+    #flatPanoramaInner {
+      width: 100%;
+      height: 100%;
+      border-radius: 0.25rem;
+      overflow: hidden;
+      position: relative;
+      /* By default, "zoom in" the image so only the center portion is visible */
+      background: url('./build/img/Panorama/esrc_center.jpg') no-repeat center;
+      /* Start with a large background-size so edges are effectively outside container */
+      background-size: 400% auto; 
+      cursor: grab;
+    }
+    /* Arrows & Zoom */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      z-index: 10;
+      cursor: pointer;
+      user-select: none;
+    }
+    .arrow:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .left-arrow {
+      left: 10px;
+    }
+    .right-arrow {
+      right: 10px;
+    }
+    .zoom-controls {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+    }
+    .zoom-controls button {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      margin: 2px 0;
+      border-radius: 5px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .zoom-controls button:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    /* ACCOMPLISHMENTS SECTION (Modern Design) */
+    .accomplishment-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    @media(min-width: 992px) {
+      .accomplishment-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .accomplishment-book:hover {
+      transform: scale(1.05);
+    }
+    .read-btn {
+      background: #1589d7;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+    .read-btn:hover {
+      background: #44b8bc;
+    }
+    .transition-section {
+      background: linear-gradient(to bottom, #ffffff, #f8f8f8);
     }
   </style>
 </head>
 
-<body class="py-0px bg-gray-50 text-gray-800 font-sans pt-20 overflow-hidden" oncontextmenu="return false;">
+<body class="bg-white text-gray-800 font-sans overflow-hidden">
   <!-- Skip to main content for accessibility -->
   <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
 
@@ -138,9 +271,9 @@
   <div id="loader" class="fixed inset-0 flex items-center justify-center z-[9999] bg-white" aria-hidden="true">
     <div class="relative">
       <div class="absolute inset-0 flex items-center justify-center">
-        <div class="w-64 aspect-square rounded-full circle-wave bg-gradient-to-r from-blue-500 to-blue-600 opacity-30 animate-ping"></div>
+        <div class="w-64 aspect-square rounded-full bg-gradient-to-r from-blue-500 to-blue-600 opacity-30 animate-ping"></div>
       </div>
-      <img src="../build/img/spinner.png" alt="ESRC Logo" draggable="false" class="relative w-32 h-32 object-cover object-center rounded-full animate-pulse" />
+      <img src="../build/img/spinner.png" alt="ESRC Logo" draggable="false" class="relative w-32 h-32 object-cover rounded-full animate-pulse" />
     </div>
   </div>
 
@@ -148,57 +281,129 @@
   <div id="navPlaceholder"></div>
 
   <!-- Main Content -->
-  <main id="main-content" class="max-w-full " role="main">
-    <!-- Hero Section -->
-    <section class="relative bg-cover bg-center text-white py-20 hero-section">
-      <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-800 opacity-55"></div>
-      <div class="container relative z-10 my-0px mx-auto text-center">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-4">Innovating the Future Through Research</h1>
-        <p class="text-lg mb-6">Discover cutting-edge research, collaborate with world-class experts, and make a lasting impact.</p>
-        <a href="../build/resources.html" hreflang="en-us" class="resource-btn bg-white text-[#1489d7] px-6 py-3 rounded-lg shadow-lg focus:outline-none">
+  <main id="main-content" class="max-w-full" role="main">
+    <!-- HERO SECTION -->
+    <section class="hero-section flex items-center justify-center text-white">
+      <div class="container mx-auto text-center py-16 relative z-10">
+        <h1 class="text-3xl sm:text-5xl font-bold mb-4">Innovating the Future Through Research</h1>
+        <p class="text-lg sm:text-xl mb-6 max-w-2xl mx-auto">
+          Pioneering breakthroughs in electronic systems, empowering society, and shaping tomorrow's technology.
+        </p>
+        <a href="../build/resources.html" class="resource-btn bg-white text-primary px-6 py-3 rounded-lg shadow-lg focus:outline-none inline-block">
           Resources and Materials
         </a>
       </div>
+      <!-- Scroll Indicator with V Icon -->
+      <div class="scroll-indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 fill-current" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 14a1 1 0 01-.707-.293l-5-5a1 1 0 111.414-1.414L10 11.586l4.293-4.293a1 1 0 111.414 1.414l-5 5A1 1 0 0110 14z" clip-rule="evenodd" />
+        </svg>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">About Us</h2>
-        <p class="text-gray-600 mb-8">
-          The Electronic Systems Research Center (ESRC), under the Batangas State University The NEU, is committed to providing technical support and workspace for R&D activities in electronics engineering.
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-8">About Us</h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-8">
+          The Electronic Systems Research Center (ESRC) is at the forefront of innovation in electronics engineering. We provide state-of-the-art facilities, foster collaborative research, and develop cutting-edge solutions that bridge the gap between academia and industry.
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-6 bg-white rounded-lg shadow">
-            <h3 class="font-bold text-xl mb-2">Center Mandate</h3>
-            <p class="text-gray-600">
-              The ESRC provides technical support, custom experimental setups, and prototype development for various research fields involving electronic systems.
-            </p>
+
+        <!-- Two-column layout: Left (panorama) + Right (cards) -->
+        <div class="about-container items-stretch">
+          <!-- Left Column: Card containing panorama -->
+          <div class="panorama-card">
+            <div id="flatPanoramaInner">
+              <!-- Arrows -->
+              <div class="arrow left-arrow" id="leftArrow">&#8592;</div>
+              <div class="arrow right-arrow" id="rightArrow">&#8594;</div>
+              <!-- Zoom Controls -->
+              <div class="zoom-controls" id="zoomControls">
+                <button id="zoomIn">-</button>
+                <button id="zoomOut">+</button>
+              </div>
+            </div>
           </div>
-          <div class="p-6 bg-white rounded-lg shadow">
-            <h3 class="font-bold text-xl mb-2">Equipment Available</h3>
-            <p class="text-gray-600">Spectral Camera and Weather Station</p>
-            <p class="text-gray-600">Test and Measurement Instrument</p>
-            <p class="text-gray-600">Data Loggers and Dremel Tools</p>
-            <p class="text-gray-600">3D Printers and Solder Workstation</p>
-            <p class="text-gray-600">Function Generators</p>
-            <p class="text-gray-600">Bench Power Supply</p>
+          <!-- Right Column: Two stacked cards -->
+          <div class="about-right">
+            <div class="about-card">
+              <h3 class="font-bold text-2xl mb-4 text-primary">Center Mandate</h3>
+              <p class="text-gray-600">
+                We support innovative research, prototype development, and custom experimental setups to drive advancements in electronic systems.
+              </p>
+            </div>
+            <div class="about-card">
+              <h3 class="font-bold text-2xl mb-4 text-primary">Equipment Available</h3>
+              <ul class="text-gray-600 list-disc list-inside">
+                <li>Spectral Camera, Weather Station</li>
+                <li>Test &amp; Measurement Instruments</li>
+                <li>Data Loggers, Dremel Tools</li>
+                <li>3D Printers, Solder Workstations</li>
+                <li>Function Generators</li>
+                <li>Bench Power Supplies</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Research Projects Section -->
-    <section id="research" class="bg-gray-100 py-16">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
-        <p class="text-gray-600 mb-8">Marvel at the innovative projects made by the ESRC for social and technological innovation.</p>
-        <div id="projectCardContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    <!-- ACCOMPLISHMENTS SECTION (Modern Design) -->
+    <section id="accomplishments" class="py-16 bg-white relative">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <!-- Left: Text and Read Button -->
+          <div>
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Accomplishments</h2>
+            <p class="text-gray-600 mb-8">
+              Our center thrives in pushing the boundaries of Electronic Engineering. Catch up with our accomplishment this year!
+            </p>
+            <button id="readButton" class="bg-primary text-white py-3 px-6 rounded-md font-medium transition duration-300 hover:bg-accent">
+              Read
+            </button>
+          </div>
+          <!-- Right: Book with larger squares behind it -->
+          <div class="flex items-center justify-center">
+            <div class="relative w-60 h-80">
+              <!-- Square at top-right corner (behind the book) -->
+              <div
+                class="absolute bg-primary opacity-50 w-14 h-14 rounded-sm z-0"
+                style="top: 0; right: 0; transform: translate(40%, -40%) rotate(10deg);"
+              ></div>
+              <!-- Square at bottom-left corner (behind the book) -->
+              <div
+                class="absolute bg-accent opacity-50 w-14 h-14 rounded-sm z-0"
+                style="bottom: 0; left: 0; transform: translate(-40%, 40%) rotate(-8deg);"
+              ></div>
+              <!-- Book Image (on top, with shadow) -->
+              <img
+                src="./build/img/Accomplishments/ESRC Quarterly Accomplishment.png"
+                alt="Accomplishments Book Q1 2025"
+                class="absolute inset-0 w-full h-full object-cover rounded shadow-lg cursor-pointer z-10"
+                id="bookImage"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team" class="py-16">
+    <!-- RESEARCH PROJECTS SECTION -->
+    <section id="research" class="bg-white py-16">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
+        <p class="text-gray-600 mb-8">
+          Discover the innovative projects undertaken by the ESRC, driving technological progress.
+        </p>
+        <div id="projectCardContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Fallback message if CSV content not loaded -->
+          <p class="col-span-full text-gray-500">No projects available at this time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section id="team" class="py-16 bg-white">
       <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold mb-4">Meet Our Team</h2>
         <p class="text-gray-600 mb-8">A team of dedicated researchers and professionals.</p>
@@ -228,217 +433,322 @@
     </section>
   </main>
 
-  <!-- Footer Placeholder -->
+  <!-- FOOTER PLACEHOLDER -->
   <div id="footerPlaceholder"></div>
 
-  <!-- Modal for Pop-up More Info -->
+  <!-- FLIPBOOK MODAL -->
+  <div id="flipbookModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300 z-[100]" aria-modal="true">
+    <div class="relative bg-white rounded-lg overflow-hidden shadow-xl w-full mx-4 max-w-4xl transform transition-all duration-300 ease-out scale-95">
+      <button id="flipbookClose" aria-label="Close flipbook modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-3xl">&times;</button>
+      <!-- Flipbook Embed -->
+      <iframe allowfullscreen="allowfullscreen" scrolling="no" class="fp-iframe" src="https://heyzine.com/flip-book/2d76101035.html" style="border: 1px solid lightgray; width: 100%; height: 95vh;"></iframe>
+    </div>
+  </div>
+
+  <!-- PROJECT MODAL (Existing) -->
   <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300 z-[100]" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div id="modalContent" class="relative bg-white rounded-lg overflow-hidden shadow-xl w-full mx-4 max-w-lg md:max-w-4xl transform transition-all duration-300 ease-out scale-95">
       <button id="modalClose" aria-label="Close modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-3xl">&times;</button>
       <h2 id="modalTitle" class="sr-only">Project More Information</h2>
       <div class="relative">
         <div id="modalSkeleton" class="absolute inset-0 bg-gray-200 animate-pulse"></div>
-        <img id="modalImage" class="w-full h-auto object-contain" src="" alt="Detailed project view" draggable="false"
-             onload="document.getElementById('modalSkeleton').classList.add('hidden')" />
+        <img id="modalImage" class="w-full h-auto object-contain" src="" alt="Detailed project view" draggable="false" onload="document.getElementById('modalSkeleton').classList.add('hidden')" />
       </div>
     </div>
   </div>
 
-  <!-- Preline UI Scripts -->
+  <!-- Alpine.js & Preline -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/preline"></script>
 
-  <!-- CSV Fetch Script for Research Projects -->
+  <!-- CSV FETCH SCRIPT FOR RESEARCH PROJECTS -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const csvFilePath = 'src/research_projects.csv';
-
+    document.addEventListener('DOMContentLoaded', function() {
+      var csvFilePath = 'src/research_projects.csv';
       fetch(csvFilePath)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Could not fetch CSV from ${csvFilePath}`);
-          }
+        .then(function(response) {
+          if (!response.ok) throw new Error('Could not fetch CSV from ' + csvFilePath);
           return response.text();
         })
-        .then(csvText => {
-          const projectContainer = document.getElementById('projectCardContainer');
+        .then(function(csvText) {
+          var projectContainer = document.getElementById('projectCardContainer');
           projectContainer.innerHTML = '';
-
-          const csvRows = csvText
-            .split('\n')
-            .map(row => row.trim())
-            .filter(row => row.length > 0);
-
-          const headers = csvRows.shift().split(',').map(header => header.trim());
-          const projectCards = csvRows.map(row => {
-            const values = row.split(',').map(value => value.trim());
-            const cardData = {};
-            headers.forEach((header, index) => {
+          var csvRows = csvText.split(/\r?\n/).map(function(row) { return row.trim(); }).filter(function(row) { return row.length > 0; });
+          if (!csvRows.length) {
+            projectContainer.innerHTML = '<p class="col-span-full text-gray-500">No projects available at this time.</p>';
+            return;
+          }
+          var headers = csvRows.shift().split(',').map(function(header) { return header.trim(); });
+          var projectCards = csvRows.map(function(row) {
+            var values = row.split(',').map(function(value) { return value.trim(); });
+            var cardData = {};
+            headers.forEach(function(header, index) {
               cardData[header] = values[index];
             });
             return cardData;
           }).reverse();
 
-          projectCards.forEach(card => {
-            const cardDiv = document.createElement('div');
-            cardDiv.className = "bg-white rounded-lg shadow-lg overflow-hidden";
-            
-            // Image Container
-            const imageContainer = document.createElement('div');
-            imageContainer.className = "relative group";
+          projectCards.forEach(function(card) {
+            var cardDiv = document.createElement('div');
+            cardDiv.className = 'bg-white rounded-lg shadow-lg overflow-hidden';
 
-            const cardImage = document.createElement('img');
+            var imageContainer = document.createElement('div');
+            imageContainer.className = 'relative group';
+
+            var cardImage = document.createElement('img');
             cardImage.src = card.img_path;
             cardImage.alt = card.alt || card.title;
-            cardImage.loading = "lazy";
-            cardImage.draggable = false; // Disable dragging for dynamically created images
-            cardImage.className = "w-full h-48 object-cover";
+            cardImage.loading = 'lazy';
+            cardImage.draggable = false;
+            cardImage.className = 'w-full h-48 object-cover';
 
             if (card.more_info) {
               cardImage.classList.add('cursor-pointer');
               cardImage.setAttribute('role', 'button');
               cardImage.setAttribute('tabindex', '0');
 
-              const openModal = () => {
-                const modal = document.getElementById('modal');
-                const modalContent = document.getElementById('modalContent');
+              var openModal = function() {
+                var modal = document.getElementById('modal');
                 document.getElementById('modalSkeleton').classList.remove('hidden');
                 document.getElementById('modalImage').src = card.more_info;
                 modal.classList.remove('hidden');
                 document.getElementById('modalClose').focus();
-                setTimeout(() => {
-                  modalContent.classList.remove('scale-95');
-                  modalContent.classList.add('scale-100');
+                setTimeout(function() {
+                  document.getElementById('modalContent').classList.remove('scale-95');
+                  document.getElementById('modalContent').classList.add('scale-100');
                 }, 10);
               };
 
               cardImage.addEventListener('click', openModal);
-              cardImage.addEventListener('keydown', (event) => {
+              cardImage.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter' || event.key === ' ') {
                   event.preventDefault();
                   openModal();
                 }
               });
 
-              // Overlay for interactive image
-              const overlayDiv = document.createElement('div');
-              overlayDiv.className = "absolute inset-0 flex items-center justify-center bg-blue-500 bg-opacity-20 backdrop-blur-md transition duration-300 pointer-events-none opacity-0 group-hover:opacity-100 group-focus:opacity-100";
-              const overlayText = document.createElement('span');
-              overlayText.textContent = "Read More";
-              overlayText.className = "text-white transition duration-300 text-lg font-semibold";
+              var overlayDiv = document.createElement('div');
+              overlayDiv.className = 'absolute inset-0 flex items-center justify-center bg-blue-500 bg-opacity-20 backdrop-blur-md transition duration-300 pointer-events-none opacity-0 group-hover:opacity-100 group-focus:opacity-100';
+              var overlayText = document.createElement('span');
+              overlayText.textContent = 'Read More';
+              overlayText.className = 'text-white transition duration-300 text-lg font-semibold';
               overlayDiv.appendChild(overlayText);
               imageContainer.appendChild(overlayDiv);
             }
+
             imageContainer.appendChild(cardImage);
             cardDiv.appendChild(imageContainer);
 
-            // Card Content
-            const cardContent = document.createElement('div');
-            cardContent.className = "p-6";
-            const cardTitle = document.createElement('h3');
-            cardTitle.className = "font-bold text-xl mb-2";
+            var cardContent = document.createElement('div');
+            cardContent.className = 'p-6';
+            var cardTitle = document.createElement('h3');
+            cardTitle.className = 'font-bold text-xl mb-2';
             cardTitle.textContent = card.title;
-            const cardDescription = document.createElement('p');
-            cardDescription.className = "text-gray-600";
+            var cardDescription = document.createElement('p');
+            cardDescription.className = 'text-gray-600';
             cardDescription.textContent = card.description;
 
             cardContent.appendChild(cardTitle);
             cardContent.appendChild(cardDescription);
             cardDiv.appendChild(cardContent);
+
             projectContainer.appendChild(cardDiv);
           });
         })
-        .catch(error => {
+        .catch(function(error) {
           console.error('Error loading project cards:', error);
         });
     });
   </script>
 
-  <!-- Modal Close Script -->
+  <!-- FLIPBOOK MODAL SCRIPT -->
   <script>
-    function closeModal() {
-      const modal = document.getElementById('modal');
-      const modalContent = document.getElementById('modalContent');
-      modalContent.classList.remove('scale-100');
-      modalContent.classList.add('scale-95');
-      setTimeout(() => {
-        modal.classList.add('hidden');
+    const bookImage = document.getElementById('bookImage');
+    const readButton = document.getElementById('readButton');
+    const flipbookModal = document.getElementById('flipbookModal');
+    const flipbookClose = document.getElementById('flipbookClose');
+    const flipbookContent = flipbookModal.querySelector('.transform');
+
+    function openFlipbook() {
+      flipbookModal.classList.remove('hidden');
+      setTimeout(function() {
+        flipbookContent.classList.remove('scale-95');
+        flipbookContent.classList.add('scale-100');
+      }, 10);
+    }
+    bookImage.addEventListener('click', openFlipbook);
+    readButton.addEventListener('click', openFlipbook);
+
+    function closeFlipbook() {
+      flipbookContent.classList.remove('scale-100');
+      flipbookContent.classList.add('scale-95');
+      setTimeout(function() {
+        flipbookModal.classList.add('hidden');
       }, 300);
     }
-    document.getElementById('modalClose').addEventListener('click', closeModal);
-    document.getElementById('modal').addEventListener('click', (event) => {
-      if (event.target === document.getElementById('modal')) {
-        closeModal();
+    flipbookClose.addEventListener('click', closeFlipbook);
+    flipbookModal.addEventListener('click', function(e) {
+      if (e.target === flipbookModal) {
+        closeFlipbook();
       }
     });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        const modal = document.getElementById('modal');
-        if (!modal.classList.contains('hidden')) {
-          closeModal();
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (!flipbookModal.classList.contains('hidden')) {
+          closeFlipbook();
         }
       }
     });
   </script>
 
-  <!-- Resource Button Mousemove Gradient Script -->
+  <!-- PROJECT MODAL SCRIPT -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const resourceButton = document.querySelector('.resource-btn');
+    function closeModal() {
+      var modal = document.getElementById('modal');
+      var modalContent = document.getElementById('modalContent');
+      modalContent.classList.remove('scale-100');
+      modalContent.classList.add('scale-95');
+      setTimeout(function() {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modal').addEventListener('click', function(event) {
+      if (event.target === document.getElementById('modal')) closeModal();
+    });
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        var modal = document.getElementById('modal');
+        if (!modal.classList.contains('hidden')) closeModal();
+      }
+    });
+  </script>
+
+  <!-- RESOURCE BUTTON MOUSEMOVE SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var resourceButton = document.querySelector('.resource-btn');
       if (resourceButton) {
-        resourceButton.addEventListener('mousemove', (event) => {
-          const buttonRect = resourceButton.getBoundingClientRect();
-          const mouseX = event.clientX - buttonRect.left;
-          const mouseY = event.clientY - buttonRect.top;
-          const posXPercent = (mouseX / buttonRect.width * 100).toFixed(2);
-          const posYPercent = (mouseY / buttonRect.height * 100).toFixed(2);
-          resourceButton.style.background = `radial-gradient(circle at ${posXPercent}% ${posYPercent}%, #1489d7, #45b8bc 80%)`;
+        resourceButton.addEventListener('mousemove', function(event) {
+          var buttonRect = resourceButton.getBoundingClientRect();
+          var mouseX = event.clientX - buttonRect.left;
+          var mouseY = event.clientY - buttonRect.top;
+          var posXPercent = (mouseX / buttonRect.width * 100).toFixed(2);
+          var posYPercent = (mouseY / buttonRect.height * 100).toFixed(2);
+          resourceButton.style.background = "radial-gradient(circle at " + posXPercent + "% " + posYPercent + "%, #1589d7, #44b8bc 80%)";
           resourceButton.style.color = "white";
         });
-        resourceButton.addEventListener('mouseleave', () => {
+        resourceButton.addEventListener('mouseleave', function() {
           resourceButton.style.background = "white";
-          resourceButton.style.color = "#1489d7";
+          resourceButton.style.color = "#1589d7";
         });
       }
     });
   </script>
 
-  <!-- Loader Removal Script -->
+  <!-- FLAT PANORAMA SCRIPT: Single-direction auto-pan & loop, plus arrows & zoom -->
   <script>
-    window.addEventListener('load', () => {
-      const loaderElement = document.getElementById('loader');
+    document.addEventListener("DOMContentLoaded", function() {
+      const pano = document.getElementById("flatPanoramaInner");
+      const leftArrow = document.getElementById("leftArrow");
+      const rightArrow = document.getElementById("rightArrow");
+      const zoomInBtn = document.getElementById("zoomIn");
+      const zoomOutBtn = document.getElementById("zoomOut");
+
+      // Global state for horizontal position & zoom
+      let currentPos = 50;
+      let currentZoom = 400;
+      const minZoom = 370;
+      const maxZoom = 400;
+      const panStep = 2;
+      const zoomStep = 10;
+      const autoPanSpeed = 0.02; 
+      
+      // Initialize
+      pano.style.backgroundSize = `${currentZoom}% auto`;
+      pano.style.backgroundPosition = `${currentPos}% center`;
+
+      // Auto-pan to the right, loop from 100 -> 0
+      setInterval(function() {
+        currentPos += autoPanSpeed;
+        if (currentPos > 100) {
+          currentPos = 0;
+        }
+        pano.style.backgroundPosition = `${currentPos}% center`;
+      }, 30);
+
+      // Arrows
+      leftArrow.addEventListener("click", function() {
+        currentPos -= panStep;
+        if (currentPos < 0) {
+          currentPos = 100;
+        }
+        pano.style.backgroundPosition = `${currentPos}% center`;
+      });
+      rightArrow.addEventListener("click", function() {
+        currentPos += panStep;
+        if (currentPos > 100) {
+          currentPos = 0;
+        }
+        pano.style.backgroundPosition = `${currentPos}% center`;
+      });
+
+      // Zoom
+      zoomInBtn.addEventListener("click", function() {
+        currentZoom = Math.max(minZoom, currentZoom - zoomStep);
+        pano.style.backgroundSize = `${currentZoom}% auto`;
+      });
+      zoomOutBtn.addEventListener("click", function() {
+        currentZoom = Math.min(maxZoom, currentZoom + zoomStep);
+        pano.style.backgroundSize = `${currentZoom}% auto`;
+      });
+
+      // Optional: mousemove panning
+      pano.addEventListener("mousemove", function(e) {
+        const rect = pano.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const percent = (mouseX / rect.width) * 100;
+        currentPos = percent;
+        pano.style.backgroundPosition = `${currentPos}% center`;
+      });
+    });
+  </script>
+
+  <!-- LOADER REMOVAL SCRIPT -->
+  <script>
+    window.addEventListener('load', function() {
+      var loaderElement = document.getElementById('loader');
       loaderElement.classList.add('fade-out');
-      setTimeout(() => {
+      setTimeout(function() {
         loaderElement.style.display = 'none';
         document.body.classList.remove('overflow-hidden');
       }, 500);
     });
   </script>
 
-  <!-- Load Navigation and Footer Content -->
+  <!-- LOAD NAVIGATION AND FOOTER -->
   <script>
     function loadHTMLContent(filePath, containerId) {
       fetch(filePath)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Could not load ${filePath}`);
-          }
+        .then(function(response) {
+          if (!response.ok) throw new Error("Could not load " + filePath);
           return response.text();
         })
-        .then(htmlContent => {
+        .then(function(htmlContent) {
           document.getElementById(containerId).innerHTML = htmlContent;
         })
-        .catch(error => console.error('Error loading content:', error));
+        .catch(function(error) {
+          console.error("Error loading content:", error);
+        });
     }
-
-    // Load the navigation and footer into their placeholders.
-    loadHTMLContent('build/components/nav.html', 'navPlaceholder');
-    loadHTMLContent('build/components/footer.html', 'footerPlaceholder');
+    loadHTMLContent("build/components/nav.html", "navPlaceholder");
+    loadHTMLContent("build/components/footer.html", "footerPlaceholder");
   </script>
 
-  <!-- Global Script to Prevent Image Dragging -->
+  <!-- PREVENT IMAGE DRAGGING -->
   <script>
-    document.addEventListener('dragstart', function(event) {
-      if (event.target.tagName.toLowerCase() === 'img') {
+    document.addEventListener("dragstart", function(event) {
+      if (event.target.tagName.toLowerCase() === "img") {
         event.preventDefault();
       }
     });
