@@ -88,7 +88,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 25%;
+      height: 8%;
       background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 80%);
     }
     .scroll-indicator {
@@ -149,6 +149,9 @@
       flex-direction: column;
       gap: 1rem;
     }
+    .service-list {
+      margin-top: 5px;
+    }
     .about-card {
       flex: 1;
       background: #ffffff;
@@ -163,21 +166,18 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       padding: 1rem;
       width: 100%;
-      height: 450px; /* container's height - adjust as needed */
+      height: 450px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    /* The inner container that holds the actual background image */
     #flatPanoramaInner {
       width: 100%;
       height: 100%;
       border-radius: 0.25rem;
       overflow: hidden;
       position: relative;
-      /* By default, "zoom in" the image so only the center portion is visible */
       background: url('./build/img/Panorama/esrc_center.jpg') no-repeat center;
-      /* Start with a large background-size so edges are effectively outside container */
       background-size: 400% auto; 
       cursor: grab;
     }
@@ -196,6 +196,7 @@
       border-radius: 50%;
       z-index: 10;
       cursor: pointer;
+      -webkit-user-select: none;
       user-select: none;
     }
     .arrow:hover {
@@ -229,37 +230,10 @@
     .zoom-controls button:hover {
       background: rgba(0, 0, 0, 0.7);
     }
-    /* ACCOMPLISHMENTS SECTION (Modern Design) */
-    .accomplishment-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      position: relative;
-      z-index: 1;
-    }
-    @media(min-width: 992px) {
-      .accomplishment-container {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    .accomplishment-book:hover {
-      transform: scale(1.05);
-    }
-    .read-btn {
-      background: #1589d7;
-      color: #ffffff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.375rem;
-      font-weight: 500;
-      margin-top: 1rem;
-      transition: background 0.3s ease;
-    }
-    .read-btn:hover {
-      background: #44b8bc;
-    }
     .transition-section {
       background: linear-gradient(to bottom, #ffffff, #f8f8f8);
     }
+    
   </style>
 </head>
 
@@ -285,6 +259,7 @@
     <!-- HERO SECTION -->
     <section class="hero-section flex items-center justify-center text-white">
       <div class="container mx-auto text-center py-16 relative z-10">
+        <img src="./build/img/esrc logo 2.webp" alt="Logo" class="object-scale-down w-20 mx-auto mb-5">
         <h1 class="text-3xl sm:text-5xl font-bold mb-4">Innovating the Future Through Research</h1>
         <p class="text-lg sm:text-xl mb-6 max-w-2xl mx-auto">
           Pioneering breakthroughs in electronic systems, empowering society, and shaping tomorrow's technology.
@@ -304,7 +279,7 @@
     <!-- ABOUT US SECTION -->
     <section id="about" class="py-16 bg-white">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-8">About Us</h2>
+        <h2 class="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-[#1589d7] to-[#44b8bc] text-transparent bg-clip-text">About Us</h2>
         <p class="text-gray-600 text-center max-w-3xl mx-auto mb-8">
           The Electronic Systems Research Center (ESRC) is at the forefront of innovation in electronics engineering. We provide state-of-the-art facilities, foster collaborative research, and develop cutting-edge solutions that bridge the gap between academia and industry.
         </p>
@@ -327,13 +302,25 @@
           <!-- Right Column: Two stacked cards -->
           <div class="about-right">
             <div class="about-card">
-              <h3 class="font-bold text-2xl mb-4 text-primary">Center Mandate</h3>
+              <h3 class="font-bold text-center text-2xl mb-4 text-[#1589d7]">Services Offered</h3>
               <p class="text-gray-600">
-                We support innovative research, prototype development, and custom experimental setups to drive advancements in electronic systems.
+                The ESRC offer a wide-range of services:
+                <div class="grid list-disc list-inside service-list grid-cols-2 gap-5 text-gray-600">
+                  <ul>
+                    <li><b>•</b> Electronic Prototyping</li>
+                    <li><b>•</b> PCB Fabrication</li>
+                    <li><b>•</b> 3D Modeling and Printing</li>
+                  </ul>
+                  <ul>
+                    <li><b>•</b> Data Logging</li>
+                    <li><b>•</b> Schematic Design</li>
+                    <li><b>•</b> Research Consultation</li>
+                  </ul>
+                </div>
               </p>
             </div>
             <div class="about-card">
-              <h3 class="font-bold text-2xl mb-4 text-primary">Equipment Available</h3>
+              <h3 class="font-bold text-center text-2xl mb-4 text-[#1589d7]">Equipment Available</h3>
               <ul class="text-gray-600 list-disc list-inside">
                 <li>Spectral Camera, Weather Station</li>
                 <li>Test &amp; Measurement Instruments</li>
@@ -348,52 +335,53 @@
       </div>
     </section>
 
-    <!-- ACCOMPLISHMENTS SECTION (Modern Design) -->
-    <section id="accomplishments" class="py-16 bg-white relative">
-      <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <!-- Left: Text and Read Button -->
-          <div>
-            <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Accomplishments</h2>
-            <p class="text-gray-600 mb-8">
-              Our center thrives in pushing the boundaries of Electronic Engineering. Catch up with our accomplishment this year!
-            </p>
-            <button id="readButton" class="bg-primary text-white py-3 px-6 rounded-md font-medium transition duration-300 hover:bg-accent">
-              Read
-            </button>
-          </div>
-          <!-- Right: Book with larger squares behind it -->
-          <div class="flex items-center justify-center">
-            <div class="relative w-60 h-80">
-              <!-- Square at top-right corner (behind the book) -->
-              <div
-                class="absolute bg-primary opacity-50 w-14 h-14 rounded-sm z-0"
-                style="top: 0; right: 0; transform: translate(40%, -40%) rotate(10deg);"
-              ></div>
-              <!-- Square at bottom-left corner (behind the book) -->
-              <div
-                class="absolute bg-accent opacity-50 w-14 h-14 rounded-sm z-0"
-                style="bottom: 0; left: 0; transform: translate(-40%, 40%) rotate(-8deg);"
-              ></div>
-              <!-- Book Image (on top, with shadow) -->
-              <img
-                src="./build/img/Accomplishments/ESRC Quarterly Accomplishment.png"
-                alt="Accomplishments Book Q1 2025"
-                class="absolute inset-0 w-full h-full object-cover rounded shadow-lg cursor-pointer z-10"
-                id="bookImage"
+    <section id="accomplishments" class="py-16 bg-white">
+      <div class="container mx-auto px-6 grid grid-cols-2 gap-8 items-center">
+        
+        <!-- LEFT COLUMN: Text content + "Read More" button -->
+        <div class="flex flex-col justify-center">
+          <h2 class="text-4xl font-bold mb-4 text-gray-800 bg-gradient-to-r from-[#1589d7] to-[#44b8bc] text-transparent bg-clip-text">
+            Center Accomplishments
+          </h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            The Electronic Systems Research Center (ESRC) supports all research initiatives 
+            related to Electronics Engineering. Building on this foundation, our center has 
+            achieved significant milestones through our innovative solutions and activities. 
+            These accomplishments not only highlight our commitment to technological excellence 
+            but also empower us to nurture the next generation of Electronic Engineers.
+          </p>
+          <button 
+            id="readMoreBtn"
+            class="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow-md 
+                   transition duration-300 transform hover:bg-blue-700 hover:scale-105 hover:shadow-lg">
+            Read More
+          </button>
+        </div>
+    
+        <!-- RIGHT COLUMN: "Book" image -->
+        <div class="panel__image panel__image--book relative flex items-center justify-center ml-8">
+          <a href="#" class="books__book__image">
+            <div class="books__book__img">
+              <img 
+                src="./build/img/Accomplishments/2025 Q1.png" 
+                alt="Book Cover"
               />
             </div>
-          </div>
+          </a>
         </div>
+    
       </div>
     </section>
+    
+    
 
     <!-- RESEARCH PROJECTS SECTION -->
     <section id="research" class="bg-white py-16">
       <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
+        <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-[#1589d7] to-[#44b8bc] text-transparent bg-clip-text">Research Projects</h2>
         <p class="text-gray-600 mb-8">
-          Discover the innovative projects undertaken by the ESRC, driving technological progress.
+          Discover our technological innovative projects, driving technological progress and solving
+          real-world problems.
         </p>
         <div id="projectCardContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Fallback message if CSV content not loaded -->
@@ -405,8 +393,10 @@
     <!-- TEAM SECTION -->
     <section id="team" class="py-16 bg-white">
       <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">Meet Our Team</h2>
-        <p class="text-gray-600 mb-8">A team of dedicated researchers and professionals.</p>
+        <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-[#1589d7] to-[#44b8bc] text-transparent bg-clip-text ">Meet Our Team</h2>
+        <p class="text-gray-600 mb-8">
+          Meet the team of professionals in their respective fields that spearheads the
+          innovation efforts of the ESRC</p>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div class="text-center">
             <img src="../build/img/Staff/Engr.Amante.webp" alt="Assoc. Prof Albertson D. Amante" loading="lazy" draggable="false" class="mx-auto w-25 h-20 rounded-full shadow" />
@@ -426,7 +416,7 @@
           <div class="text-center">
             <img src="../build/img/Staff/engraries.webp" alt="Engr. Ariel M. Rosales" loading="lazy" draggable="false" class="mx-auto w-25 h-20 rounded-full shadow" />
             <h3 class="mt-4 font-bold">Engr. Ariel M. Rosales</h3>
-            <p class="text-gray-600">UNIRA, Project Sinag</p>
+            <p class="text-gray-600">Project Staff, Project SiNAG</p>
           </div>
         </div>
       </div>
@@ -436,16 +426,7 @@
   <!-- FOOTER PLACEHOLDER -->
   <div id="footerPlaceholder"></div>
 
-  <!-- FLIPBOOK MODAL -->
-  <div id="flipbookModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300 z-[100]" aria-modal="true">
-    <div class="relative bg-white rounded-lg overflow-hidden shadow-xl w-full mx-4 max-w-4xl transform transition-all duration-300 ease-out scale-95">
-      <button id="flipbookClose" aria-label="Close flipbook modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-3xl">&times;</button>
-      <!-- Flipbook Embed -->
-      <iframe allowfullscreen="allowfullscreen" scrolling="no" class="fp-iframe" src="https://heyzine.com/flip-book/2d76101035.html" style="border: 1px solid lightgray; width: 100%; height: 95vh;"></iframe>
-    </div>
-  </div>
-
-  <!-- PROJECT MODAL (Existing) -->
+  <!-- PROJECT MODAL (for Research Projects) -->
   <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300 z-[100]" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div id="modalContent" class="relative bg-white rounded-lg overflow-hidden shadow-xl w-full mx-4 max-w-lg md:max-w-4xl transform transition-all duration-300 ease-out scale-95">
       <button id="modalClose" aria-label="Close modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-3xl">&times;</button>
@@ -454,6 +435,15 @@
         <div id="modalSkeleton" class="absolute inset-0 bg-gray-200 animate-pulse"></div>
         <img id="modalImage" class="w-full h-auto object-contain" src="" alt="Detailed project view" draggable="false" onload="document.getElementById('modalSkeleton').classList.add('hidden')" />
       </div>
+    </div>
+  </div>
+
+  <!-- ACCOMPLISHMENT MODAL (Triggered by Read More) -->
+  <div id="accomplishmentModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300 z-[100]" aria-modal="true">
+    <div class="relative bg-white rounded-lg overflow-hidden shadow-xl w-full mx-4 max-w-4xl transform transition-all duration-300 ease-out scale-95">
+      <button id="accomplishmentClose" aria-label="Close accomplishment modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-3xl">&times;</button>
+      <!-- Replace the content below with your actual Accomplishment details or embed -->
+      <iframe allowfullscreen="allowfullscreen" scrolling="no" class="fp-iframe" src="https://heyzine.com/flip-book/2d76101035.html" style="border: 1px solid lightgray; width: 100%; height: 95vh;"></iframe>
     </div>
   </div>
 
@@ -561,46 +551,6 @@
     });
   </script>
 
-  <!-- FLIPBOOK MODAL SCRIPT -->
-  <script>
-    const bookImage = document.getElementById('bookImage');
-    const readButton = document.getElementById('readButton');
-    const flipbookModal = document.getElementById('flipbookModal');
-    const flipbookClose = document.getElementById('flipbookClose');
-    const flipbookContent = flipbookModal.querySelector('.transform');
-
-    function openFlipbook() {
-      flipbookModal.classList.remove('hidden');
-      setTimeout(function() {
-        flipbookContent.classList.remove('scale-95');
-        flipbookContent.classList.add('scale-100');
-      }, 10);
-    }
-    bookImage.addEventListener('click', openFlipbook);
-    readButton.addEventListener('click', openFlipbook);
-
-    function closeFlipbook() {
-      flipbookContent.classList.remove('scale-100');
-      flipbookContent.classList.add('scale-95');
-      setTimeout(function() {
-        flipbookModal.classList.add('hidden');
-      }, 300);
-    }
-    flipbookClose.addEventListener('click', closeFlipbook);
-    flipbookModal.addEventListener('click', function(e) {
-      if (e.target === flipbookModal) {
-        closeFlipbook();
-      }
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        if (!flipbookModal.classList.contains('hidden')) {
-          closeFlipbook();
-        }
-      }
-    });
-  </script>
-
   <!-- PROJECT MODAL SCRIPT -->
   <script>
     function closeModal() {
@@ -620,6 +570,49 @@
       if (event.key === 'Escape') {
         var modal = document.getElementById('modal');
         if (!modal.classList.contains('hidden')) closeModal();
+      }
+    });
+  </script>
+
+  <!-- ACCOMPLISHMENT MODAL SCRIPT -->
+  <script>
+    const readMoreBtn = document.getElementById('readMoreBtn');
+    const accomplishmentModal = document.getElementById('accomplishmentModal');
+    const accomplishmentClose = document.getElementById('accomplishmentClose');
+    const accomplishmentContent = accomplishmentModal.querySelector('.transform');
+
+    function openAccomplishmentModal() {
+      accomplishmentModal.classList.remove('hidden');
+      // Scale up animation
+      setTimeout(() => {
+        accomplishmentContent.classList.remove('scale-95');
+        accomplishmentContent.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeAccomplishmentModal() {
+      // Scale down animation
+      accomplishmentContent.classList.remove('scale-100');
+      accomplishmentContent.classList.add('scale-95');
+      setTimeout(() => {
+        accomplishmentModal.classList.add('hidden');
+      }, 300);
+    }
+
+    if (readMoreBtn) {
+      readMoreBtn.addEventListener('click', openAccomplishmentModal);
+    }
+    if (accomplishmentClose) {
+      accomplishmentClose.addEventListener('click', closeAccomplishmentModal);
+    }
+    accomplishmentModal.addEventListener('click', (e) => {
+      if (e.target === accomplishmentModal) {
+        closeAccomplishmentModal();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !accomplishmentModal.classList.contains('hidden')) {
+        closeAccomplishmentModal();
       }
     });
   </script>
@@ -646,7 +639,7 @@
     });
   </script>
 
-  <!-- FLAT PANORAMA SCRIPT: Single-direction auto-pan & loop, plus arrows & zoom -->
+  <!-- FLAT PANORAMA SCRIPT -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const pano = document.getElementById("flatPanoramaInner");
@@ -655,20 +648,18 @@
       const zoomInBtn = document.getElementById("zoomIn");
       const zoomOutBtn = document.getElementById("zoomOut");
 
-      // Global state for horizontal position & zoom
       let currentPos = 50;
       let currentZoom = 400;
       const minZoom = 370;
       const maxZoom = 400;
       const panStep = 2;
       const zoomStep = 10;
-      const autoPanSpeed = 0.02; 
+      const autoPanSpeed = 0.01; 
       
-      // Initialize
       pano.style.backgroundSize = `${currentZoom}% auto`;
       pano.style.backgroundPosition = `${currentPos}% center`;
 
-      // Auto-pan to the right, loop from 100 -> 0
+      // Auto-pan
       setInterval(function() {
         currentPos += autoPanSpeed;
         if (currentPos > 100) {
@@ -677,7 +668,7 @@
         pano.style.backgroundPosition = `${currentPos}% center`;
       }, 30);
 
-      // Arrows
+      // Left arrow
       leftArrow.addEventListener("click", function() {
         currentPos -= panStep;
         if (currentPos < 0) {
@@ -685,6 +676,7 @@
         }
         pano.style.backgroundPosition = `${currentPos}% center`;
       });
+      // Right arrow
       rightArrow.addEventListener("click", function() {
         currentPos += panStep;
         if (currentPos > 100) {
@@ -693,17 +685,18 @@
         pano.style.backgroundPosition = `${currentPos}% center`;
       });
 
-      // Zoom
+      // Zoom in
       zoomInBtn.addEventListener("click", function() {
         currentZoom = Math.max(minZoom, currentZoom - zoomStep);
         pano.style.backgroundSize = `${currentZoom}% auto`;
       });
+      // Zoom out
       zoomOutBtn.addEventListener("click", function() {
         currentZoom = Math.min(maxZoom, currentZoom + zoomStep);
         pano.style.backgroundSize = `${currentZoom}% auto`;
       });
 
-      // Optional: mousemove panning
+      // Mousemove panning
       pano.addEventListener("mousemove", function(e) {
         const rect = pano.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
