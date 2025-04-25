@@ -1,0 +1,27 @@
+{
+    "about": {
+      "vision": "To be the leading provider of innovative and sustainable technology solutions.",
+      "mission": "To deliver high-quality, reliable, and user-friendly digital products that empower businesses and individuals."
+    },
+    "services": [
+      "Electronic Prototyping",
+      "PCB Fabrication",
+      "3D Modeling and Printing",
+      "Data Logging Schematic",
+      "Research Consultation"
+    ],
+    "contact": {
+      "phone": "(043) 980 0385 loc.2405",
+      "email": "esrc@g.batstate-u.edu.ph"
+    },
+    "appointments": {
+      "url": "https://forms.gle/giQ5iWjGrmsEf3359",
+      "instructions": "To have an appointment, please visit the form URL and log your appointment."
+    },
+    "3dprinting": {
+      "requirements": [
+        "Step 1: Create a letter indicating the purpose and when you will use the 3D printer.",
+        "Step 2: When approved, bring your own 3D printer filament (Brand: Polymaker, Diameter: 2.85mm)."
+      ]
+    }
+  }

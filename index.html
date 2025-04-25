@@ -17,6 +17,8 @@
 
   <title>Electronic Systems Research Center - Batangas State University The NEU</title>
 
+  <link rel="stylesheet" href="robot.css"/>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-64NF2N18ZD"></script>
   <script>
@@ -238,6 +240,25 @@
 </head>
 
 <body class="bg-white text-gray-800 font-sans overflow-hidden">
+
+  <!-- Robot GIF Container -->
+  <div id="container">
+    <!-- Will be filled with robot.gif by JavaScript -->
+  </div>
+  
+  <!-- Chat Container -->
+  <div id="chat-container" class="hidden">
+    <div id="chat-header">Frequently Asked Questions</div>
+    <div id="chat-messages"></div>
+    <div id="quick-options"></div>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Type a message..."/>
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+  
+  <script src="robot.js" defer></script>
+
   <!-- Skip to main content for accessibility -->
   <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
 
@@ -335,45 +356,28 @@
       </div>
     </section>
 
-    <section id="accomplishments" class="py-16 bg-white">
-      <div class="container mx-auto px-6 grid grid-cols-2 gap-8 items-center">
-        
-        <!-- LEFT COLUMN: Text content + "Read More" button -->
-        <div class="flex flex-col justify-center">
-          <h2 class="text-4xl font-bold mb-4 text-gray-800 bg-gradient-to-r from-[#1589d7] to-[#44b8bc] text-transparent bg-clip-text">
-            Center Accomplishments
-          </h2>
-          <p class="text-gray-600 mb-6 leading-relaxed">
-            The Electronic Systems Research Center (ESRC) supports all research initiatives 
-            related to Electronics Engineering. Building on this foundation, our center has 
-            achieved significant milestones through our innovative solutions and activities. 
-            These accomplishments not only highlight our commitment to technological excellence 
-            but also empower us to nurture the next generation of Electronic Engineers.
+    <!-- ESRC YouTube Section -->
+    <section id="esrc-video" class="bg-gray-100 py-16">
+      <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- Text Content -->
+        <div>
+          <h2 class="text-3xl font-bold text-[#1589d7] mb-4">What is ESRC built for?</h2>
+          <p class="text-gray-700">
+            Electronic Systems Research Center provides technical support for research and development related to the field
+            of electronics. They develop prototypes for various fields of research involving electronic systems.
+            Thus, they offer space and technical mentoring to researchers conducting development work.
+            Lastly, they engage in the innovation of existing projects by collaborating with stakeholders. 
+            Watch how we push the boundaries in semiconductor and nanoelectronics research, empowering students and researchers
+            at Batangas State University. 
           </p>
-          <button 
-            id="readMoreBtn"
-            class="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow-md 
-                   transition duration-300 transform hover:bg-blue-700 hover:scale-105 hover:shadow-lg">
-            Read More
-          </button>
         </div>
-    
-        <!-- RIGHT COLUMN: "Book" image -->
-        <div class="panel__image panel__image--book relative flex items-center justify-center ml-8">
-          <a href="#" class="books__book__image">
-            <div class="books__book__img">
-              <img 
-                src="./build/img/Accomplishments/2025 Q1.png" 
-                alt="Book Cover"
-              />
-            </div>
-          </a>
+        <!-- YouTube Embed -->
+        <div class="w-full aspect-video">
+          <iframe class="w-full h-full rounded-xl shadow-lg" src="https://www.youtube.com/embed/Wa1IqM9Hn3c?si=azTQLVApmpeWe909" 
+            title="ESRC Video" frameborder="0" allowfullscreen></iframe>
         </div>
-    
       </div>
     </section>
-    
-    
 
     <!-- RESEARCH PROJECTS SECTION -->
     <section id="research" class="bg-white py-16">

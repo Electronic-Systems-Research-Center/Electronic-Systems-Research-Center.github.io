@@ -1,0 +1,244 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh; /* Changed from 100% to 100vh */
+  background: transparent;
+  position: relative; /* Changed from fixed to relative */
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+/* Main content area that can be scrolled */
+.content-area {
+  width: 100%;
+  min-height: 100vh; /* Ensures it's at least full viewport height */
+  padding-bottom: 150px; /* Add space at bottom for the chat bot */
+}
+
+/* Container for Robot GIF - SMALLER SIZE */
+#container {
+  position: fixed; /* Keep this fixed so it stays visible when scrolling */
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  height: 120px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1000;
+  overflow: hidden;
+  border-radius: 50%; /* Makes it circular */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+#container:hover {
+  transform: scale(1.05);
+}
+
+/* Chat Container - Adjusted position to match smaller robot */
+#chat-container {
+  position: fixed; /* Keep this fixed so it stays visible when scrolling */
+  bottom: 150px;
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  overflow: hidden;
+}
+
+#chat-container.hidden {
+  display: none;
+}
+
+#chat-header {
+  background-color: #1589d7;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#chat-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#send-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #1589d7;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  max-width: 85%;
+}
+
+.user {
+  background-color: #1589d7;
+  color: white;
+  align-self: flex-end;
+}
+
+.bot {
+  background-color: #f1f1f1;
+  color: black;
+  align-self: flex-start;
+}
+
+/* Quick options styling */
+#quick-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.quick-option-btn {
+  background-color: #e6f7ff;
+  border: 1px solid #a6d8ff;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.quick-option-btn:hover {
+  background-color: #bae7ff;
+}
+
+/* ============ PHONE VIEW ============ */
+@media (max-width: 480px) {
+  #container {
+    width: 70px;
+    height: 70px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  #chat-container {
+    width: 90%;
+    height: 340px;
+    bottom: 100px;
+    right: 5%;
+  }
+
+  #chat-header {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #chat-messages {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .message {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  #user-input {
+    font-size: 13px;
+  }
+
+  #send-button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .quick-option-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* ============ TABLET VIEW ============ */
+@media (min-width: 481px) and (max-width: 768px) {
+  #container {
+    width: 85px;
+    height: 85px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  #chat-container {
+    width: 320px;
+    height: 400px;
+    bottom: 120px;
+    right: 20px;
+  }
+
+  #chat-header {
+    font-size: 15px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+
+  #user-input,
+  #send-button,
+  .quick-option-btn {
+    font-size: 14px;
+  }
+}
+
+/* ============ SMALL LAPTOP VIEW ============ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #container {
+    width: 100px;
+    height: 100px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  #chat-container {
+    width: 340px;
+    height: 420px;
+    bottom: 130px;
+    right: 20px;
+  }
+
+  .message {
+    font-size: 15px;
+  }
+
+  #user-input,
+  #send-button,
+  .quick-option-btn {
+    font-size: 15px;
+  }
+}
